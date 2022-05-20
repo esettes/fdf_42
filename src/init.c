@@ -6,23 +6,21 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/20 23:04:16 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/21 00:31:24 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		get_matrix_size()
+/*int		get_matrix_size()
 {
 	
-}
+}*/
 
-t_mtx	matrix_construct(t_fdf *fdf)
+void	matrix_construct(t_fdf *fdf)
 {
+	
 	fdf->mtx->mtx = ft_alloc_mtx(fdf->fd);
-	fdf->mtx->size = (t_vec2 *)malloc(sizeof(t_vec2));
-	fdf->mtx->size->x = 1;
-	fdf->mtx->size->y = 1;
 }
 
 void	fdf_construct(t_fdf *fdf)//, char *mp)

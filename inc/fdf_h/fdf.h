@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/20 23:01:36 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/21 01:01:25 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ typedef struct s_vec2
 typedef struct s_mtx
 {
 	char	**mtx;
-	t_vec2	*size;
+	int		x;
+	int		y;
 }				t_mtx;
 
 typedef struct s_fdf
@@ -54,8 +55,10 @@ typedef struct s_fdf
 }				t_fdf;
 
 void	fdf_construct(t_fdf *fdf);//, char *mp);
+void	matrix_construct(t_fdf *fdf);
+
 void	draw_simple_line(t_fdf *fdf);
 char	**ft_alloc_mtx(int fd);
-void	print_mtx(t_fdf *fdf);
+void	print_mtx(t_fdf *fdf, char **str);
 
 #endif
