@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/22 22:25:52 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/22 22:37:26 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ int	main(int argc, char	*argv[])
 		fdf_construct(&fdf);
 
 		mtrx.mtx = ft_alloc_mtx(fd);
-		print_matrix(&fdf, &mtrx);
+		
 		
 		if (!fdf.mlx)
 			exit(EXIT_FAILURE);
-		draw_simple_line(&fdf);
+		print_matrix(&fdf, &mtrx);
+		//draw_simple_line(&fdf);
 		close(fdf.fd);
 		return (EXIT_SUCCESS);
 	}

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/22 21:20:08 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/22 22:28:30 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	fdf_construct(t_fdf *fdf)//, char *mp)
 //	fdf->mtx = (t_mtx *)malloc(sizeof(t_mtx));
 	fdf->img = mlx_new_image(fdf->mlx, 128, 128);    // Creates a new image.
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);   // Adds an image to the render queue.
-	fdf->img->instances->x = 64;
-	fdf->img->instances->y = 64;
+	fdf->img->instances->x = 50;
+	fdf->img->instances->y = 50;
 }
 
 

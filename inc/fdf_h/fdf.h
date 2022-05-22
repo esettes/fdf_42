@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/22 22:20:48 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/22 22:54:51 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_fdf
 void	fdf_construct(t_fdf *fdf);//, char *mp);
 void	matrix_construct(t_fdf *fdf);
 
-void	draw_simple_line(t_fdf *fdf);
+void	draw_simple_line(t_fdf *fdf, int max);
 char	**ft_alloc_mtx(int fd);
 void	print_matrix(t_fdf *fdf, t_mtx *mtx);
 
