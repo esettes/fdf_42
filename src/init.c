@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/21 00:31:24 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/22 21:20:08 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ void	matrix_construct(t_fdf *fdf)
 void	fdf_construct(t_fdf *fdf)//, char *mp)
 {
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
-//	fdf->fd = ft_open(mp);
-	fdf->mtx = (t_mtx *)malloc(sizeof(t_mtx));
+//	fdf->mtx = (t_mtx *)malloc(sizeof(t_mtx));
 	fdf->img = mlx_new_image(fdf->mlx, 128, 128);    // Creates a new image.
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);   // Adds an image to the render queue.
 	fdf->img->instances->x = 64;

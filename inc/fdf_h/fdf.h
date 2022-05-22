@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/21 01:01:25 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/22 22:20:48 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include "MLX42.h"
 # include "get_next_line_bonus.h"
 # include "libft.h"
-//#include <memory.h>
+//# include <_int32_t.h>
+#include <memory.h>
 
 # define WIDTH			720
 # define HEIGHT			420
@@ -51,7 +52,7 @@ typedef struct s_fdf
 	mlx_t		*mlx;
 	t_mtx		*mtx;
 	mlx_image_t	*img;	// incluye posic
-	int			fd;
+	int32_t		fd;
 }				t_fdf;
 
 void	fdf_construct(t_fdf *fdf);//, char *mp);
@@ -59,6 +60,6 @@ void	matrix_construct(t_fdf *fdf);
 
 void	draw_simple_line(t_fdf *fdf);
 char	**ft_alloc_mtx(int fd);
-void	print_mtx(t_fdf *fdf, char **str);
+void	print_matrix(t_fdf *fdf, t_mtx *mtx);
 
 #endif
