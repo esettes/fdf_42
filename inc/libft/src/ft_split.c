@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:27:13 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/22 21:35:18 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:10:29 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static size_t	str_count(char const *s, char c)
 	count = 0;
 	bo = 0;
 	a = (char *)s;
+	if (!a)
+		return (0);
 	while (*a)
 	{
 		if (*a != c && bo == 0)

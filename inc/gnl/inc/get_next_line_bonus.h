@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 20:19:28 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/20 21:51:10 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:47:43 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4024
+#  define BUFFER_SIZE 2048
 # endif
 # define TRUE 1
 # define FALSE 0

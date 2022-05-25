@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/05/13 19:08:16 by iostancu         ###   ########.fr        #
+#    Updated: 2022/05/25 21:27:31 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ endif
 ALLINC	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/fdf_h/ -I ./inc/MLX42/include/MLX42/
 
 CC	= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -glldb
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
 DEB	= -g
 

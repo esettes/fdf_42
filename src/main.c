@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/22 22:37:26 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:30:00 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@ int	main(int argc, char	*argv[])
 	t_mtx	mtrx;
 	int fd;
 
+	if (argv[1])
+		printf ("ok");
 	if (argc <3)
 	{
-		fd = open(argv[1], O_RDONLY);
-//		fd = open("maps/10-2.txt", O_RDONLY);
+//		fd = open(argv[1], O_RDONLY);
+		fd = open("maps/5-2.txt", O_RDONLY);
 		fdf_construct(&fdf);
-
+		if (fd == -1)
+			return (EXIT_FAILURE);
 		mtrx.mtx = ft_alloc_mtx(fd);
-		
+		obtain_mtrx_measure(mtrx.mtx);
 		
 		if (!fdf.mlx)
 			exit(EXIT_FAILURE);
