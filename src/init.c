@@ -6,27 +6,23 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/22 22:28:30 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/26 21:24:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/*int		get_matrix_size()
-{
-	
-}*/
 
-void	matrix_construct(t_fdf *fdf)
-{
+// void	matrix_construct(t_fdf *fdf)
+// {
 	
-	fdf->mtx->mtx = ft_alloc_mtx(fdf->fd);
-}
+// 	//fdf->mtrx->mtrx = ft_alloc_mtx(fdf->fd);
+// }
 
 void	fdf_construct(t_fdf *fdf)//, char *mp)
 {
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
-//	fdf->mtx = (t_mtx *)malloc(sizeof(t_mtx));
+//	fdf->mtrx = (t_mtx *)malloc(sizeof(t_mtx));
 	fdf->img = mlx_new_image(fdf->mlx, 128, 128);    // Creates a new image.
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);   // Adds an image to the render queue.
 	fdf->img->instances->x = 50;

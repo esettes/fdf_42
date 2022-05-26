@@ -1,64 +1,6 @@
 #include "fdf.h"
 
-void	obtain_mtrx_measure(char **mtrx)
-{
-	int	i;
-	int	j;
-	int	row;
-	int	col;
-
-	i = 0;
-	j = 0;
-	row = 0;
-	col = 0;
-	// while (*(mtrx + j) != '\0')
-	// {
-		// quitar -fsanitazer o algun debug flag puede hacer que me imprima y me compile 
-		// **(mtrx + i), se queda prillado cuando intento printearlo en lldb
-		// pero con numeros normales sí funciona
-		while (**(mtrx + i) != '\0')
-		{
-			printf("%c", **(mtrx + i));
-			if (ft_isdigit(**(mtrx + i)))	// si es numero, cuenta posicion
-			{
-				col++;
-				i++;
-			}
-			if (ft_isspace(**(mtrx + i)) || **(mtrx + i) == '-')	// si es otra cosa, pasa
-				i++;
-			if(**(mtrx + i) == '\n')
-			{
-				i++;
-				row++;
-			}
-			if (ft_isascii(**(mtrx + i)))
-				i++;
-		}
-		
-	// while (mtrx[x][y] != '\0')
-	// {
-	// 	while (mtrx[x][y] != '\n' && mtrx[x][y] != '\0')
-	// 	{
-	// 		if (mtrx[x][y] == '-' || mtrx[x][y] == ' ')
-	// 		{
-	// 			y++;
-	// 		}
-	// 		printf("%c", mtrx[x][y]);
-	// 		cols++;
-	// 		y++;
-	// 	}
-	// 	if (mtrx[x][y] == '\n')
-	// 	{
-	// 		y++;
-	// 		lines++;
-	// 	}
-	// }
-	printf("j %i, rows: %i\n", j, row);
-	printf("i %i, cols: %i\n", i, col);
-
-}
-
-void	print_matrix(t_fdf *fdf, t_mtx *mtx)
+void	print_matrix(t_fdf *fdf, t_mtrx *mtrx)
 {
 	int	x;
 	int	y;
@@ -73,19 +15,15 @@ void	print_matrix(t_fdf *fdf, t_mtx *mtx)
 	// {
 	// 	y = 0;
 	// 	fdf->img->instances->y = start;
-		while (mtx->mtx[x][y] != '\0' && mtx->mtx[x][y] != '\n')
+		while (mtrx->mtrx[x][y] != '\0' && mtrx->mtrx[x][y] != '\n')
 		{
-			printf("%c", mtx->mtx[x][y]);
+			printf("%c", mtrx->mtrx[x][y]);
 			//fdf->img->instances->x += x;
 			// fdf->img->instances->y += y;
 			// mlx_put_pixel(fdf->img, fdf->img->instances->x, 
 			// 	fdf->img->instances->y, BLUE);
 			y++;
 		}
-		//draw_simple_line(fdf, y);
-	// 	//printf("\n");
-	// 	x++;
-	// }
 	
 }
 

@@ -15,7 +15,7 @@ OBJDIR	= ./obj/
 OBJS	= $(addprefix $(OBJDIR), $(SRCNAMES:.c=.o))
 
 LIBINC	= ./inc/#libft.h
-FLAGS	= -Wall -Wextra -Werror -glldb
+FLAGS	= -Wall -Wextra -Werror #-glldb
 CC	= gcc
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
