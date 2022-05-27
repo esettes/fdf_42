@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/27 22:51:07 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:55:59 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,14 @@ int		*str_to_int(const char *str)
 	char	**ch_aux;
 	int		tmp;
 	int		*i_aux;
-	int		ch_len;
 	int		j;
 
 	j = 0;
 	ch_aux = ft_split(str, ' ');
+	while (*(str + j) && ft_isdigit(*(str + j)))
+		j++;
+	i_aux = malloc(sizeof(int) * j);
+	j = 0;
 	while (ch_aux[j] && ch_aux[j] != '\0')
 	{
 		tmp = ft_atoi(ch_aux[j]);
