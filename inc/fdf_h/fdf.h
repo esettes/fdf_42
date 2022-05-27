@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/27 19:47:06 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:41:00 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,13 @@ void	fdf_construct(t_fdf *fdf);//, char *mp);
 void	matrix_construct(t_fdf *fdf);
 
 void	draw_simple_line(t_fdf *fdf, int max);
-int		**ft_alloc_mtx(int fd);
 void	print_matrix(t_fdf *fdf, t_mtrx *mtrx);
 
+/*** ***	*** READ MAP ***	*** ***/
+
+int		**ft_alloc_mtx(int fd);
 int		**obtain_int_mtrx(char **str);
 int		ft_count(char const *s, char c);
+int		*str_to_int(const char *str);
 
 #endif
