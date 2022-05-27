@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/27 22:59:39 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/27 23:19:33 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,36 @@
 int	**ft_alloc_mtx(int fd)
 {
 	char	*mp;
-	char	**map;
+	char	*map_line;
 	int		**mtrx;
+	int		i;
+	int		j;
 
+	i = 0;
 	mp = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	mp = read_fd(fd, mp);
 	if (!mp)
 		return (NULL);
-	map = ft_split(mp, '\n');
-	free(mp);
-	mtrx = obtain_int_mtrx(map);
+	while (mp[i] != '\n')
+		i++;
+	map_line = malloc(sizeof(char) * (i + 1));
+	//map = ft_split(mp, '\n');
+	//free(mp);
+	i = 0;
+	while (mp[i])
+	{
+		j = 0;
+		while (mp[i] != '\n')
+		{
+			map_line[j++] = mp[i++];
+		}
+		
+		i++;
+	}
+	// como no funciona, tratar de reservar menos memoria, ahora debería llamar directamente
+	// str_to_int, allí también debería medir la 2ª dimension del int_mtrx, contando las
+	//líneas que tiene mp (ya que aquí no me caben mas variables)
+	//mtrx = obtain_int_mtrx(map);
 	return (mtrx);
 }
 
@@ -83,25 +103,25 @@ int	ft_count(char const *s, char c)
 	return (cnt);
 }
 
-int		*str_to_int(const char *str)
+int		*str_to_int(char *str)
 {
 	char	**ch_aux;
 	int		tmp;
-	int		*i_aux;
+	int		**int_mtrx;
 	int		j;
 
 	j = 0;
 	ch_aux = ft_split(str, ' ');
 	while (*(str + j) && ft_isdigit(*(str + j)))
 		j++;
-	i_aux = malloc(sizeof(int) * j);
+	int_mtrx = malloc(sizeof(int) * j);
 	j = 0;
 	while (ch_aux[j] && ch_aux[j] != '\0')
 	{
 		tmp = ft_atoi(ch_aux[j]);
-		i_aux[j] = tmp;
+		int_mtrx[j] = tmp;
 		j++;
 	}
 	free(ch_aux);
-	return (i_aux);
+	return (int_mtrx);
 }
