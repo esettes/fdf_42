@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/27 22:55:59 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:59:39 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int		**obtain_int_mtrx(char **str)
 	line = 0;
 	while (cpy[line])
 	{
-		aux = int_mtrx[line];
-		int_mtrx[line] = str_to_int(cpy[line]);
+		aux = str_to_int(cpy[line]);
+		int_mtrx[line] = aux;
 		//str_to_int(cpy[line], int_mtrx, line);
 		line++;
 	}
