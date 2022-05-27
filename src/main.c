@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/26 21:22:57 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/27 19:47:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	main(int argc, char	*argv[])
 	if (argc <3)
 	{
 //		fd = open(argv[1], O_RDONLY);
-		fd = open(argv[1], O_RDONLY);
+		fd = open("maps/5-2.txt", O_RDONLY);
 		fdf_construct(&fdf);
 		if (fd == -1)
 			return (EXIT_FAILURE);
-		fdf.mtrx->mtrx = ft_alloc_mtx(&fdf, fd);
+		fdf.mtrx->mtrx = ft_alloc_mtx(fd);
 		
 		if (!fdf.mlx)
 			exit(EXIT_FAILURE);

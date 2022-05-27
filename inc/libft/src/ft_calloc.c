@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 19:50:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/04/29 21:48:41 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/27 19:54:35 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	*ft_calloc(size_t count, size_t size)
 	return (res);
 }
 
-int main()
+/*int main()
 {
 	char *s;
 
 	s = ft_calloc(SIZE_MAX, SIZE_MAX);
-}
+}*/
