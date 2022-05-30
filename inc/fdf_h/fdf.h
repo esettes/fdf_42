@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 20:36:40 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 20:55:57 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	draw_simple_line(t_fdf *fdf, int max);
 
 //int		**ft_alloc_mtx(int fd);
 char	**obtain_lines(int fd);
-char	**obtain_split_fd(int fd);
+int		**obtain_split_fd(int fd);
 int		**obtain_int_mtrx(char **str);
 int		ft_count(char const *s, char c);
 int		*str_to_int(char *str);

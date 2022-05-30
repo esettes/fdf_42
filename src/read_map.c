@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 20:52:55 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 20:55:44 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 // 	}
 // }
 
-char	**obtain_split_fd(int fd)
+int	**obtain_split_fd(int fd)
 {
 	char	**split_fd;
 	int		**mtrx;
@@ -63,7 +63,7 @@ char	**obtain_split_fd(int fd)
 		printf("\n");
 		i++;
 	}
-	return (split_fd);
+	return (mtrx);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 20:53:47 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:02:11 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char	*argv[])
 { 
 	t_fdf	fdf;
-	char	**map;
+	//char	**map;
 	int fd;
 	int i;
 
@@ -26,11 +26,11 @@ int	main(int argc, char	*argv[])
 	{
 //		fd = open(argv[1], O_RDONLY);
 		fd = open("maps/5-2.txt", O_RDONLY);
-		fdf_construct(&fdf);
+		fdf_construct(&fdf);	// hacer obtain_split_fd aquí (?)
 		if (fd == -1)
 			return (EXIT_FAILURE);
-		//fdf.mtrx->mtrx = ft_alloc_mtx(fd);
-		map = obtain_split_fd(fd);
+		fdf.mtrx->mtrx = obtain_split_fd(fd);
+		//map = obtain_split_fd(fd);
 		
 		if (!fdf.mlx)
 			exit(EXIT_FAILURE);

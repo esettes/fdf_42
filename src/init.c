@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/26 21:24:28 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:01:43 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 
 void	fdf_construct(t_fdf *fdf)//, char *mp)
 {
+
+	// guardar aquí el mapa de int leido
+
+
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
 //	fdf->mtrx = (t_mtx *)malloc(sizeof(t_mtx));
 	fdf->img = mlx_new_image(fdf->mlx, 128, 128);    // Creates a new image.
@@ -103,5 +107,4 @@ void	fdf_construct(t_fdf *fdf)//, char *mp)
 // 		ft_pixel_put(&img, img->pos->x, img->pos->y, 0x00E0FFFF);
 // 		mlx_put_image_to_window(img->mlx, mlx_win, img->img, 0, 0);
 // 	}
-	
-// }
+//}
