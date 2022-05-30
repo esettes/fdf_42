@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 19:12:50 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:19:25 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ char	**obtain_lines(int fd);
 char	**obtain_split_fd(int fd);
 int		**obtain_int_mtrx(char **str);
 int		ft_count(char const *s, char c);
-int		*str_to_int(char *str, int n);
+int		*str_to_int(char *str);
 
 #endif

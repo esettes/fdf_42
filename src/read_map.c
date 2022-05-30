@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 19:12:40 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:55:04 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,36 @@ char	**obtain_split_fd(int fd)
 	char	**split_fd;
 	int		**mtrx;
 	int		i;
-	int		j;
-	int		first_line_nums;
+	int j = 0;
+	int		count;
 
 	split_fd = malloc(sizeof(char *) * BUFFER_SIZE + 1);
 	i = 0;
-	first_line_nums = ft_count(split_fd[i], ' ') - 1;
-	mtrx = malloc(sizeof(int *) * (first_line_nums));
+	count = 0;
+	//mtrx = malloc(sizeof(int *) * (first_line_nums));
 	while (true)
 	{
 		split_fd[i] = get_next_line(fd);
+		count += ft_count(split_fd[i], ' ');
 		if (split_fd[i] == NULL)
 			break ;
-		mtrx[i] = str_to_int(split_fd[i], first_line_nums);
-		if (mtrx[i] == NULL)
-			printf ("El número de integers no coincide!");
 		i++;
 	}
-	j = i;
+	mtrx = malloc(sizeof(int *) * count);
 	i = 0;
-	while (i < j)
+	while (split_fd[i])
 	{
-		printf("%s", split_fd[i]);
+		printf("split_fd[i]:  %s \n", split_fd[i]);
+		mtrx[i] = str_to_int(split_fd[i]);
+		
+		j = 0;
+		while (j <= i)
+		{
+			printf("%i ", **(mtrx + j));
+			
+			j++;
+		}
+		printf("\n");
 		i++;
 	}
 	return (split_fd);
@@ -137,25 +145,25 @@ int	ft_count(char const *s, char c)
 }
 
 
-int		*str_to_int(char *str, int n)
+int		*str_to_int(char *str)
 {
 	char	**ch_aux;
 	int		tmp;
 	int		*int_mtrx;
 	int		j;
+	int		aux;
 
 	j = 0;
 	ch_aux = ft_split(str, ' ');
 	while (ch_aux[j])
 		j++;
-	if (j != n)
-		return (NULL);
 	int_mtrx = malloc(sizeof(int) * j);
+	aux = j;
 	j = 0;
 	while (ch_aux[j])
 	{
 		tmp = ft_atoi(ch_aux[j]);
-		int_mtrx[j] = tmp;
+		*(int_mtrx + j)= tmp;
 		j++;
 	}
 	free (str);
