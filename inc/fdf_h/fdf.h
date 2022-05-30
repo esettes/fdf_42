@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 19:19:25 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 20:36:40 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	fdf_construct(t_fdf *fdf);//, char *mp);
 void	matrix_construct(t_fdf *fdf);
 
 void	draw_simple_line(t_fdf *fdf, int max);
-void	print_matrix(t_fdf *fdf, t_mtrx *mtrx);
+//void	print_matrix(t_fdf *fdf, t_mtrx *mtrx);
 
 /*** ***	*** READ MAP ***	*** ***/
 

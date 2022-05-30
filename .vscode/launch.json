@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/fdf",
-			"args": ["${workspaceFolder}/maps/5-2.txt"],
+			"args": [/*"${workspaceFolder}/maps/5-2.txt"*/],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],

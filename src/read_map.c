@@ -6,24 +6,41 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 19:55:04 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 20:52:55 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+// void	print_matrix(int **mtrx)
+// {
+// 	int	i = 0;
+// 	int	j = 0;
+
+// 	while (mtrx[i] != '\0')
+// 	{
+// 		j = 0;
+// 		while (mtrx[i][j] != '\0')
+// 		{
+// 			printf("%i ", mtrx[i][j]);
+// 			j++;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// }
 
 char	**obtain_split_fd(int fd)
 {
 	char	**split_fd;
 	int		**mtrx;
 	int		i;
-	int j = 0;
+	int j	 = 0;
 	int		count;
 
 	split_fd = malloc(sizeof(char *) * BUFFER_SIZE + 1);
 	i = 0;
 	count = 0;
-	//mtrx = malloc(sizeof(int *) * (first_line_nums));
 	while (true)
 	{
 		split_fd[i] = get_next_line(fd);
@@ -36,14 +53,11 @@ char	**obtain_split_fd(int fd)
 	i = 0;
 	while (split_fd[i])
 	{
-		printf("split_fd[i]:  %s \n", split_fd[i]);
 		mtrx[i] = str_to_int(split_fd[i]);
-		
 		j = 0;
-		while (j <= i)
+		while (j < count/10)
 		{
-			printf("%i ", **(mtrx + j));
-			
+			printf("%i ", mtrx[i][j]);
 			j++;
 		}
 		printf("\n");
@@ -52,43 +66,7 @@ char	**obtain_split_fd(int fd)
 	return (split_fd);
 }
 
-/*char	**obtain_lines(int fd)
-{
-	char	*mp;
-	char	**map_line;
-	int		i;
-	int		j;
-	int 	k;
-
-	i = 0;
-	k = 0;
-	mp = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
-	mp = read_fd(fd, mp);
-	if (!mp)
-		return (NULL);
-	while (mp[i] != '\0')
-		i++;
-	map_line = malloc(sizeof(char) * (i + 1));
-	i = 0;
-	j = 0;
-	while (mp[i] != '\0' && mp[i] != '\n')
-	{
-		map_line[k][j++] = mp[i++];
-		i++;
-		if (mp[i] == '\n')
-		{
-			k++;
-			i++;
-		}
-	}
-	// como no funciona, tratar de reservar menos memoria, ahora debería llamar directamente
-	// str_to_int, allí también debería medir la 2ª dimension del int_mtrx, contando las
-	//líneas que tiene mp (ya que aquí no me caben mas variables)
-	//mtrx = obtain_int_mtrx(map);
-	return (map_line);
-}
-
-
+/*
 int		**obtain_int_mtrx(char **str)
 {
 	int			line;
@@ -143,7 +121,6 @@ int	ft_count(char const *s, char c)
 	}
 	return (cnt);
 }
-
 
 int		*str_to_int(char *str)
 {
