@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/27 19:47:28 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 17:53:22 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 int	main(int argc, char	*argv[])
 { 
 	t_fdf	fdf;
+	char	**map;
 	int fd;
+	int i;
 
+	i = 0;
 	if (argv[1])
 		printf ("ok");
 	if (argc <3)
@@ -26,7 +29,8 @@ int	main(int argc, char	*argv[])
 		fdf_construct(&fdf);
 		if (fd == -1)
 			return (EXIT_FAILURE);
-		fdf.mtrx->mtrx = ft_alloc_mtx(fd);
+		//fdf.mtrx->mtrx = ft_alloc_mtx(fd);
+		map = obtain_split_fd(fd);
 		
 		if (!fdf.mlx)
 			exit(EXIT_FAILURE);

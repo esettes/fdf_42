@@ -6,47 +6,80 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/27 23:19:33 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:12:40 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	**ft_alloc_mtx(int fd)
+char	**obtain_split_fd(int fd)
 {
-	char	*mp;
-	char	*map_line;
+	char	**split_fd;
 	int		**mtrx;
 	int		i;
 	int		j;
+	int		first_line_nums;
+
+	split_fd = malloc(sizeof(char *) * BUFFER_SIZE + 1);
+	i = 0;
+	first_line_nums = ft_count(split_fd[i], ' ') - 1;
+	mtrx = malloc(sizeof(int *) * (first_line_nums));
+	while (true)
+	{
+		split_fd[i] = get_next_line(fd);
+		if (split_fd[i] == NULL)
+			break ;
+		mtrx[i] = str_to_int(split_fd[i], first_line_nums);
+		if (mtrx[i] == NULL)
+			printf ("El número de integers no coincide!");
+		i++;
+	}
+	j = i;
+	i = 0;
+	while (i < j)
+	{
+		printf("%s", split_fd[i]);
+		i++;
+	}
+	return (split_fd);
+}
+
+/*char	**obtain_lines(int fd)
+{
+	char	*mp;
+	char	**map_line;
+	int		i;
+	int		j;
+	int 	k;
 
 	i = 0;
+	k = 0;
 	mp = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	mp = read_fd(fd, mp);
 	if (!mp)
 		return (NULL);
-	while (mp[i] != '\n')
+	while (mp[i] != '\0')
 		i++;
 	map_line = malloc(sizeof(char) * (i + 1));
-	//map = ft_split(mp, '\n');
-	//free(mp);
 	i = 0;
-	while (mp[i])
+	j = 0;
+	while (mp[i] != '\0' && mp[i] != '\n')
 	{
-		j = 0;
-		while (mp[i] != '\n')
-		{
-			map_line[j++] = mp[i++];
-		}
-		
+		map_line[k][j++] = mp[i++];
 		i++;
+		if (mp[i] == '\n')
+		{
+			k++;
+			i++;
+		}
 	}
 	// como no funciona, tratar de reservar menos memoria, ahora debería llamar directamente
 	// str_to_int, allí también debería medir la 2ª dimension del int_mtrx, contando las
 	//líneas que tiene mp (ya que aquí no me caben mas variables)
 	//mtrx = obtain_int_mtrx(map);
-	return (mtrx);
+	return (map_line);
 }
+
 
 int		**obtain_int_mtrx(char **str)
 {
@@ -76,7 +109,7 @@ int		**obtain_int_mtrx(char **str)
 	}
 	free(str);
 	return (int_mtrx);
-}
+}*/
 
 int	ft_count(char const *s, char c)
 {
@@ -103,25 +136,29 @@ int	ft_count(char const *s, char c)
 	return (cnt);
 }
 
-int		*str_to_int(char *str)
+
+int		*str_to_int(char *str, int n)
 {
 	char	**ch_aux;
 	int		tmp;
-	int		**int_mtrx;
+	int		*int_mtrx;
 	int		j;
 
 	j = 0;
 	ch_aux = ft_split(str, ' ');
-	while (*(str + j) && ft_isdigit(*(str + j)))
+	while (ch_aux[j])
 		j++;
+	if (j != n)
+		return (NULL);
 	int_mtrx = malloc(sizeof(int) * j);
 	j = 0;
-	while (ch_aux[j] && ch_aux[j] != '\0')
+	while (ch_aux[j])
 	{
 		tmp = ft_atoi(ch_aux[j]);
 		int_mtrx[j] = tmp;
 		j++;
 	}
+	free (str);
 	free(ch_aux);
 	return (int_mtrx);
 }
