@@ -6,27 +6,21 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 21:01:43 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:32:59 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 
-// void	matrix_construct(t_fdf *fdf)
-// {
-	
-// 	//fdf->mtrx->mtrx = ft_alloc_mtx(fdf->fd);
-// }
-
-void	fdf_construct(t_fdf *fdf)//, char *mp)
+void	fdf_construct(t_fdf *fdf, int fd)//, char *mp)
 {
+	t_mtrx *mtrx;
 
-	// guardar aquí el mapa de int leido
-
+	mtrx = (t_mtrx *)malloc(sizeof(t_mtrx));
+	obtain_split_fd(fd, mtrx);
 
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
-//	fdf->mtrx = (t_mtx *)malloc(sizeof(t_mtx));
 	fdf->img = mlx_new_image(fdf->mlx, 128, 128);    // Creates a new image.
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);   // Adds an image to the render queue.
 	fdf->img->instances->x = 50;

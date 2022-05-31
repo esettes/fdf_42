@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 20:55:57 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:49:53 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,31 @@ typedef struct s_vec2
 typedef struct s_mtrx
 {
 	int		**mtrx;
-	// int		x;
-	// int		y;
+	int		z;
 	t_vec2	*size;
 }				t_mtrx;
 
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
-	t_mtrx		*mtrx;
+	//t_mtrx		*mtrx;
 	mlx_image_t	*img;	// incluye posic
-	int32_t		fd;
 }				t_fdf;
 
-void	fdf_construct(t_fdf *fdf);//, char *mp);
-void	matrix_construct(t_fdf *fdf);
+void	fdf_construct(t_fdf *fdf, int fd);
 
 void	draw_simple_line(t_fdf *fdf, int max);
-//void	print_matrix(t_fdf *fdf, t_mtrx *mtrx);
 
-/*** ***	*** READ MAP ***	*** ***/
+/***		Read map		***/
 
-//int		**ft_alloc_mtx(int fd);
 char	**obtain_lines(int fd);
-int		**obtain_split_fd(int fd);
+// alloc mem for **map and *size map and set values
+void	obtain_split_fd(int fd, t_mtrx *m);
 int		**obtain_int_mtrx(char **str);
 int		ft_count(char const *s, char c);
 int		*str_to_int(char *str);
+
+/***		Map props		***/
+t_vec2	*set_mtrx_size(int x, int y);
 
 #endif

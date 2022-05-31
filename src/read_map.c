@@ -6,31 +6,13 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/30 20:55:44 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:59:47 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// void	print_matrix(int **mtrx)
-// {
-// 	int	i = 0;
-// 	int	j = 0;
-
-// 	while (mtrx[i] != '\0')
-// 	{
-// 		j = 0;
-// 		while (mtrx[i][j] != '\0')
-// 		{
-// 			printf("%i ", mtrx[i][j]);
-// 			j++;
-// 		}
-// 		printf("\n");
-// 		i++;
-// 	}
-// }
-
-int	**obtain_split_fd(int fd)
+void	obtain_split_fd(int fd, t_mtrx *m)
 {
 	char	**split_fd;
 	int		**mtrx;
@@ -49,13 +31,15 @@ int	**obtain_split_fd(int fd)
 			break ;
 		i++;
 	}
+	// condition if map is not 1x1 size (2x2, 3x3..100x100)
+	m->size = set_mtrx_size(i + 1, (count / i) - 1);
 	mtrx = malloc(sizeof(int *) * count);
 	i = 0;
 	while (split_fd[i])
 	{
 		mtrx[i] = str_to_int(split_fd[i]);
 		j = 0;
-		while (j < count/10)
+		while (j < count/5)
 		{
 			printf("%i ", mtrx[i][j]);
 			j++;
@@ -63,39 +47,9 @@ int	**obtain_split_fd(int fd)
 		printf("\n");
 		i++;
 	}
-	return (mtrx);
+	m->mtrx = mtrx;
+	//return (mtrx);
 }
-
-/*
-int		**obtain_int_mtrx(char **str)
-{
-	int			line;
-	const char	**cpy;
-	int			cnt;
-	int			**int_mtrx;
-	int			*aux;
-
-	line = 0;
-	cpy = (const char **)str;
-	cnt = 0;
-	int_mtrx = NULL;
-	while (cpy[line])
-	{
-		cnt += ft_count(cpy[line], ' ');
-		line++;
-	}
-	int_mtrx = malloc(sizeof(int *) * cnt);
-	line = 0;
-	while (cpy[line])
-	{
-		aux = str_to_int(cpy[line]);
-		int_mtrx[line] = aux;
-		//str_to_int(cpy[line], int_mtrx, line);
-		line++;
-	}
-	free(str);
-	return (int_mtrx);
-}*/
 
 int	ft_count(char const *s, char c)
 {
@@ -122,7 +76,7 @@ int	ft_count(char const *s, char c)
 	return (cnt);
 }
 
-int		*str_to_int(char *str)
+int	*str_to_int(char *str)
 {
 	char	**ch_aux;
 	int		tmp;
