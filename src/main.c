@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/01 19:47:46 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:25:10 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int	main(int argc, char	*argv[])
 		
 		if (!fdf->mlx)
 			exit(EXIT_FAILURE);
-		//print_matrix(&fdf, &mtrx);
-		//draw_simple_line(&fdf);
+		print_mesh(fdf);
 		close(fd);
 		return (EXIT_SUCCESS);
 	}

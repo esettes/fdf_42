@@ -1,29 +1,33 @@
 #include "fdf.h"
 
-void	print_matrix(t_fdf *fdf, t_mtrx *mtrx)
+void	print_mesh(t_fdf *fdf)
 {
 	int	x;
 	int	y;
-	int	start;
+	int	**mesh;
 
 	x = 0;
 	y = 0;
-	start = fdf->img->instances->y;
-	if (fdf)
-		printf("fdf is not null! \n");
-	// while (mtx->mtx[x] && x < 3)
-	// {
-	// 	y = 0;
-	// 	fdf->img->instances->y = start;
-		while (mtrx->mtrx[x][y] != '\0' && mtrx->mtrx[x][y] != '\n')
+	mesh = fdf->mtrx->mtrx;
+	while (fdf->img->instances->x - OFFSET <= fdf->mtrx->size->x)
+	{
+		fdf->img->instances->y = OFFSET;
+		while (fdf->img->instances->y - OFFSET <= fdf->mtrx->size->y)
 		{
-			printf("%c", mtrx->mtrx[x][y]);
-			//fdf->img->instances->x += x;
-			// fdf->img->instances->y += y;
-			// mlx_put_pixel(fdf->img, fdf->img->instances->x, 
-			// 	fdf->img->instances->y, BLUE);
-			y++;
+			if (fdf->img->instances->y % 2 == 0)
+				mlx_put_pixel(fdf->img, fdf->img->instances->x, 
+				fdf->img->instances->y, YELLOW); 
+			else
+				mlx_put_pixel(fdf->img, fdf->img->instances->x, 
+				fdf->img->instances->y, YELLOW); 
+			//mesh[x][y]
+			fdf->img->instances->y += 1;
 		}
+		fdf->img->instances->x += 1;
+	}
+	mlx_loop(fdf->mlx);
+	mlx_delete_image(fdf->mlx, fdf->img); // Once the application request an exit, cleanup.
+	mlx_terminate(fdf->mlx);
 	
 }
 

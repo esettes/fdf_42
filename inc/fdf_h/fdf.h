@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/31 20:49:53 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:18:03 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 # define WIDTH			720
 # define HEIGHT			420
+# define OFFSET			50
 
 # define YELLOW	0xFFFF00FF
 # define WHITE	0xFFFFFFFF
@@ -50,7 +51,7 @@ typedef struct s_mtrx
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
-	//t_mtrx		*mtrx;
+	t_mtrx		*mtrx;
 	mlx_image_t	*img;	// incluye posic
 }				t_fdf;
 
@@ -69,5 +70,8 @@ int		*str_to_int(char *str);
 
 /***		Map props		***/
 t_vec2	*set_mtrx_size(int x, int y);
+
+/***		Print map		***/
+void	print_mesh(t_fdf *fdf);
 
 #endif
