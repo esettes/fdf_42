@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/01 20:18:03 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/02 21:00:17 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_mtrx
 {
 	int		**mtrx;
 	int		z;
+	int		zoom;
 	t_vec2	*size;
 }				t_mtrx;
 
@@ -73,5 +74,8 @@ t_vec2	*set_mtrx_size(int x, int y);
 
 /***		Print map		***/
 void	print_mesh(t_fdf *fdf);
+void	draw_to_nxt_pt(int *x0, int *y0, int x1, int y1);
+void	set_sx(int x0, int x1, int *sx);
+void	set_sy(int y0, int y1, int *sy);
 
 #endif

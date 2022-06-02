@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/01 20:28:43 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/02 19:49:05 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 	// condition if map is not 1x1 size (2x2, 3x3..100x100)
 	m->size = set_mtrx_size((count / i), i);
 	mtrx = malloc(sizeof(int *) * count);
-	printf("m->size->y: %i \n", m->size->y);
+	printf("\nm->size->y: %i \n", m->size->y);
 	printf("m->size->x: %i \n\n", m->size->x);
 	i = 0;
 	while (split_fd[i])
