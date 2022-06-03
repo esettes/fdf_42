@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/01 20:25:10 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/03 23:29:29 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	main(int argc, char	*argv[])
 		fdf = (t_fdf *)malloc(sizeof(t_fdf));
 
 		fdf_construct(fdf, fd);
-		
+		start_mlx(fdf);
 		if (!fdf->mlx)
 			exit(EXIT_FAILURE);
-		print_mesh(fdf);
+		
 		close(fd);
 		return (EXIT_SUCCESS);
 	}
 	exit(EXIT_FAILURE);
 	return (EXIT_FAILURE);
-}
+} 

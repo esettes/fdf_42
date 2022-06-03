@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   fdf_rgb.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 20:10:47 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/03 21:46:10 by iostancu         ###   ########.fr       */
+/*   Created: 2022/06/03 23:27:02 by iostancu          #+#    #+#             */
+/*   Updated: 2022/06/03 23:28:16 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "fdf.h"
+#include "fdf.h"
 
-// void	set_sx(int x0, int x1, int *sx)
-// {
-// 	if (x0 < x1)
-// 		*sx = 1;
-// 	else
-// 		*sx = -1;
-// }
-
-// void	set_sy(int y0, int y1, int *sy)
-// {
-// 	if (y0 < y1)
-// 		sy = 1;
-// 	else
-// 		sy = -1;
-// }
-
+int	rgba(double value)
+{
+	if (value < 0.1)
+		return (BLU_AD);
+	if (value < 0.5)
+		return (FUCSIA);
+	if (value < 1)
+		return (YELLOW);
+}

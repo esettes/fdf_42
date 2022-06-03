@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/02 19:49:05 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:43:47 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 	{
 		mtrx[i] = str_to_int(split_fd[i]);
 		j = 0;
-		/*while (j < count/m->size->y)
+		while (j < count/m->size->y)
 		{
 			printf("%i ", mtrx[i][j]);
 			j++;
 		}
-		printf("\n");*/
+		printf("\n");
 		i++;
 	}
 	m->mtrx = mtrx;

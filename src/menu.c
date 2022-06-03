@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 20:10:47 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/03 21:46:10 by iostancu         ###   ########.fr       */
+/*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
+/*   Updated: 2022/06/03 22:52:25 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "fdf.h"
+#include "fdf.h"
 
-// void	set_sx(int x0, int x1, int *sx)
+//25x50?
+// void	draw_menu_box(t_fdf *fdf)
 // {
-// 	if (x0 < x1)
-// 		*sx = 1;
-// 	else
-// 		*sx = -1;
+// 	int	max_y;
+// 	int	max_x;
+
+// 	max_y = 
 // }
 
-// void	set_sy(int y0, int y1, int *sy)
-// {
-// 	if (y0 < y1)
-// 		sy = 1;
-// 	else
-// 		sy = -1;
-// }
+void	draw_menu(t_fdf *fdf)
+{
+	int			y;
+	int			x;
+	mlx_t		*mlx;
 
+	y = HEIGHT - 200;
+	x = round(WIDTH/1.5); 
+	mlx = fdf->mlx;
+	mlx_put_string(mlx, "************************", x, y += 24);
+	mlx_put_string(mlx, "**  Wire-frame (FDF)  **", x, y += 24);
+	mlx_put_string(mlx, "************************", x, y += 24);
+}

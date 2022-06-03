@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/02 21:00:17 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/04 00:14:21 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,29 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "get_next_line_bonus.h"
 # include "libft.h"
+# include "colors.h"
 //# include <_int32_t.h>
 #include <memory.h>
 
-# define WIDTH			720
-# define HEIGHT			420
-# define OFFSET			50
+# define WIDTH		1600
+# define HEIGHT		900
+# define OFFSET		50
 
-# define YELLOW	0xFFFF00FF
-# define WHITE	0xFFFFFFFF
-# define FUCSIA	0xFF00FFFF
-# define BLUE	0x2060FFFF
-# define PURPLE	0x8040EEFF
+
 
 typedef struct s_vec2
 {
 	int	x;
 	int	y;
 }				t_vec2;
-
+/**
+ * Save all the values ​​necessary for the mesh construction.
+ * 
+ * @param mtrx Mesh integer array.
+ * @param z Mesh's depth.
+ * @param zoom Value that sets the distance between adjoining vertices.
+ * @param size Mesh size (x, y).
+ */
 typedef struct s_mtrx
 {
 	int		**mtrx;
@@ -49,6 +53,14 @@ typedef struct s_mtrx
 	t_vec2	*size;
 }				t_mtrx;
 
+/**
+ * Main struct of the program, used to store structs initializations
+ * required by MLX and program variables. Simplifies the use of the mesh data.
+ * 
+ * @param mlx Struct required by mlx.
+ * @param mtrx Structure for the mesh data.
+ * @param img Struct required by mlx.
+ */
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
@@ -56,26 +68,58 @@ typedef struct s_fdf
 	mlx_image_t	*img;	// incluye posic
 }				t_fdf;
 
+/* Initializes the main parameters of the application */
 void	fdf_construct(t_fdf *fdf, int fd);
+/* Calls all functions that need mlx_loop to run */
+void	start_mlx(t_fdf *fdf);
 
 void	draw_simple_line(t_fdf *fdf, int max);
 
-/***		Read map		***/
+/*			Read map			*/
 
 char	**obtain_lines(int fd);
-// alloc mem for **map and *size map and set values
+/**
+ * Receives the previously opened fd, which is to be converted to a double
+ * pointer array and stored in *m.
+ * 
+ * @param[in] fd File already open.
+ * @param[in] m Struct where the conversion will be saved.
+ */
 void	obtain_split_fd(int fd, t_mtrx *m);
-int		**obtain_int_mtrx(char **str);
+/**
+ * Returns the number words of *s separated by 'c'
+ */
 int		ft_count(char const *s, char c);
+/**
+ * Returns the conversion of *str to an integer string
+ */
 int		*str_to_int(char *str);
 
-/***		Map props		***/
+/*			Map properties			*/
+
+/**
+ * Saves the size of the wire-frame of the main program
+ */
 t_vec2	*set_mtrx_size(int x, int y);
 
 /***		Print map		***/
+
 void	print_mesh(t_fdf *fdf);
-void	draw_to_nxt_pt(int *x0, int *y0, int x1, int y1);
+void	draw_to_nxt_pt(t_fdf *fdf);
 void	set_sx(int x0, int x1, int *sx);
 void	set_sy(int y0, int y1, int *sy);
+void	set_pixel(t_fdf *fdf);
+
+/*			Draw tools			*/
+
+/**
+ * Returns an hex color from red (value < 0.1) , through green,
+ *  to blue (value > 0.8) 
+ */
+int		rgba(double value);
+
+/*			Print menu			*/
+
+void	draw_menu(t_fdf *fdf);
 
 #endif

@@ -6,26 +6,23 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/15 00:25:24 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:57:44 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// void	*new_win(void *mlx, int h, int w, char *str)
-// {
-	//void	*mlx_win;
-// 	mlx_new_window(mlx, h, w, str);
-	//mlx_loop(mlx);
-// }
-// knowing image address, eficient implementation mlx_pixel_put
-
-
-/*void	ft_bresenham()
+void	start_mlx(t_fdf *fdf)
 {
-	///	Buscar otra implementacion de bresenham
+	print_mesh(fdf);
+	draw_menu(fdf);
+	mlx_loop(fdf->mlx);
+	mlx_delete_image(fdf->mlx, fdf->img); // Once the application request an exit, cleanup.
+	mlx_terminate(fdf->mlx);
 }
 
+
+/*
 void _bresenham(int x1, int y1, int x2, int y2)
 {
 	int	dx;
