@@ -26,10 +26,10 @@ void	print_mesh(t_fdf *fdf)
 			//draw_to_nxt_pt(&fdf);
 			if (fdf->img->instances->y % 2 == 0)
 				mlx_put_pixel(fdf->img, fdf->img->instances->x, 
-				fdf->img->instances->y, rgba()); 
+				fdf->img->instances->y, rgba(0)); 
 			else
 				mlx_put_pixel(fdf->img, fdf->img->instances->x, 
-				fdf->img->instances->y, BLU_CB); 
+				fdf->img->instances->y, rgba(0.3)); 
 			//mesh[x][y]
 			fdf->img->instances->y += 1;
 		}
@@ -38,6 +38,26 @@ void	print_mesh(t_fdf *fdf)
 	
 }
 
+void	print_box(t_fdf fdf, int color, int max_x, int max_y)
+{
+	while (fdf.img->instances->x - OFFSET <= max_x)
+	{
+		fdf.img->instances->y = OFFSET;
+		while (fdf.img->instances->y - OFFSET <= max_y)
+		{
+			//draw_to_nxt_pt(&fdf);
+			if (fdf.img->instances->y % 2 == 0)
+				mlx_put_pixel(fdf.img, fdf.img->instances->x, 
+				fdf.img->instances->y, menu_rgb(color)); 
+			else
+				mlx_put_pixel(fdf.img, fdf.img->instances->x, 
+				fdf.img->instances->y, menu_rgb(color)); 
+			fdf.img->instances->y += 1;
+		}
+		fdf.img->instances->x += 1;
+	}
+	
+}
 // void	set_pixel(t_fdf *fdf)
 // {
 // 	//mlx_put_pixel()

@@ -6,20 +6,26 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/03 22:52:25 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/04 01:08:16 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 //25x50?
-// void	draw_menu_box(t_fdf *fdf)
-// {
-// 	int	max_y;
-// 	int	max_x;
+void	draw_menu_box(t_fdf *fdf)
+{
+	t_menu	menu;
 
-// 	max_y = 
-// }
+	menu.color_1 = 0;
+	menu.color_2 = 1;
+	menu.max_x_1 = WIDTH - 250;
+	menu.max_y_1 = HEIGHT - 170;
+	menu.max_x_1 = WIDTH - 150;
+	menu.max_y_1 = HEIGHT - 70;
+	print_box(*fdf, menu.color_1, menu.max_x_1, menu.max_y_1);
+	
+}
 
 void	draw_menu(t_fdf *fdf)
 {
@@ -30,6 +36,7 @@ void	draw_menu(t_fdf *fdf)
 	y = HEIGHT - 200;
 	x = round(WIDTH/1.5); 
 	mlx = fdf->mlx;
+	//draw_menu_box(fdf);
 	mlx_put_string(mlx, "************************", x, y += 24);
 	mlx_put_string(mlx, "**  Wire-frame (FDF)  **", x, y += 24);
 	mlx_put_string(mlx, "************************", x, y += 24);

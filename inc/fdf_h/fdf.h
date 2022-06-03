@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/04 00:14:21 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/04 01:05:03 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@
 # define HEIGHT		900
 # define OFFSET		50
 
+
+typedef struct s_menu
+{
+	int		color_1;
+	int		color_2;
+	int		max_x_1;
+	int		max_y_1;
+	int		max_x_2;
+	int		max_y_2;
+}				t_menu;
 
 
 typedef struct s_vec2
@@ -121,5 +131,8 @@ int		rgba(double value);
 /*			Print menu			*/
 
 void	draw_menu(t_fdf *fdf);
+void	print_box(t_fdf fdf, int color, int max_x, int max_y);
+int 	menu_rgb(int value);
+void	draw_menu_box(t_fdf *fdf);
 
 #endif
