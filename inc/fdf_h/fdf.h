@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/04 01:05:03 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/07 20:59:29 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,12 @@ int		*str_to_int(char *str);
  * Saves the size of the wire-frame of the main program
  */
 t_vec2	*set_mtrx_size(int x, int y);
+/**
+ * Gets the origin of the map(0, 0) and makes a copy of it.
+ *
+ * @return Copy of original mtrx with new coords.
+ */
+void	get_mtrx_origin(t_mtrx mtrx);
 
 /***		Print map		***/
 

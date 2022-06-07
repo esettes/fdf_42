@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/03 21:57:44 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/07 21:00:18 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ void	start_mlx(t_fdf *fdf)
 	mlx_delete_image(fdf->mlx, fdf->img); // Once the application request an exit, cleanup.
 	mlx_terminate(fdf->mlx);
 }
+
+void	transform_iso(t_mtrx *mtrx)
+{
+	double	x1;
+	double	y1;
+
+	// obtener centro del mapa
+
+	// colocar el centro del mapa en 0, 0 y ajustar coords
+
+	// aplicar giro
+
+	// aplicar nnuevas coordenadas a la imagen existente
+}
+
+
 
 
 /*
