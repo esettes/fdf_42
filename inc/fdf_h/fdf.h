@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/07 20:59:29 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/08 21:25:54 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # define WIDTH		1600
 # define HEIGHT		900
 # define OFFSET		50
+# define X_ORIGIN_OFF	( WIDTH / 2 )
+# define Y_ORIGIN_OFF	( HEIGHT / 2 )
+// # define ORIGIN_OFF	( sqrt(pow(HEIGHT, 2) + pow(WIDTH, 2)) / 2 )
 
 
 typedef struct s_menu
@@ -121,6 +124,12 @@ void	get_mtrx_origin(t_mtrx mtrx);
 /***		Print map		***/
 
 void	print_mesh(t_fdf *fdf);
+/**
+ * Prints map without depth at the window dummy origin. It moves
+ * the first pixel to print at the middle of the window, and then 
+ * substracts sizemap x and y to it.
+ */
+void	print_mesh_at_origin(t_fdf *fdf);
 void	draw_to_nxt_pt(t_fdf *fdf);
 void	set_sx(int x0, int x1, int *sx);
 void	set_sy(int y0, int y1, int *sy);

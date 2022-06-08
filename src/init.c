@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/06 20:04:21 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/08 21:04:13 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	fdf_construct(t_fdf *fdf, int fd)//, char *mp)
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);    // Creates a new image.
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);   // Adds an image to the render queue.
-	fdf->img->instances->x = 50;
-	fdf->img->instances->y = 50;
+	fdf->img->instances->x = 0;
+	fdf->img->instances->y = 0;
 }
 
 

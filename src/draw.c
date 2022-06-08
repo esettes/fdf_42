@@ -1,13 +1,5 @@
 #include "fdf.h"
 
-
-/**
- * 	Cómo determinar cual es el siguiente punto a pintar, en una malla
- * donde la distancia entre pixel y pixel no existe, no hay necesidad.
- * pero al aumentar el tamaño de la malla, o  modificarla, hay que 
- * determinar la distancia entre pnt y pnt.
- * 
-*/
 void	print_mesh(t_fdf *fdf)
 {
 	int	x;
@@ -37,6 +29,68 @@ void	print_mesh(t_fdf *fdf)
 	}
 	
 }
+
+void	print_mesh_at_origin(t_fdf *fdf)
+{
+	t_vec2			original;
+	t_vec2			dummy_origin;
+	t_vec2			size_aux;
+	mlx_instance_t	*new_img;
+
+	new_img = fdf->img->instances;
+	original.x = fdf->mtrx->size->x / 2;
+	original.y = fdf->mtrx->size->y / 2;
+	dummy_origin.x = X_ORIGIN_OFF - (fdf->mtrx->size->x / 2);
+	dummy_origin.y = Y_ORIGIN_OFF - (fdf->mtrx->size->y / 2);
+	fdf->img->instances->x = dummy_origin.x;
+	fdf->img->instances->y = dummy_origin.y;
+	size_aux.x = fdf->mtrx->size->x + dummy_origin.x;
+	size_aux.y = fdf->mtrx->size->y + dummy_origin.y;
+	
+	while (fdf->img->instances->x  <= size_aux.x)
+	{
+		fdf->img->instances->y = dummy_origin.y;
+		while (fdf->img->instances->y <= size_aux.y)
+		{
+			if (fdf->img->instances->y % 2 == 0)
+				mlx_put_pixel(fdf->img, fdf->img->instances->x , fdf->img->instances->y, rgba(0));
+			else
+				mlx_put_pixel(fdf->img, fdf->img->instances->x , fdf->img->instances->y, rgba(0.3));
+			fdf->img->instances->y += 1;
+		}
+		fdf->img->instances->x  += 1;
+	}
+	
+}
+
+t_fdf	new_img(t_fdf *fdf)
+{
+	t_fdf	*new_img;
+
+	new_img = (t_fdf *)malloc(sizeof(t_fdf));
+	new_img = fdf;
+	new_img->img = 
+}
+
+mlx_image_t	set_new_img(t_fdf *fdf)
+{
+	t_vec2			original;
+	t_vec2			dummy_origin;
+	t_vec2			size_aux;
+	mlx_instance_t	*new_img;
+
+	new_img = fdf->img->instances;
+	original.x = fdf->mtrx->size->x / 2;
+	original.y = fdf->mtrx->size->y / 2;
+	dummy_origin.x = X_ORIGIN_OFF - (fdf->mtrx->size->x / 2);
+	dummy_origin.y = Y_ORIGIN_OFF - (fdf->mtrx->size->y / 2);
+	fdf->img->instances->x = dummy_origin.x;
+	fdf->img->instances->y = dummy_origin.y;
+	size_aux.x = fdf->mtrx->size->x + dummy_origin.x;
+	size_aux.y = fdf->mtrx->size->y + dummy_origin.y;
+}
+
+
 
 void	print_box(t_fdf fdf, int color, int max_x, int max_y)
 {
