@@ -32,54 +32,61 @@ void	print_mesh(t_fdf *fdf)
 
 void	print_mesh_at_origin(t_fdf *fdf)
 {
-	t_vec2			original;
+	//t_vec2			original;
 	t_vec2			dummy_origin;
 	t_vec2			size_aux;
 	mlx_instance_t	*new_img;
 
 	new_img = fdf->img->instances;
-	original.x = fdf->mtrx->size->x / 2;
-	original.y = fdf->mtrx->size->y / 2;
+	// original.x = fdf->mtrx->size->x / 2;
+	// original.y = fdf->mtrx->size->y / 2;
 	dummy_origin.x = X_ORIGIN_OFF - (fdf->mtrx->size->x / 2);
 	dummy_origin.y = Y_ORIGIN_OFF - (fdf->mtrx->size->y / 2);
-	fdf->img->instances->x = dummy_origin.x;
-	fdf->img->instances->y = dummy_origin.y;
+	// fdf->img->instances->x = dummy_origin.x;
+	// fdf->img->instances->y = dummy_origin.y;
 	size_aux.x = fdf->mtrx->size->x + dummy_origin.x;
 	size_aux.y = fdf->mtrx->size->y + dummy_origin.y;
+	new_img->x = X_ORIGIN_OFF - (fdf->mtrx->size->x / 2);
+	new_img->y = Y_ORIGIN_OFF - (fdf->mtrx->size->y / 2);
 	
-	while (fdf->img->instances->x  <= size_aux.x)
+	while (new_img->x <= size_aux.x)
 	{
-		fdf->img->instances->y = dummy_origin.y;
-		while (fdf->img->instances->y <= size_aux.y)
+		new_img->y  = dummy_origin.y;
+		while (new_img->y  <= size_aux.y)
 		{
-			if (fdf->img->instances->y % 2 == 0)
-				mlx_put_pixel(fdf->img, fdf->img->instances->x , fdf->img->instances->y, rgba(0));
+			if (new_img->y  % 2 == 0)
+				mlx_put_pixel(fdf->img, new_img->x , new_img->y , rgba(0));
 			else
-				mlx_put_pixel(fdf->img, fdf->img->instances->x , fdf->img->instances->y, rgba(0.3));
-			fdf->img->instances->y += 1;
+				mlx_put_pixel(fdf->img, new_img->x , new_img->y , rgba(0.3));
+			new_img->y  += 1;
 		}
-		fdf->img->instances->x  += 1;
+		new_img->x += 1;
 	}
-	
 }
 
-t_fdf	new_img(t_fdf *fdf)
+/*
+t_fdf	*new_img(t_fdf *fdf)
 {
 	t_fdf	*new_img;
 
 	new_img = (t_fdf *)malloc(sizeof(t_fdf));
 	new_img = fdf;
-	new_img->img = 
+	new_img->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+	new_img->img->instances->x = X_ORIGIN_OFF - (fdf->mtrx->size->x / 2);
+	new_img->img->instances->y = Y_ORIGIN_OFF - (fdf->mtrx->size->y / 2);
+	return (new_img);
 }
 
-mlx_image_t	set_new_img(t_fdf *fdf)
+mlx_instance_t	set_pos_new_img(t_fdf *fdf, mlx_image_t *img)
 {
 	t_vec2			original;
 	t_vec2			dummy_origin;
 	t_vec2			size_aux;
-	mlx_instance_t	*new_img;
+	mlx_instance_t	*new_img_ins;
 
-	new_img = fdf->img->instances;
+	new_img_ins = fdf->img->instances;
+	
+
 	original.x = fdf->mtrx->size->x / 2;
 	original.y = fdf->mtrx->size->y / 2;
 	dummy_origin.x = X_ORIGIN_OFF - (fdf->mtrx->size->x / 2);
@@ -89,7 +96,7 @@ mlx_image_t	set_new_img(t_fdf *fdf)
 	size_aux.x = fdf->mtrx->size->x + dummy_origin.x;
 	size_aux.y = fdf->mtrx->size->y + dummy_origin.y;
 }
-
+*/
 
 
 void	print_box(t_fdf fdf, int color, int max_x, int max_y)
