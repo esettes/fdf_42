@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/07 19:29:26 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/09 19:13:09 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	draw_menu(t_fdf *fdf)
 	int			x;
 	mlx_t		*mlx;
 
-	y = HEIGHT - 200;
-	x = round(WIDTH/1.5); 
+	y = round(HEIGHT / 1.25);
+	x = round(WIDTH/1.45); 
 	mlx = fdf->mlx;
-	//draw_menu_box(fdf);
-	mlx_put_string(mlx, "************************", x, y += 24);
-	mlx_put_string(mlx, "**  Wire-frame (FDF)  **", x, y += 24);
-	mlx_put_string(mlx, "************************", x, y += 24);
+	print_box(*fdf, MENUDGREY, WIDTH - 20, HEIGHT - 20);
+	//mlx_put_string(mlx, "************************", x, y += 24);
+	mlx_put_string(mlx, "Wire-frame (FDF)", x, y += 20);
+	//mlx_put_string(mlx, "************************", x, y += 24);
 }

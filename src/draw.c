@@ -59,21 +59,23 @@ void	print_mesh_at_origin(t_fdf *fdf)
 
 void	print_box(t_fdf fdf, int color, int max_x, int max_y)
 {
-	while (fdf.img->instances->x - OFFSET <= max_x)
+	int	x;
+	int	y;
+
+	x = round(WIDTH / 1.5);
+	y = round(HEIGHT / 1.25);
+	while (x  <= max_x)
 	{
-		fdf.img->instances->y = OFFSET;
-		while (fdf.img->instances->y - OFFSET <= max_y)
+		y = round(HEIGHT / 1.25);
+		while (y <= max_y)
 		{
-			//draw_to_nxt_pt(&fdf);
-			if (fdf.img->instances->y % 2 == 0)
-				mlx_put_pixel(fdf.img, fdf.img->instances->x, 
-				fdf.img->instances->y, menu_rgb(color)); 
+			if (y % 2 == 0)
+				mlx_put_pixel(fdf.img, x, y, menu_rgb(color)); 
 			else
-				mlx_put_pixel(fdf.img, fdf.img->instances->x, 
-				fdf.img->instances->y, menu_rgb(color)); 
-			fdf.img->instances->y += 1;
+				mlx_put_pixel(fdf.img, x, y, menu_rgb(color)); 
+			y += 1;
 		}
-		fdf.img->instances->x += 1;
+		x += 1;
 	}
 	
 }

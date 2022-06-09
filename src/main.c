@@ -6,14 +6,14 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/09 15:33:42 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/09 18:56:15 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 int	main(int argc, char	*argv[])
-{ 
+{
 	t_fdf	*fdf;
 	int fd;
 	int i;
