@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/09 15:34:34 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:53:12 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "get_next_line_bonus.h"
 # include "libft.h"
 # include "colors.h"
-//# include <_int32_t.h>
 #include <memory.h>
 
 # define WIDTH		1600
@@ -64,6 +63,7 @@ typedef struct s_mtrx
 	int		z;
 	int		zoom;
 	t_vec2	*size;
+	t_vec2	*dummy_orig;
 }				t_mtrx;
 
 /**
@@ -111,15 +111,20 @@ int		*str_to_int(char *str);
 /*			Map properties			*/
 
 /**
- * Saves the size of the wire-frame of the main program
+ * Saves the size of the wire-frame of the main program.
+ * 
+ * @return t_vec2 with the mtrx size.
  */
 t_vec2	*set_mtrx_size(int x, int y);
 /**
- * Gets the origin of the map(0, 0) and makes a copy of it.
- *
- * @return Copy of original mtrx with new coords.
+ * Sets the dummy origin (0, 0) of the mesh, depending of the window size.
+ * 
+ * @param x Mtrx size x.
+ * @param y Mtrx size y.
+ * 
+ * @return t_vec2 with the dummy origin position.
  */
-void	get_mtrx_origin(t_mtrx mtrx);
+t_vec2	*set_mtrx_dummy_origin(int x, int y);
 
 /***		Print map		***/
 
