@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/08 20:38:38 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:32:02 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	start_mlx(t_fdf *fdf)
 {
-	//print_mesh(fdf);
+//	print_mesh(fdf);
 	print_mesh_at_origin(fdf);
 	draw_menu(fdf);
 	mlx_loop(fdf->mlx);
 	mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
 	mlx_terminate(fdf->mlx);
 }
+
 /*
 void	transform_iso(t_mtrx *mtrx)
 {

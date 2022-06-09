@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 23:27:02 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/04 01:10:53 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:37:16 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	rgba(double value)
 	if (value < 0.1)
 		return (NEOFUCSIA);
 	if (value < 0.5)
-		return (NEOLGREEN);
+		return (NEOGREEN);
 	else
 		return (NEOWITHE);
 }

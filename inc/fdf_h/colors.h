@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/04 01:13:11 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:39:30 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 
 /* NEON palette */
 # define NEOBLACK 0x181C1EED	/* neon black */
-# define NEOGREEN 0x295C3AEE	/* neon green */
+# define NEOGREEN 0x295C3AFF	/* neon green */
 # define NEOLGREEN 0x66C7A6EE	/* neon light green */
 # define NEOFUCSIA 0xCC3EF7EE	/* neon fucsia */
 # define NEODPURP 0x462D67EE	/* neon dark purple */

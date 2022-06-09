@@ -1,5 +1,35 @@
 #include "fdf.h"
 
+// void	print_mesh(t_fdf *fdf)
+// {
+// 	int	x;
+// 	int	y;
+// 	int	**mesh;
+
+// 	x = 0;
+// 	y = 0;
+// 	mesh = fdf->mtrx->mtrx;
+	
+// 	while (fdf->img->instances->x - OFFSET <= fdf->mtrx->size->x)
+// 	{
+// 		fdf->img->instances->y = OFFSET;
+// 		while (fdf->img->instances->y - OFFSET <= fdf->mtrx->size->y)
+// 		{
+// 			//draw_to_nxt_pt(&fdf);
+// 			if (fdf->img->instances->y % 2 == 0)
+// 				mlx_put_pixel(fdf->img, fdf->img->instances->x, 
+// 				fdf->img->instances->y, rgba(0.3)); 
+// 			else
+// 				mlx_put_pixel(fdf->img, fdf->img->instances->x, 
+// 				fdf->img->instances->y, rgba(0.3)); 
+// 			//mesh[x][y]
+// 			fdf->img->instances->y += 1;
+// 		}
+// 		fdf->img->instances->x += 1;
+// 	}
+	
+// }
+
 void	print_mesh(t_fdf *fdf)
 {
 	int	x;
@@ -10,57 +40,57 @@ void	print_mesh(t_fdf *fdf)
 	y = 0;
 	mesh = fdf->mtrx->mtrx;
 	
-	while (fdf->img->instances->x - OFFSET <= fdf->mtrx->size->x)
+	while (x <= fdf->mtrx->size->x)
 	{
-		fdf->img->instances->y = OFFSET;
-		while (fdf->img->instances->y - OFFSET <= fdf->mtrx->size->y)
+		y = 0;
+		while (y <= fdf->mtrx->size->y)
 		{
 			//draw_to_nxt_pt(&fdf);
-			if (fdf->img->instances->y % 2 == 0)
-				mlx_put_pixel(fdf->img, fdf->img->instances->x, 
-				fdf->img->instances->y, rgba(0)); 
+			if (y % 2 == 0)
+				mlx_put_pixel(fdf->img, x, 
+				y, rgba(0.3)); 
 			else
-				mlx_put_pixel(fdf->img, fdf->img->instances->x, 
-				fdf->img->instances->y, rgba(0.3)); 
+				mlx_put_pixel(fdf->img, x, 
+				y, rgba(0.3)); 
 			//mesh[x][y]
-			fdf->img->instances->y += 1;
+			y += 1;
 		}
-		fdf->img->instances->x += 1;
+		x += 1;
 	}
 	
 }
 
 void	print_mesh_at_origin(t_fdf *fdf)
 {
-	//t_vec2			original;
+	t_vec2			pos;
 	t_vec2			dummy_origin;
 	t_vec2			size_aux;
-	mlx_instance_t	*new_img;
+//	mlx_instance_t	*new_img;
 
-	new_img = fdf->img->instances;
+
 	// original.x = fdf->mtrx->size->x / 2;
 	// original.y = fdf->mtrx->size->y / 2;
 	dummy_origin.x = X_ORIGIN_OFF - (fdf->mtrx->size->x / 2);
 	dummy_origin.y = Y_ORIGIN_OFF - (fdf->mtrx->size->y / 2);
-	// fdf->img->instances->x = dummy_origin.x;
-	// fdf->img->instances->y = dummy_origin.y;
+	pos.x = round(dummy_origin.x);
+	pos.y = round(dummy_origin.y);
 	size_aux.x = fdf->mtrx->size->x + dummy_origin.x;
 	size_aux.y = fdf->mtrx->size->y + dummy_origin.y;
-	new_img->x = X_ORIGIN_OFF - (fdf->mtrx->size->x / 2);
-	new_img->y = Y_ORIGIN_OFF - (fdf->mtrx->size->y / 2);
+	//new_img->x = X_ORIGIN_OFF - (fdf->mtrx->size->x / 2);
+	//new_img->y = Y_ORIGIN_OFF - (fdf->mtrx->size->y / 2);
 	
-	while (new_img->x <= size_aux.x)
+	while (pos.x  <= fdf->mtrx->size->x + X_ORIGIN_OFF)
 	{
-		new_img->y  = dummy_origin.y;
-		while (new_img->y  <= size_aux.y)
+		pos.y  = dummy_origin.y;
+		while (pos.y <= fdf->mtrx->size->y + Y_ORIGIN_OFF)
 		{
-			if (new_img->y  % 2 == 0)
-				mlx_put_pixel(fdf->img, new_img->x , new_img->y , rgba(0));
+			if ((int)pos.y % 2 == 0)
+				mlx_put_pixel(fdf->img, pos.x , pos.y , rgba(0));
 			else
-				mlx_put_pixel(fdf->img, new_img->x , new_img->y , rgba(0.3));
-			new_img->y  += 1;
+				mlx_put_pixel(fdf->img, pos.x , pos.y , rgba(0.3));
+			pos.y += 1;
 		}
-		new_img->x += 1;
+		pos.x += 1;
 	}
 }
 

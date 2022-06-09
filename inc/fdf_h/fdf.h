@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/08 21:25:54 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:34:34 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef struct s_menu
 
 typedef struct s_vec2
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }				t_vec2;
 /**
  * Save all the values ​​necessary for the mesh construction.
