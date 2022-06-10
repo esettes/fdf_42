@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/08 22:39:30 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/10 17:40:09 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@
 /*	cyberpunk palette */
 # define CYBDBLU 0x0E1C24EE	/* cyber dark blue */
 # define CYBMBLU 0x183646EE	/* cyber medium blue */
-# define CYEELU 0x1F4079EE	/* cyber blue */
+# define CYBLU 0x1F4079FF	/* cyber blue */
 # define CYBLBLU 0x4D98AEED	/* cyber light blue */
 # define CYBGREY 0x718DAEED	/* cyber grey blue */
 # define CYBDRED 0x691C41EE	/* cyber dark red */
-# define CYBRED 0xB12954EE	/* cyber red */
+# define CYBRED 0xB12954FF	/* cyber red */
 # define CYBLRED 0xCE6794EE	/* cyber light red */
 
 /* NEON palette */

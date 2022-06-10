@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/10 15:38:32 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/10 19:03:53 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 	char	**split_fd;
 	int		**mtrx;
 	int		i;
+	int		aux;
 	int j	 = 0;
 	int		count;
+	int		trigger = TRUE;
 
 	split_fd = malloc(sizeof(char *) * BUFFER_SIZE + 1);
 	i = 0;
@@ -27,14 +29,18 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 	{
 		split_fd[i] = get_next_line(fd);	// i = y 
 		count += ft_count(split_fd[i], ' ');
+		if (trigger == TRUE)
+		{
+			aux = count;
+			trigger = FALSE;
+		}
 		if (split_fd[i] == NULL || ft_strncmp(split_fd[i], "\n", 1) == 0 || 
 			ft_strncmp(split_fd[i], " ", 1) == 0)
 			break ;
 		i++;
 	}
-	// condition if map is not 1x1 size (2x2, 3x3..100x100)
-	m->size = set_mtrx_size((count / i), i);
-	m->start_draw = set_mtrx_dummy_origin(m->size->x, m->size->y);
+	m->size = set_mtrx_size(aux, i);
+	set_limits(m->size->x, m->size->y, m);
 	mtrx = malloc(sizeof(int *) * count);
 	printf("\nm->size->y: %f \n", m->size->y);
 	printf("m->size->x: %f \n\n", m->size->x);

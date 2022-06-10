@@ -28,68 +28,74 @@ void	print_mesh_at_origin(t_fdf *fdf)
 {
 	t_vec2	origin;
 	t_vec2	orig_cpy;
+	int		distance;
+	t_vec2		trigger;
+	t_vec2	start;
+	t_vec2	end;
 
+	trigger.x = FALSE;
+	distance = 15;
 	origin.x = round(fdf->mtrx->start_draw->x);
 	origin.y = round(fdf->mtrx->start_draw->y);
 	orig_cpy.x = origin.x;
 	orig_cpy.y = origin.y;
 	printf("pos.x dummy origin: %f\n", origin.x);
 	printf("pos.y dummy origin: %f\n", origin.y);
-
-	while (origin.x  <= fdf->mtrx->size->x + X_ORIGIN_OFF)
+	while (origin.y  <= fdf->mtrx->size->y + Y_ORIGIN_OFF)
 	{
-		origin.y = orig_cpy.y;
-		while (origin.y <= fdf->mtrx->size->y + Y_ORIGIN_OFF)
+		origin.x = orig_cpy.x;
+		start.x = origin.x;
+		start.y = origin.y;
+		if (trigger.y == TRUE)
+				draw_segment(start, end, fdf);
+		while (origin.x <= fdf->mtrx->size->x + X_ORIGIN_OFF)
 		{
-			if ((int)origin.y % 2 == 0)
-				mlx_put_pixel(fdf->img, origin.x , origin.y , rgba(0.3));
-			else
-				mlx_put_pixel(fdf->img, origin.x , origin.y , rgba(0.3));
-			origin.y += 1;
+			mlx_put_pixel(fdf->img, origin.x , origin.y , rgba(0.3));
+			start.x = origin.x;
+			end.x = origin.x += distance;
+			end.y = origin.y;
+			if (trigger.x == TRUE)
+				draw_segment(start, end, fdf);
+			origin.x += distance;
+			trigger.x = TRUE;
 		}
-		origin.x += 1;
+		origin.y += distance;
+		trigger.y = TRUE;
 	}
 }
 
+void	draw_outer_segments(t_fdf *fdf)
+{
+	draw_segment(*fdf->mtrx->start_draw, *fdf->mtrx->end_draw, fdf);
+}
 
-// void	set_pixel(t_fdf *fdf)
-// {
-// 	//mlx_put_pixel()
-	
-// }
+void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf)
+{
+	t_vec2	d;
+	t_vec2	s;
+	t_vec2	err;
 
-// void	draw_to_nxt_pt(t_fdf *fdf)
-// {
-// 	int dx;
-// 	int	sx;
-// 	int dy;
-// 	int sy;
-// 	int err[2]; /* error value e_xy */
-
-// 	dx = abs(x1 - fdf->img->instances->x);
-// 	dy = -abs(y1 - fdf->img->instances->y);
-// 	err[0] = dx + dy;
-// 	set_sx(fdf->img->instances->x, x1, &sx);
-// 	set_sy(fdf->img->instances->y, y1, &sy);
-
-// 	while (true)
-// 	{
-// 		setPixel (fdf);
-// 		if (fdf->img->instances->x == x1 && fdf->img->instances->y == y1)
-// 			break;
-// 		err[1] = 2 * err[0];
-// 		if (err[1] >= dy)
-// 		{
-// 			err[0] += dy;
-// 			fdf->img->instances->x += sx;
-// 		} /* e_xy+e_x > 0 */
-// 		if (err[1] <= dx)
-// 		{
-// 			err[0] += dx;
-// 			fdf->img->instances->y += sy;
-// 		} /* e_xy+e_y < 0 */
-// 	}
-// }
+	set_d(start, end, &d);
+	err.x = d.x + d.y;
+	set_s(start, end, &s);
+	while (true)
+	{
+		mlx_put_pixel(fdf->img, start.x , start.y , rgba(0.3));
+		if (start.x == end.x && start.y == end.y)
+			break;
+		err.y = 2 * err.y;
+		if (err.y >= d.y)
+		{
+			err.x += d.y;
+			start.x += s.x;
+		} /* e_xy+e_x > 0 */
+		if (err.y <= d.x)
+		{
+			err.x += d.x;
+			start.y += s.y;
+		} /* e_xy+e_y < 0 */
+	}
+}
 
 
 void	draw_simple_line(t_fdf *fdf, int max)

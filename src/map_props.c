@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:21:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/10 15:34:13 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/10 19:08:07 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ t_vec2	*set_mtrx_size(int x, int y)
 	return (size);
 }
 
-t_vec2	*set_mtrx_dummy_origin(int x, int y)
+void	set_limits(int x, int y, t_mtrx *mtrx)
 {
-	t_vec2 *origin;
-
-	origin = (t_vec2 *)malloc(sizeof(t_vec2));
-	origin->x = X_ORIGIN_OFF - (x / 2);
-	origin->y = Y_ORIGIN_OFF - (y / 2);
-	return (origin);
+	mtrx->start_draw = (t_vec2 *)malloc(sizeof(t_vec2));
+	mtrx->end_draw = (t_vec2 *)malloc(sizeof(t_vec2));
+	mtrx->start_draw->x = X_ORIGIN_OFF - (x / 2);
+	mtrx->start_draw->y = Y_ORIGIN_OFF - (y / 2);
+	mtrx->end_draw->x = mtrx->start_draw->x + mtrx->size->x;
+	mtrx->end_draw->y = mtrx->start_draw->y + mtrx->size->y;
 }
