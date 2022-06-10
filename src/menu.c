@@ -6,38 +6,38 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/09 19:13:09 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:10:01 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-//25x50?
-void	draw_menu_box(t_fdf *fdf)
+void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y)
 {
-	t_menu	menu;
+	t_vec2	draw;
+	t_vec2	aux;
 
-	menu.color_1 = 0;
-	menu.color_2 = 1;
-	menu.max_x_1 = WIDTH - 250;
-	menu.max_y_1 = HEIGHT - 170;
-	menu.max_x_1 = WIDTH - 150;
-	menu.max_y_1 = HEIGHT - 70;
-	print_box(*fdf, menu.color_1, menu.max_x_1, menu.max_y_1);
-	
+	draw.x = round(WIDTH / 1.50);
+	draw.y = round(HEIGHT / 1.2);
+	aux.x = draw.x;
+	aux.y = draw.y;
+	while (draw.x  <= max_x)
+	{
+		draw.y = aux.y;
+		while (draw.y <= max_y)
+		{
+			if ((int)draw.y % 2 == 0)
+				mlx_put_pixel(fdf.img, draw.x, draw.y, menu_rgb(color)); 
+			else
+				mlx_put_pixel(fdf.img, draw.x, draw.y, menu_rgb(color)); 
+			draw.y += 1;
+		}
+		draw.x += 1;
+	}
+	mlx_put_string(fdf.mlx, "Menu", aux.x + 10, aux.y + 10);
 }
 
 void	draw_menu(t_fdf *fdf)
 {
-	int			y;
-	int			x;
-	mlx_t		*mlx;
-
-	y = round(HEIGHT / 1.25);
-	x = round(WIDTH/1.45); 
-	mlx = fdf->mlx;
-	print_box(*fdf, MENUDGREY, WIDTH - 20, HEIGHT - 20);
-	//mlx_put_string(mlx, "************************", x, y += 24);
-	mlx_put_string(mlx, "Wire-frame (FDF)", x, y += 20);
-	//mlx_put_string(mlx, "************************", x, y += 24);
+	print_box_menu(*fdf, MENUDGREY, WIDTH - 20, HEIGHT - 20);
 }

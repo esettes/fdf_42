@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/09 19:06:23 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:29:20 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,18 +151,7 @@ int		rgba(double value);
 /*			Print menu			*/
 
 void	draw_menu(t_fdf *fdf);
-void	print_box(t_fdf fdf, int color, int max_x, int max_y);
+void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y);
 int 	menu_rgb(int value);
-void	draw_menu_box(t_fdf *fdf);
-
-/**
- * My function description.
- * 
- * @param[in] x Mtrx size x.
- * @param[in] y Mtrx size y.
- * 
- * @return Result.
- */
-int	*my_function(int x, int y);
 
 #endif

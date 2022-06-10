@@ -4,12 +4,9 @@ void	print_mesh(t_fdf *fdf)
 {
 	int	x;
 	int	y;
-	int	**mesh;
 
 	x = 0;
 	y = 0;
-	mesh = fdf->mtrx->mtrx;
-	
 	while (x <= fdf->mtrx->size->x)
 	{
 		y = 0;
@@ -17,12 +14,9 @@ void	print_mesh(t_fdf *fdf)
 		{
 			//draw_to_nxt_pt(&fdf);
 			if (y % 2 == 0)
-				mlx_put_pixel(fdf->img, x, 
-				y, rgba(0.3)); 
+				mlx_put_pixel(fdf->img, x, y, rgba(0.3)); 
 			else
-				mlx_put_pixel(fdf->img, x, 
-				y, rgba(0.3)); 
-			//mesh[x][y]
+				mlx_put_pixel(fdf->img, x, y, rgba(0.3)); 
 			y += 1;
 		}
 		x += 1;
@@ -57,28 +51,7 @@ void	print_mesh_at_origin(t_fdf *fdf)
 	}
 }
 
-void	print_box(t_fdf fdf, int color, int max_x, int max_y)
-{
-	int	x;
-	int	y;
 
-	x = round(WIDTH / 1.5);
-	y = round(HEIGHT / 1.25);
-	while (x  <= max_x)
-	{
-		y = round(HEIGHT / 1.25);
-		while (y <= max_y)
-		{
-			if (y % 2 == 0)
-				mlx_put_pixel(fdf.img, x, y, menu_rgb(color)); 
-			else
-				mlx_put_pixel(fdf.img, x, y, menu_rgb(color)); 
-			y += 1;
-		}
-		x += 1;
-	}
-	
-}
 // void	set_pixel(t_fdf *fdf)
 // {
 // 	//mlx_put_pixel()
