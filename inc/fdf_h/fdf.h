@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/10 14:29:20 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:55:50 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_mtrx
 	int		z;
 	int		zoom;
 	t_vec2	*size;
-	t_vec2	*dummy_orig;
+	t_vec2	*start_draw;
 }				t_mtrx;
 
 /**
@@ -118,6 +118,7 @@ int		*str_to_int(char *str);
 t_vec2	*set_mtrx_size(int x, int y);
 /**
  * Sets the dummy origin (0, 0) of the mesh, depending of the window size.
+ * Sets the position of the first pixel to start drawing.
  * 
  * @param x Mtrx size x.
  * @param y Mtrx size y.
@@ -135,6 +136,9 @@ void	print_mesh(t_fdf *fdf);
  * substracts sizemap x and y to it.
  */
 void	print_mesh_at_origin(t_fdf *fdf);
+
+
+
 void	draw_to_nxt_pt(t_fdf *fdf);
 void	set_sx(int x0, int x1, int *sx);
 void	set_sy(int y0, int y1, int *sy);
@@ -154,4 +158,8 @@ void	draw_menu(t_fdf *fdf);
 void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y);
 int 	menu_rgb(int value);
 
+/*			ISO			*/
+void	print_mesh_iso(t_fdf *fdf);
+double	get_iso_pos_x(t_mtrx mtrx);
+double	get_iso_pos_y(t_mtrx mtrx);
 #endif

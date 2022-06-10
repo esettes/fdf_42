@@ -29,8 +29,8 @@ void	print_mesh_at_origin(t_fdf *fdf)
 	t_vec2	origin;
 	t_vec2	orig_cpy;
 
-	origin.x = round(fdf->mtrx->dummy_orig->x);
-	origin.y = round(fdf->mtrx->dummy_orig->y);
+	origin.x = round(fdf->mtrx->start_draw->x);
+	origin.y = round(fdf->mtrx->start_draw->y);
 	orig_cpy.x = origin.x;
 	orig_cpy.y = origin.y;
 	printf("pos.x dummy origin: %f\n", origin.x);

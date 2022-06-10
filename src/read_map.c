@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/09 18:20:18 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:38:32 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 	}
 	// condition if map is not 1x1 size (2x2, 3x3..100x100)
 	m->size = set_mtrx_size((count / i), i);
-	m->dummy_orig = set_mtrx_dummy_origin(m->size->x, m->size->y);
+	m->start_draw = set_mtrx_dummy_origin(m->size->x, m->size->y);
 	mtrx = malloc(sizeof(int *) * count);
 	printf("\nm->size->y: %f \n", m->size->y);
 	printf("m->size->x: %f \n\n", m->size->x);
