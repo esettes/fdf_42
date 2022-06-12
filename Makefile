@@ -32,14 +32,20 @@ LIBX42	= ./inc/MLX42/libmlx42.a
 
 ifeq ($(OS), Darwin)
 	LIBX42_FLAGS	=	-I include -lglfw -L "/Users/${USER}/.brew/opt/glfw/lib/"
+endif
+ifeq ($(OS), Windows_NT)
+	LIBX42_FLAGS	=	-I include -lglfw3 -lopengl32 -lgdi32 -L "C:/GLFW/include/GLFW/"
 else
 	LIBX42_FLAGS	=	-I include -ldl -lglfw
 endif
+
+
 
 ALLINC	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/fdf_h/ -I ./inc/MLX42/include/MLX42/
 
 CC	= gcc
 CFLAGS	= -Wall -Wextra -Werror #-glldb
+WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
 DEB	= -g3
 
