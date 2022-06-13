@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 17:38:13 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:43:15 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ void	print_mesh_at_origin(t_fdf *fdf);
 
 void	draw_outer_segments(t_fdf *fdf);
 void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf);
-void	drawline(t_vec2 start, t_vec2 end, t_fdf *fdf);
 void	set_sx(int x0, int x1, int *sx);
 void	set_sy(int y0, int y1, int *sy);
 
