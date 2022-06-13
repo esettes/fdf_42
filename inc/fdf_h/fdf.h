@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/10 19:45:41 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:34:17 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ typedef struct s_mtrx
 	int		**mtrx;
 	int		z;
 	int		zoom;
-	t_vec2	*size;
-	t_vec2	*start_draw;
-	t_vec2	*end_draw;
+	t_vec2	size;
+	t_vec2	start_draw;
+	t_vec2	end_draw;
 }				t_mtrx;
 
 /**
@@ -79,7 +79,7 @@ typedef struct s_fdf
 {
 	mlx_t		*mlx;
 	t_mtrx		*mtrx;
-	mlx_image_t	*img;	// incluye posic
+	mlx_image_t	*img;		// incluye posic
 }				t_fdf;
 
 /* Initializes the main parameters of the application */
@@ -116,7 +116,7 @@ int		*str_to_int(char *str);
  * 
  * @return t_vec2 with the mtrx size.
  */
-t_vec2	*set_mtrx_size(int x, int y);
+t_vec2	set_mtrx_size(int x, int y);
 /**
  * Sets the position of the first pixel to start drawing.
  * 

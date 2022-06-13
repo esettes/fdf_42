@@ -7,10 +7,10 @@ void	print_mesh(t_fdf *fdf)
 
 	x = 0;
 	y = 0;
-	while (x <= fdf->mtrx->size->x)
+	while (x <= fdf->mtrx->size.x)
 	{
 		y = 0;
-		while (y <= fdf->mtrx->size->y)
+		while (y <= fdf->mtrx->size.y)
 		{
 			//draw_to_nxt_pt(&fdf);
 			if (y % 2 == 0)
@@ -35,20 +35,20 @@ void	print_mesh_at_origin(t_fdf *fdf)
 
 	trigger.x = FALSE;
 	distance = 15;
-	origin.x = round(fdf->mtrx->start_draw->x);
-	origin.y = round(fdf->mtrx->start_draw->y);
+	origin.x = round(fdf->mtrx->start_draw.x);
+	origin.y = round(fdf->mtrx->start_draw.y);
 	orig_cpy.x = origin.x;
 	orig_cpy.y = origin.y;
 	printf("pos.x dummy origin: %f\n", origin.x);
 	printf("pos.y dummy origin: %f\n", origin.y);
-	while (origin.y  <= fdf->mtrx->size->y + Y_ORIGIN_OFF)
+	while (origin.y  <= fdf->mtrx->size.y + Y_ORIGIN_OFF)
 	{
 		origin.x = orig_cpy.x;
 		start.x = origin.x;
 		start.y = origin.y;
 		if (trigger.y == TRUE)
 				draw_segment(start, end, fdf);
-		while (origin.x <= fdf->mtrx->size->x + X_ORIGIN_OFF)
+		while (origin.x <= fdf->mtrx->size.x + X_ORIGIN_OFF)
 		{
 			mlx_put_pixel(fdf->img, origin.x , origin.y , rgba(0.3));
 			start.x = origin.x;
@@ -63,10 +63,26 @@ void	print_mesh_at_origin(t_fdf *fdf)
 		trigger.y = TRUE;
 	}
 }
-
+ 
 void	draw_outer_segments(t_fdf *fdf)
 {
-	draw_segment(*fdf->mtrx->start_draw, *fdf->mtrx->end_draw, fdf);
+	t_vec2	start;
+	t_vec2	end;
+
+	start.x = fdf->mtrx->start_draw.x;
+	start.y = fdf->mtrx->start_draw.y;
+	end.x = fdf->mtrx->end_draw.x;
+	end.y = fdf->mtrx->end_draw.y;
+	draw_segment(start, end, fdf);
+	start = end;
+	end.y += fdf->mtrx->size.y;
+	draw_segment(start, end, fdf);
+	start = end;
+	end.x -= fdf->mtrx->size.x;
+	draw_segment(start, end, fdf);
+	start = end;
+	end.y -= fdf->mtrx->size.y;
+	draw_segment(start, end, fdf);
 }
 
 void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf)

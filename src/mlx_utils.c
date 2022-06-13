@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/10 19:45:39 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:27:47 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	transform_iso(t_mtrx *mtrx)
 	// aplicar nnuevas coordenadas a la imagen existente
 }
  */
-
 
 
 /*
