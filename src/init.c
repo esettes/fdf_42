@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 17:08:13 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/13 19:29:59 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ void	fdf_construct(t_fdf *fdf, int fd)//, char *mp)
 	//mtrx = (t_mtrx *)malloc(sizeof(t_mtrx));
 	obtain_split_fd(fd, &mtrx);
 	fdf->mtrx = mtrx;
-	printf("\nstart x value after obtain_split_fd in fdf_costruct: %f\n", fdf->mtrx.start_draw.x);
+	fdf->mtrx.zoom = 5;
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);    // Creates a new image.
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);   // Adds an image to the render queue.
 	fdf->img->instances->x = 0;
 	fdf->img->instances->y = 0;
-	printf("\nstart x value at the end of fdf_costruct: %f\n", fdf->mtrx.start_draw.x);
 }
 
 

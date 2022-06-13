@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 17:43:15 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/13 19:44:13 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ typedef struct s_mtrx
 	int		**mtrx;
 	int		z;
 	int		zoom;
-	t_vec2	size;
+	t_vec2	segments;
+	t_vec2	px_size;
 	t_vec2	start_draw;
 	t_vec2	end_draw;
 }				t_mtrx;
@@ -104,7 +105,7 @@ int		*str_to_int(char *str);
  * 
  * @return t_vec2 with the mtrx size.
  */
-t_vec2	set_mtrx_size(int x, int y);
+t_vec2	set_mtrx_size(int x, int y, t_mtrx *mtrx);
 /**
  * Sets the position of the first pixel to start drawing.
  * 
@@ -113,7 +114,7 @@ t_vec2	set_mtrx_size(int x, int y);
  * 
  * @return t_vec2 with the dummy origin position.
  */
-void	set_limits(int x, int y, t_mtrx *mtrx);
+void	set_limits(t_mtrx *mtrx);
 
 /***		Print map		***/
 
@@ -127,7 +128,8 @@ void	print_mesh_at_origin(t_fdf *fdf);
 
 
 void	draw_outer_segments(t_fdf *fdf);
-void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf);
+void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf);
+void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf);
 void	set_sx(int x0, int x1, int *sx);
 void	set_sy(int y0, int y1, int *sy);
 
