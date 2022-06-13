@@ -133,7 +133,8 @@ void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf)
 	y = start.y;
 
 	p = 2 * d.y - d.x;
-	while(x < end.x)
+	// check if the conditions are Ok
+	while(x <= end.x)
 	{
 		if(p >= 0)
 		{
