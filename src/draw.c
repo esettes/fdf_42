@@ -90,7 +90,17 @@ void	draw_outer_segments(t_fdf *fdf)
 		start.y += fdf->mtrx.zoom;
 		end.y += fdf->mtrx.zoom;
 		seg_iter.y++;
-		printf("\nend.y in draw_outer while: %f\n", end.y);
+	}
+	start.y = fdf->mtrx.start_draw.y;
+	//end.x = X_ORIGIN_OFF - (round)(fdf->mtrx.px_size.x / 2);
+	end.y = fdf->mtrx.start_draw.y + (round)(fdf->mtrx.px_size.y);
+	while (seg_iter.x <= fdf->mtrx.segments.x)
+	{
+		draw_segment_vert(start, end, fdf);
+		//	esto sería el zoom (distancia entre los puntos)
+		start.x += fdf->mtrx.zoom;
+		end.x += fdf->mtrx.zoom;
+		seg_iter.x++;
 	}
 	
 	//start = end;
@@ -181,20 +191,20 @@ void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf)
 	x = start.x;
 	y = start.y;
 
-	p = 2 * d.x - d.y;
+	p = 2 * d.y - d.x;
 	// check if the conditions are Ok
 	while(y <= end.y)
 	{
 		if(p >= 0)
 		{
 			mlx_put_pixel(fdf->img, x, y, rgba(0.3));
-			x = x + 1;
-			p = p + 2 * d.x - 2 * d.y;
+			y = y + 1;
+			p = p + 2 * d.y - 2 * d.x;
 		}
 		else
 		{
 			mlx_put_pixel(fdf->img, x, y, rgba(0.3));
-			p = p + 2 * d.x;
+			p = p + 2 * d.y;
 		}
 		y = y + 1;
 	}

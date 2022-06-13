@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 17:58:44 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:15:47 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 void	start_mlx(t_fdf *fdf)
 {
 //	print_mesh(fdf);
-	draw_menu(fdf);
 	draw_outer_segments(fdf);
+	draw_menu(fdf);
+	
 //	print_mesh_at_origin(fdf);
 	
 	mlx_loop(fdf->mlx);
