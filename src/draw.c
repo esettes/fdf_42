@@ -7,10 +7,10 @@ void	print_mesh(t_fdf *fdf)
 
 	x = 0;
 	y = 0;
-	while (x <= fdf->mtrx->size.x)
+	while (x <= fdf->mtrx.size.x)
 	{
 		y = 0;
-		while (y <= fdf->mtrx->size.y)
+		while (y <= fdf->mtrx.size.y)
 		{
 			//draw_to_nxt_pt(&fdf);
 			if (y % 2 == 0)
@@ -35,20 +35,20 @@ void	print_mesh_at_origin(t_fdf *fdf)
 
 	trigger.x = FALSE;
 	distance = 15;
-	origin.x = round(fdf->mtrx->start_draw.x);
-	origin.y = round(fdf->mtrx->start_draw.y);
+	origin.x = round(fdf->mtrx.start_draw.x);
+	origin.y = round(fdf->mtrx.start_draw.y);
 	orig_cpy.x = origin.x;
 	orig_cpy.y = origin.y;
 	printf("pos.x dummy origin: %f\n", origin.x);
 	printf("pos.y dummy origin: %f\n", origin.y);
-	while (origin.y  <= fdf->mtrx->size.y + Y_ORIGIN_OFF)
+	while (origin.y  <= fdf->mtrx.size.y + Y_ORIGIN_OFF)
 	{
 		origin.x = orig_cpy.x;
 		start.x = origin.x;
 		start.y = origin.y;
 		if (trigger.y == TRUE)
 				draw_segment(start, end, fdf);
-		while (origin.x <= fdf->mtrx->size.x + X_ORIGIN_OFF)
+		while (origin.x <= fdf->mtrx.size.x + X_ORIGIN_OFF)
 		{
 			mlx_put_pixel(fdf->img, origin.x , origin.y , rgba(0.3));
 			start.x = origin.x;
@@ -69,20 +69,25 @@ void	draw_outer_segments(t_fdf *fdf)
 	t_vec2	start;
 	t_vec2	end;
 
-	start.x = fdf->mtrx->start_draw.x;
-	start.y = fdf->mtrx->start_draw.y;
-	end.x = fdf->mtrx->end_draw.x;
-	end.y = fdf->mtrx->end_draw.y;
-	draw_segment(start, end, fdf);
+	printf("\nstart x value before make copy of x in draw_pputer_segments: %f\n", fdf->mtrx.start_draw.x);
+	start.x = fdf->mtrx.start_draw.x;
+	start.y = fdf->mtrx.start_draw.y;
+	end.x = fdf->mtrx.end_draw.x;
+	end.y = fdf->mtrx.end_draw.y;
+	printf("\nstart x value after make copy of x in draw_pputer_segments: %f\n", fdf->mtrx.start_draw.x);
+	printf("\ncopy start x value after make copy of x in draw_pputer_segments: %f\n", start.x);
+	drawline(start, end, fdf);
 	start = end;
-	end.y += fdf->mtrx->size.y;
-	draw_segment(start, end, fdf);
+	end.y += fdf->mtrx.size.y;
+	drawline(start, end, fdf);
 	start = end;
-	end.x -= fdf->mtrx->size.x;
-	draw_segment(start, end, fdf);
+	end.x -= fdf->mtrx.size.x;
+	drawline(start, end, fdf);
 	start = end;
-	end.y -= fdf->mtrx->size.y;
-	draw_segment(start, end, fdf);
+	end.y -= fdf->mtrx.size.y;
+	drawline(start, end, fdf);
+	printf("\ncopy start x value at the end of draw_pputer_segments: %f\n",start.x);
+	printf("\nstart x value at the end of draw_pputer_segments: %f\n", fdf->mtrx.start_draw.x);
 }
 
 void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf)
@@ -91,12 +96,14 @@ void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf)
 	t_vec2	s;
 	t_vec2	err;
 
+printf("\nstart x value in draw_segment: %f\n", fdf->mtrx.start_draw.x);
 	set_d(start, end, &d);
 	err.x = d.x + d.y;
 	set_s(start, end, &s);
 	while (true)
 	{
 		mlx_put_pixel(fdf->img, start.x , start.y , rgba(0.3));
+		printf("\nstart x value in draw_segment while : %f\n", fdf->mtrx.start_draw.x);
 		if (start.x == end.x && start.y == end.y)
 			break;
 		err.y = 2 * err.y;
@@ -110,6 +117,35 @@ void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf)
 			err.x += d.x;
 			start.y += s.y;
 		} /* e_xy+e_y < 0 */
+	}
+}
+
+void	drawline(t_vec2 start, t_vec2 end, t_fdf *fdf)
+{
+	int p, x, y;
+	t_vec2	d;
+
+	d.x = end.x - start.x;
+	d.y = end.y - start.y;
+
+	x = start.x;
+	y = start.y;
+
+	p = 2 * d.y - d.x;
+	while(x < end.x)
+	{
+		if(p >= 0)
+		{
+			mlx_put_pixel(fdf->img, x, y, rgba(0.3));
+			y = y + 1;
+			p = p + 2 * d.y - 2 * d.x;
+		}
+		else
+		{
+			mlx_put_pixel(fdf->img, x, y, rgba(0.3));
+			p = p + 2 * d.y;
+		}
+		x = x + 1;
 	}
 }
 

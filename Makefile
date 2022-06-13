@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/06/09 15:26:45 by iostancu         ###   ########.fr        #
+#    Updated: 2022/06/13 16:49:58 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,9 @@ LIBX42	= ./inc/MLX42/libmlx42.a
 
 ifeq ($(OS), Darwin)
 	LIBX42_FLAGS	=	-I include -lglfw -L "/Users/${USER}/.brew/opt/glfw/lib/"
-endif
-ifeq ($(OS), Windows_NT)
-	LIBX42_FLAGS	=	-I include -lglfw3 -lopengl32 -lgdi32 -L "C:/GLFW/include/GLFW/"
+##endif
+##ifeq ($(OS), Windows_NT)
+##	LIBX42_FLAGS	=	-I include -lglfw3 -lopengl32 -lgdi32 -L "C:/GLFW/include/GLFW/"
 else
 	LIBX42_FLAGS	=	-I include -ldl -lglfw
 endif

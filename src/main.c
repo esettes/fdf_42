@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 16:06:04 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:40:42 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int argc, char	*argv[])
 		printf("origin offset Y: %d\n", Y_ORIGIN_OFF);
 		printf("width: %d\n", WIDTH);
 		printf("HEIGHT: %d\n\n", HEIGHT);
-		fd = open("src/maps/5x2.txt", O_RDONLY);
-//		fd = open(argv[1], O_RDONLY);
+//		fd = open("src/maps/5x2.txt", O_RDONLY);
+		fd = open(argv[1], O_RDONLY);
 		if (fd <= 0)
 		{
 			exit(EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:27:12 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 16:33:53 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:47:01 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	print_mesh_iso(t_fdf *fdf)
 {
 	t_vec2	iso_pos;
 
-	iso_pos.x = get_iso_pos_x(*fdf->mtrx);
-	iso_pos.y = get_iso_pos_y(*fdf->mtrx);
+	iso_pos.x = get_iso_pos_x(fdf->mtrx);
+	iso_pos.y = get_iso_pos_y(fdf->mtrx);
 }
 
 double	get_iso_pos_x(t_mtrx mtrx)

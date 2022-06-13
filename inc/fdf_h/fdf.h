@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 16:34:17 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:38:13 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,6 @@
 # define X_ORIGIN_OFF	( WIDTH / 2 )
 # define Y_ORIGIN_OFF	( HEIGHT / 2 )
 // # define ORIGIN_OFF	( sqrt(pow(HEIGHT, 2) + pow(WIDTH, 2)) / 2 )
-
-
-typedef struct s_menu
-{
-	int		color_1;
-	int		color_2;
-	int		max_x_1;
-	int		max_y_1;
-	int		max_x_2;
-	int		max_y_2;
-}				t_menu;
-
 
 typedef struct s_vec2
 {
@@ -78,7 +66,7 @@ typedef struct s_mtrx
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
-	t_mtrx		*mtrx;
+	t_mtrx		mtrx;
 	mlx_image_t	*img;		// incluye posic
 }				t_fdf;
 
@@ -140,6 +128,7 @@ void	print_mesh_at_origin(t_fdf *fdf);
 
 void	draw_outer_segments(t_fdf *fdf);
 void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf);
+void	drawline(t_vec2 start, t_vec2 end, t_fdf *fdf);
 void	set_sx(int x0, int x1, int *sx);
 void	set_sy(int y0, int y1, int *sy);
 
