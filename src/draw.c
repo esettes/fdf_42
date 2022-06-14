@@ -72,83 +72,39 @@ void	draw_outer_segments(t_fdf *fdf)
 
 	seg_iter.x = 0;
 	seg_iter.y = 0;
-	start.x = fdf->mtrx.start_draw.x;
-	start.y = fdf->mtrx.start_draw.y;
-	end.x = fdf->mtrx.end_draw.x;
-	end.y = fdf->mtrx.start_draw.y;
-	
-	// start.y += fdf->mtrx.segments.y;
-	// end.y += fdf->mtrx.segments.y;
-	// draw_segment_horiz(start, end, fdf);
-
-	//draw_segment_vert(start, end, fdf);
-
-	while (seg_iter.y <= fdf->mtrx.segments.y)
+	start.x = (int)fdf->mtrx.start_draw.x;
+	start.y = (int)fdf->mtrx.start_draw.y;
+	end.x = (int)fdf->mtrx.end_draw.x;
+	end.y = (int)fdf->mtrx.start_draw.y;
+	printf("start.x before draw seg horizontal: %f\n", start.x);
+	printf("start.y before draw seg horizontal: %f\n", start.y);
+	printf("end.x before draw seg horizontal: %f\n", end.x);
+	printf("end.y before draw seg horizontal: %f\n", end.y);
+	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
 		draw_segment_horiz(start, end, fdf);
-		//	esto sería el zoom (distancia entre los puntos)
 		start.y += fdf->mtrx.zoom;
 		end.y += fdf->mtrx.zoom;
 		seg_iter.y++;
 	}
-	start.y = fdf->mtrx.start_draw.y;
-	//end.x = X_ORIGIN_OFF - (round)(fdf->mtrx.px_size.x / 2);
-	end.y = fdf->mtrx.start_draw.y + (round)(fdf->mtrx.px_size.y);
-	while (seg_iter.x <= fdf->mtrx.segments.x)
+	printf("start.x before draw seg horizontal: %f\n", start.x);
+	printf("start.y before draw seg horizontal: %f\n\n", start.y);
+	printf("end.x before draw seg horizontal: %f\n", end.x);
+	printf("end.y before draw seg horizontal: %f\n\n", end.y);
+
+	start.y = round(fdf->mtrx.start_draw.y);
+	end.y = start.y + fdf->mtrx.px_size.y;
+	//end.y = round(fdf->mtrx.start_draw.y + fdf->mtrx.px_size.y - fdf->mtrx.zoom);
+	printf("end.x before draw seg horizontal: %f\n", end.x);
+	printf("end.y before draw seg horizontal: %f\n", end.y);
+	while (seg_iter.x < fdf->mtrx.segments.x)
 	{
 		draw_segment_vert(start, end, fdf);
-		//	esto sería el zoom (distancia entre los puntos)
 		start.x += fdf->mtrx.zoom;
 		end.x += fdf->mtrx.zoom;
 		seg_iter.x++;
 	}
-	
-	//start = end;
-	//end.y += fdf->mtrx.segments.y;
-	// start.x = fdf->mtrx.end_draw.x;
-	// start.y = fdf->mtrx.start_draw.y;
-	// end.x = fdf->mtrx.end_draw.x;
-	// end.y = fdf->mtrx.end_draw.y;
-	// draw_segment_horiz(start, end, fdf);
-
-	// start = end;
-	// end.x -= fdf->mtrx.segments.x;
-	// draw_segment(start, end, fdf);
-	// start = end;
-	// end.y -= fdf->mtrx.segments.y;
-	// draw_segment(start, end, fdf);
-	
 }
-
-// void	draw_segment(t_vec2 start, t_vec2 end, t_fdf *fdf)
-// {
-// 	t_vec2	d;
-// 	t_vec2	s;
-// 	t_vec2	err;
-
-// printf("\nstart x value in draw_segment: %f\n", fdf->mtrx.start_draw.x);
-// 	set_d(start, end, &d);
-// 	err.x = d.x + d.y;
-// 	set_s(start, end, &s);
-// 	while (true)
-// 	{
-// 		mlx_put_pixel(fdf->img, start.x , start.y , rgba(0.3));
-// 		printf("\nstart x value in draw_segment while : %f\n", fdf->mtrx.start_draw.x);
-// 		if (start.x == end.x && start.y == end.y)
-// 			break;
-// 		err.y = 2 * err.y;
-// 		if (err.y >= d.y)
-// 		{
-// 			err.x += d.y;
-// 			start.x += s.x;
-// 		} /* e_xy+e_x > 0 */
-// 		if (err.y <= d.x)
-// 		{
-// 			err.x += d.x;
-// 			start.y += s.y;
-// 		} /* e_xy+e_y < 0 */
-// 	}
-// }
 
 void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf)
 {
@@ -162,8 +118,7 @@ void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf)
 	y = start.y;
 
 	p = 2 * d.y - d.x;
-	// check if the conditions are Ok
-	while(x <= end.x)
+	while(x < end.x)
 	{
 		if(p >= 0)
 		{
@@ -187,18 +142,15 @@ void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf)
 
 	d.x = end.x - start.x;
 	d.y = end.y - start.y;
-
 	x = start.x;
 	y = start.y;
-
 	p = 2 * d.y - d.x;
-	// check if the conditions are Ok
-	while(y <= end.y)
+	while(y < end.y)
 	{
 		if(p >= 0)
 		{
 			mlx_put_pixel(fdf->img, x, y, rgba(0.3));
-			y = y + 1;
+			//y = y + 1;
 			p = p + 2 * d.y - 2 * d.x;
 		}
 		else
@@ -208,29 +160,4 @@ void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf)
 		}
 		y = y + 1;
 	}
-}
-
-void	draw_simple_line(t_fdf *fdf, int max)
-{
-	int	start;
-	start = fdf->img->instances->y;
-	while (fdf->img->instances->x <= (max * 5))
-	{
-		//fdf->img->instances->x += 1;
-		fdf->img->instances->y += 1;
-		mlx_put_pixel(fdf->img, fdf->img->instances->x, 
-			fdf->img->instances->y, BLU_CB); 
-	}
-	fdf->img->instances->y = start;
-	while (fdf->img->instances->x <= (max * 5))
-	{
-		//fdf->img->instances->x += 1;
-		fdf->img->instances->y += 1;
-		mlx_put_pixel(fdf->img, fdf->img->instances->x, 
-			fdf->img->instances->y, BLU_CB); 
-	}
-	mlx_loop(fdf->mlx);
-	mlx_delete_image(fdf->mlx, fdf->img); // Once the application request an exit, cleanup.
-	mlx_terminate(fdf->mlx);
-	//free(fdf);
 }
