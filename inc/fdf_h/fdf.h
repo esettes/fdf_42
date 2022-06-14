@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 18:03:05 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/14 20:57:31 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ typedef struct s_mtrx
 {
 	int		**mtrx;
 	int		z;
-	int		zoom;
+	int		*zoom;
 	t_vec2	segments;
-	t_vec2	px_size;
-	t_vec2	start_draw;
-	t_vec2	end_draw;
+	t_vec2	*px_size;
+	t_vec2	*start_draw;
+	t_vec2	*end_draw;
 }				t_mtrx;
 
 /**
@@ -112,6 +112,8 @@ int		*str_to_int(char *str);
  * @return t_vec2 with the number of segments.
  */
 t_vec2	set_mtrx_size(int x, int y, t_mtrx *mtrx);
+void	init_map_props(t_fdf *fdf);
+void	free_props(t_fdf *fdf);
 /**
  * Sets the position of the first pixel to start drawing.
  * 
@@ -163,4 +165,5 @@ double	get_iso_pos_x(t_mtrx mtrx);
 double	get_iso_pos_y(t_mtrx mtrx);
 
 void	set_zoom(double x_delta, double y_delta, void *fdf_void);
+void	set_new_zoom(t_fdf *fdf);
 #endif

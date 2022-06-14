@@ -72,24 +72,24 @@ void	draw_outer_segments(t_fdf *fdf)
 
 	seg_iter.x = 0;
 	seg_iter.y = 0;
-	start.x = (int)fdf->mtrx.start_draw.x;
-	start.y = (int)fdf->mtrx.start_draw.y;
-	end.x = (int)fdf->mtrx.end_draw.x;
-	end.y = (int)fdf->mtrx.start_draw.y;
+	start.x = (int)fdf->mtrx.start_draw->x;
+	start.y = (int)fdf->mtrx.start_draw->y;
+	end.x = (int)fdf->mtrx.end_draw->x;
+	end.y = (int)fdf->mtrx.start_draw->y;
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
 		draw_segment_horiz(start, end, fdf);
-		start.y += fdf->mtrx.zoom;
-		end.y += fdf->mtrx.zoom;
+		start.y += *fdf->mtrx.zoom;
+		end.y += *fdf->mtrx.zoom;
 		seg_iter.y++;
 	}
-	start.y = round(fdf->mtrx.start_draw.y);
-	end.y = start.y + fdf->mtrx.px_size.y;
+	start.y = round(fdf->mtrx.start_draw->y);
+	end.y = start.y + fdf->mtrx.px_size->y;
 	while (seg_iter.x < fdf->mtrx.segments.x)
 	{
 		draw_segment_vert(start, end, fdf);
-		start.x += fdf->mtrx.zoom;
-		end.x += fdf->mtrx.zoom;
+		start.x += *fdf->mtrx.zoom;
+		end.x += *fdf->mtrx.zoom;
 		seg_iter.x++;
 	}
 }
