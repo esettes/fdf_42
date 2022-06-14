@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 20:15:47 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/14 19:55:58 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,38 @@
 
 void	start_mlx(t_fdf *fdf)
 {
-//	print_mesh(fdf);
+	double	aument;
+	t_mtrx	mtrx;
+
+	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
+	obtain_split_fd(fdf->fd, &mtrx);
+	fdf->mtrx = mtrx;
+	aument = 1.5;
+
+	
+	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+
+	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
+	mlx_scroll_hook(fdf->mlx, &set_zoom, NULL);
+	
 	draw_outer_segments(fdf);
 	draw_menu(fdf);
 	
-//	print_mesh_at_origin(fdf);
 	
 	mlx_loop(fdf->mlx);
-	mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
-	mlx_terminate(fdf->mlx);
+	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
+	// mlx_terminate(fdf->mlx);
 }
+
+void	loop_fdf()
+{
+	
+}
+
+// void	resize_mesh(t_fdf *fdf)
+// {
+	
+// }
 
 /*
 void	transform_iso(t_mtrx *mtrx)

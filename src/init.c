@@ -6,31 +6,31 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 20:13:26 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:26:30 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 
-void	fdf_construct(t_fdf *fdf, int fd)//, char *mp)
-{
-	double		aument;
-	t_mtrx	mtrx;
-	t_vec2	img_offset;
+// void	fdf_construct(t_fdf *fdf, int fd)//, char *mp)
+// {
+// //	double		aument;
+// 	// t_mtrx	mtrx;
+// 	// // t_vec2	img_offset;
 
-	aument = 1.5;
-	obtain_split_fd(fd, &mtrx);
-	fdf->mtrx = mtrx;
+// 	// // aument = 1.5;
+// 	// obtain_split_fd(fd, &mtrx);
+// 	// fdf->mtrx = mtrx;
 	
-	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
-	fdf->img = mlx_new_image(fdf->mlx, round(WIDTH * aument), round(HEIGHT * aument));    // Creates a new image.
-	img_offset.x = ((WIDTH * aument) - WIDTH) / 2;
-	img_offset.y = ((HEIGHT * aument) - HEIGHT) / 2;
-	mlx_image_to_window(fdf->mlx, fdf->img, img_offset.x, img_offset.y);   // Adds an image to the render queue.
-	fdf->img->instances->x = 0;
-	fdf->img->instances->y = 0;
-}
+// 	// // fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
+// 	// // fdf->img = mlx_new_image(fdf->mlx, round(WIDTH * aument), round(HEIGHT * aument));    // Creates a new image.
+// 	// // img_offset.x = ((WIDTH * aument) - WIDTH) / 2;
+// 	// // img_offset.y = ((HEIGHT * aument) - HEIGHT) / 2;
+// 	// // mlx_image_to_window(fdf->mlx, fdf->img, img_offset.x, img_offset.y);   // Adds an image to the render queue.
+// 	// fdf->img->instances->x = 0;
+// 	// fdf->img->instances->y = 0;
+// }
 
 
 // void	fdf_init(t_data img)

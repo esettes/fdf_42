@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 20:12:07 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:03:05 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ typedef struct s_vec2
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 
- * @param mtrx Mesh integer array.
- * @param z Mesh's depth.
- * @param zoom Value that sets the distance between adjoining vertices.
- * @param size Mesh size (x, y).
+ * @param[in] mtrx Mesh integer array.
+ * @param[in] z Mesh's depth.
+ * @param[in] zoom Value that sets the distance between adjoining vertices.
+ * @param[in] size Mesh size (x, y).
  */
 typedef struct s_mtrx
 {
@@ -69,6 +69,7 @@ typedef struct s_fdf
 	mlx_t		*mlx;
 	t_mtrx		mtrx;
 	mlx_image_t	*img;		// incluye posic
+	int			fd;
 }				t_fdf;
 
 /* Initializes the main parameters of the application */
@@ -101,9 +102,14 @@ int		*str_to_int(char *str);
 /*			Map properties			*/
 
 /**
- * Saves the size of the wire-frame of the main program.
+ * Sets the pixels of the mesh to calculate where start to print,
+ * and the number of segments.
  * 
- * @return t_vec2 with the mtrx size.
+ * @param[in] x Number of vertical segments.
+ * @param[in] y Number of horizontal segments.
+ * @param[in] mtrx struct matrix.
+ * 
+ * @return t_vec2 with the number of segments.
  */
 t_vec2	set_mtrx_size(int x, int y, t_mtrx *mtrx);
 /**
@@ -152,7 +158,9 @@ void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y);
 int 	menu_rgb(int value);
 
 /*			ISO			*/
-void	print_mesh_iso(t_fdf *fdf);
+t_vec2	print_mesh_iso(t_fdf *fdf);
 double	get_iso_pos_x(t_mtrx mtrx);
 double	get_iso_pos_y(t_mtrx mtrx);
+
+void	set_zoom(double x_delta, double y_delta, void *fdf_void);
 #endif

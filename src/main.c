@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 15:42:25 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/14 19:55:27 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char	*argv[])
 {
 	t_fdf	*fdf;
-	int fd;
+//	int fd;
 	int i;
 
 	i = 0;
@@ -28,20 +28,19 @@ int	main(int argc, char	*argv[])
 		printf("width: %d\n", WIDTH);
 		printf("HEIGHT: %d\n\n", HEIGHT);
 //		fd = open("maps/100-6.fdf", O_RDONLY);
-		fd = open(argv[1], O_RDONLY);
-		if (fd <= 0)
+		fdf = (t_fdf *)malloc(sizeof(t_fdf));
+		fdf->fd = open(argv[1], O_RDONLY);
+		if (fdf->fd <= 0)
 		{
 			exit(EXIT_FAILURE);
 			return (EXIT_FAILURE);
 		}
-		fdf = (t_fdf *)malloc(sizeof(t_fdf));
-
-		fdf_construct(fdf, fd);
+		//mlx_scroll_hook(fdf->mlx, &set_zoom, fdf);
+		//fdf_construct(fdf, fdf->fd);
 		start_mlx(fdf);
 		if (!fdf->mlx)
 			exit(EXIT_FAILURE);
-		
-		close(fd);
+		close(fdf->fd);
 		return (EXIT_SUCCESS);
 	}
 	exit(EXIT_FAILURE);

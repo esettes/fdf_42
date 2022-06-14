@@ -76,10 +76,6 @@ void	draw_outer_segments(t_fdf *fdf)
 	start.y = (int)fdf->mtrx.start_draw.y;
 	end.x = (int)fdf->mtrx.end_draw.x;
 	end.y = (int)fdf->mtrx.start_draw.y;
-	printf("start.x before draw seg horizontal: %f\n", start.x);
-	printf("start.y before draw seg horizontal: %f\n", start.y);
-	printf("end.x before draw seg horizontal: %f\n", end.x);
-	printf("end.y before draw seg horizontal: %f\n", end.y);
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
 		draw_segment_horiz(start, end, fdf);
@@ -87,16 +83,8 @@ void	draw_outer_segments(t_fdf *fdf)
 		end.y += fdf->mtrx.zoom;
 		seg_iter.y++;
 	}
-	printf("start.x before draw seg horizontal: %f\n", start.x);
-	printf("start.y before draw seg horizontal: %f\n\n", start.y);
-	printf("end.x before draw seg horizontal: %f\n", end.x);
-	printf("end.y before draw seg horizontal: %f\n\n", end.y);
-
 	start.y = round(fdf->mtrx.start_draw.y);
 	end.y = start.y + fdf->mtrx.px_size.y;
-	//end.y = round(fdf->mtrx.start_draw.y + fdf->mtrx.px_size.y - fdf->mtrx.zoom);
-	printf("end.x before draw seg horizontal: %f\n", end.x);
-	printf("end.y before draw seg horizontal: %f\n", end.y);
 	while (seg_iter.x < fdf->mtrx.segments.x)
 	{
 		draw_segment_vert(start, end, fdf);
@@ -122,13 +110,13 @@ void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf)
 	{
 		if(p >= 0)
 		{
-			mlx_put_pixel(fdf->img, x, y, rgba(0.3));
+			mlx_put_pixel(fdf->img, x, y, rgba(0));
 			y = y + 1;
 			p = p + 2 * d.y - 2 * d.x;
 		}
 		else
 		{
-			mlx_put_pixel(fdf->img, x, y, rgba(0.3));
+			mlx_put_pixel(fdf->img, x, y, rgba(0));
 			p = p + 2 * d.y;
 		}
 		x = x + 1;
@@ -149,13 +137,13 @@ void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf)
 	{
 		if(p >= 0)
 		{
-			mlx_put_pixel(fdf->img, x, y, rgba(0.3));
+			mlx_put_pixel(fdf->img, x, y, rgba(0));
 			//y = y + 1;
 			p = p + 2 * d.y - 2 * d.x;
 		}
 		else
 		{
-			mlx_put_pixel(fdf->img, x, y, rgba(0.3));
+			mlx_put_pixel(fdf->img, x, y, rgba(0));
 			p = p + 2 * d.y;
 		}
 		y = y + 1;

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:21:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 16:06:29 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/14 19:46:49 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_vec2	set_mtrx_size(int x, int y, t_mtrx *mtrx)
 {
 	t_vec2 segments;
-	mtrx->zoom = 10;
+	mtrx->zoom = 5;
 
 	if (mtrx->zoom > 0)
 	{

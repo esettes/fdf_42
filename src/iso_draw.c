@@ -6,18 +6,19 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:27:12 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 19:40:36 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/14 16:15:42 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	print_mesh_iso(t_fdf *fdf)
+t_vec2	print_mesh_iso(t_fdf *fdf)
 {
 	t_vec2	iso_pos;
 
 	iso_pos.x = get_iso_pos_x(fdf->mtrx);
 	iso_pos.y = get_iso_pos_y(fdf->mtrx);
+	return (iso_pos);
 }
 
 double	get_iso_pos_x(t_mtrx mtrx)
