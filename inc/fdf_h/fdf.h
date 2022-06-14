@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 20:57:31 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:18:48 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ typedef struct s_mtrx
 {
 	int		**mtrx;
 	int		z;
-	int		*zoom;
+	int		zoom;
 	t_vec2	segments;
-	t_vec2	*px_size;
-	t_vec2	*start_draw;
-	t_vec2	*end_draw;
+	t_vec2	px_size;
+	t_vec2	start_draw;
+	t_vec2	end_draw;
 }				t_mtrx;
 
 /**

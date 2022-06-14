@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 19:55:58 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:13:40 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	start_mlx(t_fdf *fdf)
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
 
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
-	mlx_scroll_hook(fdf->mlx, &set_zoom, NULL);
+	mlx_scroll_hook(fdf->mlx, &set_zoom, fdf);
 	
 	draw_outer_segments(fdf);
 	draw_menu(fdf);
