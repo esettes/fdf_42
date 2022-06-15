@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 20:39:14 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:12:19 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,8 @@ void	set_new_limits(t_fdf *fdf);
 /***		Print map		***/
 
 void	draw_outer_segments(t_fdf *fdf);
-void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf);
-void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf);
+void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
+void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
 
 /*			Draw tools			*/
 

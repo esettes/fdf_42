@@ -47,7 +47,7 @@ void	draw_outer_segments(t_fdf *fdf)
 	img_size.y = (int)fdf->img->height;
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
-		draw_segment_horiz(start, end, fdf);
+		draw_segment_horiz(start, end, fdf, 0);
 		start.y += fdf->mtrx.zoom;
 		end.y += fdf->mtrx.zoom;
 		seg_iter.y++;
@@ -56,14 +56,14 @@ void	draw_outer_segments(t_fdf *fdf)
 	end.y = start.y + fdf->mtrx.px_size.y;
 	while (seg_iter.x < fdf->mtrx.segments.x)
 	{
-		draw_segment_vert(start, end, fdf);
+		draw_segment_vert(start, end, fdf, 0);
 		start.x += fdf->mtrx.zoom;
 		end.x += fdf->mtrx.zoom;
 		seg_iter.x++;
 	}
 }
 
-void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf)
+void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf, double color)
 {
 	int p, x, y;
 	t_vec2	d;
@@ -79,20 +79,20 @@ void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf)
 	{
 		if(p >= 0)
 		{
-			mlx_put_pixel(fdf->img, x, y, rgba(0));
+			mlx_put_pixel(fdf->img, x, y, rgba(color));
 			y = y + 1;
 			p = p + 2 * d.y - 2 * d.x;
 		}
 		else
 		{
-			mlx_put_pixel(fdf->img, x, y, rgba(0));
+			mlx_put_pixel(fdf->img, x, y, rgba(color));
 			p = p + 2 * d.y;
 		}
 		x = x + 1;
 	}
 }
 
-void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf)
+void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf, double color)
 {
 	int p, x, y;
 	t_vec2	d;
@@ -106,13 +106,13 @@ void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf)
 	{
 		if(p >= 0)
 		{
-			mlx_put_pixel(fdf->img, x, y, rgba(0));
+			mlx_put_pixel(fdf->img, x, y, rgba(color));
 			//y = y + 1;
 			p = p + 2 * d.y - 2 * d.x;
 		}
 		else
 		{
-			mlx_put_pixel(fdf->img, x, y, rgba(0));
+			mlx_put_pixel(fdf->img, x, y, rgba(color));
 			p = p + 2 * d.y;
 		}
 		y = y + 1;

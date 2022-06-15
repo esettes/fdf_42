@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 18:10:57 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:05:10 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,9 @@ void	set_zoom(double x_delta, double y_delta, void *fdf_void)
 	t_fdf	*fdf;
 	
 	fdf = (t_fdf *)fdf_void;
-	//free_props(fdf);
-//	mlx_delete_image(fdf->mlx, fdf->img);
-	if (!fdf_void)
-		printf("ok");
 	if (y_delta > 0)
 	{
-		puts("Scroll ++y_delta!");
-		if (fdf->mtrx.zoom <= 20)
+		if (fdf->mtrx.zoom <= 40)
 		{
 			fdf->mtrx.zoom += 1;
 			modify_mesh(fdf);
@@ -32,7 +27,6 @@ void	set_zoom(double x_delta, double y_delta, void *fdf_void)
 	}
 	else if (y_delta < 0)
 	{
-		puts("Scroll --y_delta!");
 		if (fdf->mtrx.zoom >= 0)
 		{
 			fdf->mtrx.zoom -= 1;
