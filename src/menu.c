@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 15:23:36 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 18:28:35 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y)
 	t_vec2	draw;
 	t_vec2	aux;
 
-	draw.x = round(WIDTH / 1.50);
-	draw.y = round(HEIGHT / 1.2);
+	draw.x = round(WIDTH / 4);
+	draw.y = round(HEIGHT / 6);
 	aux.x = draw.x;
 	aux.y = draw.y;
 	while (draw.x  <= max_x)
@@ -34,7 +34,7 @@ void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y)
 		}
 		draw.x += 1;
 	}
-	mlx_put_string(fdf.mlx, "Menu", aux.x + 10, aux.y + 10);
+	mlx_put_string(fdf.mlx, "...", aux.x + 10, aux.y + 10);
 }
 
 void	draw_menu(t_fdf *fdf)

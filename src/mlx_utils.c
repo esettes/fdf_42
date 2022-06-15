@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 15:34:50 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 18:28:12 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	loop_fdf(t_fdf *fdf)
 
 void	create_image(t_fdf *fdf)
 {
-	double	aument;
+	double	aum;
 	//double	multip;
 	t_vec2	img_offset;
 
@@ -35,13 +35,13 @@ void	create_image(t_fdf *fdf)
 	// 	multip = fdf->mtrx.segments.y;
 	// else
 	// 	multip = fdf->mtrx.segments.x;
-	aument = fdf->mtrx.zoom;
+	aum = 4;
 	if (fdf->img)
 		mlx_delete_image(fdf->mlx, fdf->img);
-	fdf->img = mlx_new_image(fdf->mlx, round(WIDTH * aument), round(HEIGHT * aument));    // Creates a new image.
-	img_offset.x = ((WIDTH * aument) - WIDTH) / 2;
-	img_offset.y = ((HEIGHT * aument) - HEIGHT) / 2;
-	mlx_image_to_window(fdf->mlx, fdf->img, img_offset.x, img_offset.y);   // Adds an image to the render queue.
+	fdf->img = mlx_new_image(fdf->mlx, WIDTH * aum, HEIGHT * aum);    // Creates a new image.
+	img_offset.x = ((WIDTH * aum) - WIDTH) / 8;
+	img_offset.y = ((HEIGHT * aum) - HEIGHT) / 8;
+	mlx_image_to_window(fdf->mlx, fdf->img, img_offset.x - X_ORIGIN_OFF * aum, img_offset.y - Y_ORIGIN_OFF * aum);   // Adds an image to the render queue.
 }
 
 void	draw_image(t_fdf *fdf)

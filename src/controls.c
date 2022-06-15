@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 15:17:40 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 18:10:57 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	set_zoom(double x_delta, double y_delta, void *fdf_void)
 	if (y_delta > 0)
 	{
 		puts("Scroll ++y_delta!");
-		if (fdf->mtrx.zoom <= 100)
+		if (fdf->mtrx.zoom <= 20)
 		{
 			fdf->mtrx.zoom += 1;
 			modify_mesh(fdf);
