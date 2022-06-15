@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 20:30:35 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:51:16 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,13 @@ void	loop_fdf(t_fdf *fdf)
 
 void	create_image(t_fdf *fdf)
 {
-	double	aum;
-	//double	multip;
-	//t_vec2	img_offset;
 	t_vec2	save_aux;
 
-	
-
-	// if (fdf->mtrx.segments.x < fdf->mtrx.segments.y)
-	// 	multip = fdf->mtrx.segments.y;
-	// else
-	// 	multip = fdf->mtrx.segments.x;
-	aum = 4;
 	if (fdf->img)
 		mlx_delete_image(fdf->mlx, fdf->img);
-	fdf->img = mlx_new_image(fdf->mlx, WIDTH * aum, HEIGHT * aum);    // Creates a new image.
-	//img_offset.x = ((WIDTH * aum) - WIDTH) / aum;
-	//img_offset.y = ((HEIGHT * aum) - HEIGHT) / aum;
-
-	
-	// img_offset.x = ((WIDTH * aum) - WIDTH) / aum;
-	// img_offset.y = ((HEIGHT * aum) - HEIGHT) / aum;
-	//mlx_image_to_window(fdf->mlx, fdf->img, img_offset.x - X_ORIGIN_OFF * aum, img_offset.y - Y_ORIGIN_OFF * aum);
+	fdf->img = mlx_new_image(fdf->mlx, WIDTH * IMG_AUMENT, HEIGHT * IMG_AUMENT);    // Creates a new image.
 	save_aux.x  = ((WIDTH * IMG_AUMENT) / 2) - (WIDTH /2);
-	// img_offset.x = ((WIDTH * IMG_AUMENT) / 2) - save_aux.x;
 	save_aux.y  = ((HEIGHT * IMG_AUMENT) / 2) - (HEIGHT /2);
-	// img_offset.y = ((HEIGHT * IMG_AUMENT) / 2) - save_aux.y;
-	//img_offset.x = ((WIDTH * aum) / 2) - (WIDTH /2) -200;
-	//img_offset.y = ((HEIGHT * aum) / 2) - (HEIGHT /2) - 200;
-	// printf("\nIn create_image img_offset.x: %f\n", img_offset.x);
-	// printf("\nIn create_image img_offset.y: %f\n", img_offset.y);
-	printf("\nstart put img x: %f\n", save_aux.x);
-	printf("\nstart put img y: %f\n", save_aux.y);
 	mlx_image_to_window(fdf->mlx, fdf->img, -save_aux.x, -save_aux.y);   // Adds an image to the render queue.
 }
 

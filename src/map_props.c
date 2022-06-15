@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:21:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 20:23:41 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:53:05 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,6 @@ void	set_new_limits(t_fdf *fdf)
 	printf("\nIn set_new_limits start draw Y: %f\n", fdf->mtrx.start_draw.y);
 	fdf->mtrx.end_draw.x = fdf->mtrx.start_draw.x + fdf->mtrx.px_size.x;
 	fdf->mtrx.end_draw.y = fdf->mtrx.start_draw.y + fdf->mtrx.px_size.y;
+	printf("\nIn set_new_limits end draw X: %f\n", fdf->mtrx.end_draw.x);
+	printf("\nIn set_new_limits end draw Y: %f\n", fdf->mtrx.end_draw.y);
 }
