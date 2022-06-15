@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 14:59:03 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 17:22:32 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define WIDTH		1600
 # define HEIGHT		900
-# define OFFSET		50
+# define IMG_OFF		2
 # define X_ORIGIN_OFF	( WIDTH / 2 )
 # define Y_ORIGIN_OFF	( HEIGHT / 2 )
 // # define ORIGIN_OFF	( sqrt(pow(HEIGHT, 2) + pow(WIDTH, 2)) / 2 )
@@ -73,10 +73,15 @@ typedef struct s_fdf
 }				t_fdf;
 
 /* Initializes the main parameters of the application */
-void	fdf_construct(t_fdf *fdf, int fd);
+void	init_mlx(t_fdf *fdf);
 /* Calls all functions that need mlx_loop to run */
-void	start_mlx(t_fdf *fdf);
+void	loop_fdf(t_fdf *fdf);
 void	create_image(t_fdf *fdf);
+void	draw_image(t_fdf *fdf);
+/**
+ * Call create_image() and draw_image().
+ */
+void	modify_mesh(t_fdf *fdf);
 
 /*			Read map			*/
 
@@ -122,6 +127,7 @@ void	free_props(t_fdf *fdf);
  * @return t_vec2 with the dummy origin position.
  */
 void	set_limits(t_mtrx *mtrx);
+void	set_new_limits(t_fdf *fdf);
 
 /***		Print map		***/
 

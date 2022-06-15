@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/13 15:27:37 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:23:36 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ void	draw_menu(t_fdf *fdf)
 {
 	print_box_menu(*fdf, MENUDGREY, WIDTH - 20, HEIGHT - 20);
 }
- 
