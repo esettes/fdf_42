@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 21:13:40 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 14:57:58 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,30 @@ void	start_mlx(t_fdf *fdf)
 
 	
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
-
+	
+	
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
 	mlx_scroll_hook(fdf->mlx, &set_zoom, fdf);
 	
+	
 	draw_outer_segments(fdf);
 	draw_menu(fdf);
-	
 	
 	mlx_loop(fdf->mlx);
 	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
 	// mlx_terminate(fdf->mlx);
 }
 
-void	loop_fdf()
+void	create_image(t_fdf *fdf)
 {
-	
+	double	aument;
+	t_vec2	img_offset;
+
+	aument = 2;
+	fdf->img = mlx_new_image(fdf->mlx, round(WIDTH * aument), round(HEIGHT * aument));    // Creates a new image.
+	img_offset.x = ((WIDTH * aument) - WIDTH) / 2;
+	img_offset.y = ((HEIGHT * aument) - HEIGHT) / 2;
+	mlx_image_to_window(fdf->mlx, fdf->img, img_offset.x, img_offset.y);   // Adds an image to the render queue.
 }
 
 // void	resize_mesh(t_fdf *fdf)

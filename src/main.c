@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 20:51:16 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 14:36:57 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ int	main(int argc, char	*argv[])
 	exit(EXIT_FAILURE);
 	return (EXIT_FAILURE);
 } 
-

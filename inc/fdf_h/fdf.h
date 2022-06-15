@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 21:18:48 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 14:59:03 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ typedef struct s_fdf
 void	fdf_construct(t_fdf *fdf, int fd);
 /* Calls all functions that need mlx_loop to run */
 void	start_mlx(t_fdf *fdf);
-
-void	draw_simple_line(t_fdf *fdf, int max);
+void	create_image(t_fdf *fdf);
 
 /*			Read map			*/
 
@@ -126,24 +125,9 @@ void	set_limits(t_mtrx *mtrx);
 
 /***		Print map		***/
 
-void	print_mesh(t_fdf *fdf);
-/**
- * Prints map without depth at the window dummy origin. It moves
- * the first pixel to print at the middle of the window, and then 
- * substracts sizemap x and y to it.
- */
-void	print_mesh_at_origin(t_fdf *fdf);
-
-
 void	draw_outer_segments(t_fdf *fdf);
 void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf);
 void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf);
-void	set_sx(int x0, int x1, int *sx);
-void	set_sy(int y0, int y1, int *sy);
-
-void	set_s(t_vec2 start, t_vec2 end, t_vec2 *s);
-void	set_d(t_vec2 start, t_vec2 end, t_vec2 *d);
-void	set_pixel(t_fdf *fdf);
 
 /*			Draw tools			*/
 

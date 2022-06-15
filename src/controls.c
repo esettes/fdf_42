@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 21:22:13 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/15 14:51:18 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ void	set_zoom(double x_delta, double y_delta, void *fdf_void)
 		if (fdf->mtrx.zoom <= 100)
 		{
 			fdf->mtrx.zoom += 1;
-			//set_new_zoom(fdf);
+			mlx_delete_image(fdf->mlx, fdf->img);
+			fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+			mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
+			set_new_zoom(fdf);
 			draw_outer_segments(fdf);
+			draw_menu(fdf);
 		}
 	}
 	else if (y_delta < 0)
@@ -37,8 +41,12 @@ void	set_zoom(double x_delta, double y_delta, void *fdf_void)
 		if (fdf->mtrx.zoom >= 0)
 		{
 			fdf->mtrx.zoom -= 1;
-			//set_new_zoom(fdf);
+			mlx_delete_image(fdf->mlx, fdf->img);
+			fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+			mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
+			set_new_zoom(fdf);
 			draw_outer_segments(fdf);
+			draw_menu(fdf);
 		}
 	}
 	if (x_delta < 0)
