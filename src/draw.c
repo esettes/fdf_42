@@ -83,7 +83,10 @@ void	test_draw_iso(t_fdf *fdf)
 
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
-		
+		/* Dejar coordenadas tal cual salen de set_mesh_iso
+		Luego "partir" por la mitad el cuadrado, y hacer un corte desde la esquina derecha hasta
+		el vertice donde se corta la parte de abajo.
+		lo que sobra, colocarlo por orden en la esquina superior izquierda, creando así la perspectiva*/
 		new_start.x += (fdf->mtrx.zoom ) * sin(30);// - (fdf->mtrx.segments.y / 2 * sin(30));
 		new_start.y += (fdf->mtrx.zoom) * cos(30);
 		new_end.x += (fdf->mtrx.zoom ) * sin(30);
