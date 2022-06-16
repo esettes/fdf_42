@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/16 19:23:39 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/16 20:40:05 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void	draw_outer_segments(t_fdf *fdf);
 void	test_draw_iso(t_fdf *fdf);
 void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
 void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
+void	draw_segment_negative(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
 /**
  * Returns an hex color from red (value < 0.1) , through green,
  *  to blue (value > 0.8) 
