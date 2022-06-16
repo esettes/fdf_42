@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 21:12:19 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:23:39 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,20 @@
 # include "get_next_line_bonus.h"
 # include "libft.h"
 # include "colors.h"
+# include "macros_fdf.h"
 #include <memory.h>
-
-# define WIDTH		1600
-# define HEIGHT		900
-# define IMG_AUMENT		4
-# define X_ORIGIN_OFF	( WIDTH / 2 )
-# define Y_ORIGIN_OFF	( HEIGHT / 2 )
-# define IMG_CENTER_X	(( WIDTH * IMG_AUMENT) - (WIDTH / IMG_AUMENT ))
-# define IMG_CENTER_Y	(( HEIGHT * IMG_AUMENT) - (HEIGHT / IMG_AUMENT ))
 
 typedef struct s_vec2
 {
 	double	x;
 	double	y;
 }				t_vec2;
+
+typedef struct s_img_props
+{
+	t_vec2	middle_img;
+}				t_img_props;
+
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 
@@ -72,7 +71,6 @@ typedef struct s_fdf
 	mlx_image_t	*img;		// incluye posic
 	int			fd;
 }				t_fdf;
-
 /* Initializes the main parameters of the application */
 void	init_mlx(t_fdf *fdf);
 /* Calls all functions that need mlx_loop to run */
@@ -83,9 +81,6 @@ void	draw_image(t_fdf *fdf);
  * Call create_image() and draw_image().
  */
 void	modify_mesh(t_fdf *fdf);
-
-/*			Read map			*/
-
 char	**obtain_lines(int fd);
 /**
  * Receives the previously opened fd, which is to be converted to a double
@@ -103,9 +98,6 @@ int		ft_count(char const *s, char c);
  * Returns the conversion of *str to an integer string
  */
 int		*str_to_int(char *str);
-
-/*			Map properties			*/
-
 /**
  * Sets the pixels of the mesh to calculate where start to print,
  * and the number of segments.
@@ -129,32 +121,22 @@ void	free_props(t_fdf *fdf);
  */
 void	set_limits(t_mtrx *mtrx);
 void	set_new_limits(t_fdf *fdf);
-
-/***		Print map		***/
-
 void	draw_outer_segments(t_fdf *fdf);
+void	test_draw_iso(t_fdf *fdf);
 void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
 void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
-
-/*			Draw tools			*/
-
 /**
  * Returns an hex color from red (value < 0.1) , through green,
  *  to blue (value > 0.8) 
  */
 int		rgba(double value);
-
-/*			Print menu			*/
-
 void	draw_menu(t_fdf *fdf);
 void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y);
 int 	menu_rgb(int value);
-
-/*			ISO			*/
-t_vec2	print_mesh_iso(t_fdf *fdf);
+t_vec2	set_mesh_iso(t_fdf *fdf);
 double	get_iso_pos_x(t_mtrx mtrx);
 double	get_iso_pos_y(t_mtrx mtrx);
-
 void	set_zoom(double x_delta, double y_delta, void *fdf_void);
 void	set_new_zoom(t_fdf *fdf);
+
 #endif

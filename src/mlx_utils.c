@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 20:51:16 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:24:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	loop_fdf(t_fdf *fdf)
 	mlx_scroll_hook(fdf->mlx, &set_zoom, fdf);
 	
 	
-	draw_outer_segments(fdf);
+	//draw_outer_segments(fdf);
+	test_draw_iso(fdf);
 	draw_menu(fdf);
 	
 	mlx_loop(fdf->mlx);
@@ -40,7 +41,8 @@ void	create_image(t_fdf *fdf)
 void	draw_image(t_fdf *fdf)
 {
 	set_new_zoom(fdf);
-	draw_outer_segments(fdf);
+	//draw_outer_segments(fdf);
+	test_draw_iso(fdf);
 	draw_menu(fdf);
 }
 
