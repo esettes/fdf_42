@@ -87,7 +87,8 @@ void	test_draw_iso(t_fdf *fdf)
 	new_end.y += fdf->mtrx.px_size.y;
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
-		draw_segment_horiz(new_start, new_end, fdf, 0);
+		draw_segment_horiz(new_start, new_end, fdf, 0.6);
+		new_start.x -= (fdf->mtrx.segments.x / 2) * cos(30) - (fdf->mtrx.segments.y / 2 * sin(30));
 		new_start.y += fdf->mtrx.zoom;
 		new_end.y += fdf->mtrx.zoom;
 		seg_iter.y++;
