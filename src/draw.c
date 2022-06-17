@@ -79,23 +79,24 @@ void	test_draw_iso(t_fdf *fdf)
 	seg_iter.y = 0;
 	
 	aux.x = (IMG_CENTER_X - (int)fdf->mtrx.start_draw.x) * 0.99;
+	aux.y = (IMG_CENTER_Y - (int)fdf->mtrx.start_draw.y) * 0.99;
 
 	start.x = (int)fdf->mtrx.start_draw.x + aux.x;
 	start.y = (int)fdf->mtrx.start_draw.y;
 
 
 	end.x = (int)fdf->mtrx.end_draw.x + aux.x;
-	end.y = (int)fdf->mtrx.start_draw.y ;
+	end.y = (int)fdf->mtrx.start_draw.y + aux.y;
 
 	img_size.x = (int)fdf->img->width;
 	img_size.y = (int)fdf->img->height;
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
 		draw_segment_horiz(start, end, fdf, 0);
-		start.x -= fdf->mtrx.zoom * cos (45);// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
-		start.y += fdf->mtrx.zoom * sin(45);// * 0.5;
-		end.x -= fdf->mtrx.zoom * cos (45);// * 0.5;
-		end.y += fdf->mtrx.zoom * sin (45);
+		start.x -= fdf->mtrx.zoom * cos (45) * 1.9;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
+		start.y += fdf->mtrx.zoom * sin(45) * 0.6;
+		end.x -= fdf->mtrx.zoom * cos (45) * 1.9;
+		end.y += fdf->mtrx.zoom * sin (45) * 0.6;
 		
 		seg_iter.y++;
 	}
