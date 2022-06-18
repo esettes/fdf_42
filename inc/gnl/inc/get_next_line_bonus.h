@@ -23,6 +23,9 @@
 # endif
 # define TRUE 1
 # define FALSE 0
+# ifndef OPEN_MAX
+#  define OPEN_MAX 10
+# endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen_eol(const char *s, int lineLenght);

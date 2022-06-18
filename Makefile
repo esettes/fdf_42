@@ -29,14 +29,19 @@ OBJS	= $(addprefix $(OBJDIR), $(SRCNAMES:.c=.o))
 GNL	= ./inc/gnl/gnl.a
 LIBFT	= ./inc/libft/libft.a
 LIBX42	= ./inc/MLX42/libmlx42.a
+COMPS	= $(GNL) $(LIBFT) $(LIBX42)
 
+
+
+#UNAME_S := $(shell uname -s)
+#ifeq ($(UNAME_S), Linux)
+#		include Makefile_Unix.mk
+#else ifeq ($(UNAME_S), Darwin)
 ifeq ($(OS), Darwin)
 	LIBX42_FLAGS	=	-I include -lglfw -L "/Users/${USER}/.brew/opt/glfw/lib/"
-##endif
-##ifeq ($(OS), Windows_NT)
-##	LIBX42_FLAGS	=	-I include -lglfw3 -lopengl32 -lgdi32 -L "C:/GLFW/include/GLFW/"
 else
-	LIBX42_FLAGS	=	-I include -ldl -lglfw
+	LIBX42_FLAGS	=	-I include -ldl -lglfw -lm 	
+#-lcs50 #-L #/usr/local/lib64/ 
 endif
 
 
@@ -55,8 +60,9 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 	@$(CC) $(DEB) $(CFLAGS) $(ALLINC) -o $@ -c $<
 	@echo "${LWHITE}Compiling $@ ${LGREEN}✓\033[0m"
 
+#Change libx42_flags position at the end of the coommand
 $(NAME):	$(OBJS)
-	@$(CC) $(DEB) $(CFLAGS) $(LIBX42_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(LIBX42)
+	@$(CC) $(DEB) $(CFLAGS)  -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(LIBX42) $(LIBX42_FLAGS) 
 	@echo "${BWHITE}Compiling all\t${GREEN}[OK]\033[0m" 
 
 $(LIBFT):
@@ -68,6 +74,8 @@ $(GNL):
 
 $(LIBX42):
 	@make -C $(dir $(LIBX42))
+
+LD_DEBUG=all
 
 clean:
 	@rm -rf *.dSYM ${OBJDIR}*.o

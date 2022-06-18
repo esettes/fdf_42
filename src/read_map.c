@@ -96,14 +96,12 @@ int	*str_to_int(char *str)
 	int		tmp;
 	int		*int_mtrx;
 	int		j;
-	int		aux;
 
 	j = 0;
 	ch_aux = ft_split(str, ' ');
 	while (ch_aux[j])
 		j++;
 	int_mtrx = malloc(sizeof(int) * j);
-	aux = j;
 	j = 0;
 	while (ch_aux[j])
 	{

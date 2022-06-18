@@ -36,8 +36,6 @@ void	draw_outer_segments(t_fdf *fdf)
 	t_vec2	end;
 	t_vec2	seg_iter;
 
-	t_vec2	img_size;
-
 	seg_iter.x = 0;
 	seg_iter.y = 0;
 	start.x = (int)fdf->mtrx.start_draw.x;
@@ -45,8 +43,6 @@ void	draw_outer_segments(t_fdf *fdf)
 	end.x = (int)fdf->mtrx.end_draw.x;
 	end.y = (int)fdf->mtrx.start_draw.y;
 
-	img_size.x = (int)fdf->img->width;
-	img_size.y = (int)fdf->img->height;
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
 		draw_segment_horiz(start, end, fdf, 0);
@@ -71,7 +67,7 @@ void	test_draw_iso(t_fdf *fdf)
 	t_vec2	end;
 	t_vec2	seg_iter;
 	t_vec2 	aux;
-	t_vec2	aux_vert;
+//	t_vec2	aux_vert;
 
 	seg_iter.x = 0;
 	seg_iter.y = 0;
@@ -98,8 +94,8 @@ void	test_draw_iso(t_fdf *fdf)
 		
 		seg_iter.y++;
 	}
-	aux_vert.x = (IMG_CENTER_X - (int)fdf->mtrx.end_draw.x) * 0.99;
-	aux_vert.y = (IMG_CENTER_Y - (int)fdf->mtrx.start_draw.y) * 0.99;
+//	aux_vert.x = (IMG_CENTER_X - (int)fdf->mtrx.end_draw.x) * 0.99;
+//	aux_vert.y = (IMG_CENTER_Y - (int)fdf->mtrx.start_draw.y) * 0.99;
 
 	//start.x = (int)fdf->mtrx.start_draw.x + aux.x;
 	//start.y = (int)fdf->mtrx.start_draw.y ;

@@ -16,9 +16,6 @@
 
 static char	**free_memory(const char **arr, size_t pos)
 {
-	size_t	i;
-
-	i = 0;
 	while (pos--)
 		free ((void *)arr[pos]);
 	free(arr);
