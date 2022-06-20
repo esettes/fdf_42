@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 13:10:23 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:24:27 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,11 @@
 # include "controls.h"
 # include "macros.h"
 # include "structs.h"
+# include "mlx_utils.h"
 # include "draw.h"
 # include "read_file.h"
 
-/* Initializes the main parameters of the application */
-void	init_mlx(t_fdf *fdf);
-/* Calls all functions that need mlx_loop to run */
-void	loop_fdf(t_fdf *fdf);
-void	create_image(t_fdf *fdf);
-void	draw_image(t_fdf *fdf);
-/**
- * Call create_image() and draw_image().
- */
-void	modify_mesh(t_fdf *fdf);
+
 /**
  * Sets the pixels of the mesh to calculate where start to print,
  * and the number of segments.
