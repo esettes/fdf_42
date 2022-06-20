@@ -6,13 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:27:13 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/24 20:10:29 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:17:35 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <unistd.h>
 
 static char	**free_memory(const char **arr, size_t pos)
 {

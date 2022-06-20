@@ -6,12 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:50:32 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/18 20:24:16 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:16:55 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

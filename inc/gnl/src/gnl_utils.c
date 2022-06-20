@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   gnl_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 20:12:59 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/18 20:42:26 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:14:41 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/get_next_line_bonus.h"
+#include "gnl.h"
 
 size_t	ft_strlen_eol(const char *s, int lineLenght)
 {

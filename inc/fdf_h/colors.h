@@ -6,14 +6,12 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 12:38:43 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:05:50 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLORS_H
 # define COLORS_H
-
-
 
 # define YELLOW	0xFFFF00FF
 # define WHITE	0xFFFFFFFF
@@ -51,6 +49,10 @@
 # define NEOWITHE 0xC8E5EEEE	/* cneon white */
 
 int 	menu_rgb(int value);
+/**
+ * Returns an hex color from red (value < 0.1) , through green,
+ *  to blue (value > 0.8) 
+ */
 int		rgba(double value);
 
 #endif

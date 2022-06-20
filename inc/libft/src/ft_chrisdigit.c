@@ -6,12 +6,12 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:08:53 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/25 21:09:07 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:19:11 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 int	ft_chrisdigit(char c)
 {

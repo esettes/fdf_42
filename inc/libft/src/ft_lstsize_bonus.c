@@ -6,11 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 20:48:30 by iostancu          #+#    #+#             */
-/*   Updated: 2022/04/29 21:49:14 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:18:12 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

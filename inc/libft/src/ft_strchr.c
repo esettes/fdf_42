@@ -6,11 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 21:29:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/04/29 21:50:58 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:17:08 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

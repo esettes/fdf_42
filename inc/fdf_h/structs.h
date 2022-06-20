@@ -6,14 +6,14 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 12:39:56 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:11:35 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "MLX42.h"
 # include <math.h>
 
 typedef struct s_vec2
@@ -21,11 +21,6 @@ typedef struct s_vec2
 	double	x;
 	double	y;
 }				t_vec2;
-
-typedef struct s_img_props
-{
-	t_vec2	middle_img;
-}				t_img_props;
 
 /**
  * Save all the values ​​necessary for the mesh construction.

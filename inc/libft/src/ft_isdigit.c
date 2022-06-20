@@ -6,11 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:20:24 by iostancu          #+#    #+#             */
-/*   Updated: 2022/04/29 21:48:50 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:18:56 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {
