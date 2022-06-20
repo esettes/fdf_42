@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/16 20:40:05 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:39:51 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,62 +15,19 @@
 
 # include <stdio.h>
 # include <unistd.h>
-# include <math.h>
 # include <stdlib.h>
 # include <fcntl.h>
 
-# include "../MLX42/include/MLX42/MLX42.h"
+// # include "../MLX42/include/MLX42/MLX42.h"
 # include "get_next_line_bonus.h"
 # include "libft.h"
 # include "colors.h"
-# include "macros_fdf.h"
+# include "controls.h"
+# include "macros.h"
+# include "structs.h"
+# include "draw.h"
 #include <memory.h>
 
-typedef struct s_vec2
-{
-	double	x;
-	double	y;
-}				t_vec2;
-
-typedef struct s_img_props
-{
-	t_vec2	middle_img;
-}				t_img_props;
-
-/**
- * Save all the values ​​necessary for the mesh construction.
- * 
- * @param[in] mtrx Mesh integer array.
- * @param[in] z Mesh's depth.
- * @param[in] zoom Value that sets the distance between adjoining vertices.
- * @param[in] size Mesh size (x, y).
- */
-typedef struct s_mtrx
-{
-	int		**mtrx;
-	int		z;
-	int		zoom;
-	t_vec2	segments;
-	t_vec2	px_size;
-	t_vec2	start_draw;
-	t_vec2	end_draw;
-}				t_mtrx;
-
-/**
- * Main struct of the program, used to store structs initializations
- * required by MLX and program variables. Simplifies the use of the mesh data.
- * 
- * @param mlx Struct required by mlx.
- * @param mtrx Structure for the mesh data.
- * @param img Struct required by mlx.
- */
-typedef struct s_fdf
-{
-	mlx_t		*mlx;
-	t_mtrx		mtrx;
-	mlx_image_t	*img;		// incluye posic
-	int			fd;
-}				t_fdf;
 /* Initializes the main parameters of the application */
 void	init_mlx(t_fdf *fdf);
 /* Calls all functions that need mlx_loop to run */
@@ -121,23 +78,23 @@ void	free_props(t_fdf *fdf);
  */
 void	set_limits(t_mtrx *mtrx);
 void	set_new_limits(t_fdf *fdf);
-void	draw_outer_segments(t_fdf *fdf);
-void	test_draw_iso(t_fdf *fdf);
-void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
-void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
-void	draw_segment_negative(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
+// void	draw_outer_segments(t_fdf *fdf);
+// void	test_draw_iso(t_fdf *fdf);
+// void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
+// void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
+// void	draw_segment_negative(t_vec2 start, t_vec2 end, t_fdf *fdf, double color);
 /**
  * Returns an hex color from red (value < 0.1) , through green,
  *  to blue (value > 0.8) 
  */
-int		rgba(double value);
-void	draw_menu(t_fdf *fdf);
-void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y);
-int 	menu_rgb(int value);
+// int		rgba(double value);
+// void	draw_menu(t_fdf *fdf);
+// void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y);
+// int 	menu_rgb(int value);
 t_vec2	set_mesh_iso(t_fdf *fdf);
-double	get_iso_pos_x(t_mtrx mtrx);
-double	get_iso_pos_y(t_mtrx mtrx);
-void	set_zoom(double x_delta, double y_delta, void *fdf_void);
-void	set_new_zoom(t_fdf *fdf);
+// double	get_iso_pos_x(t_mtrx mtrx);
+// double	get_iso_pos_y(t_mtrx mtrx);
+// void	set_zoom(double x_delta, double y_delta, void *fdf_void);
+// void	set_new_zoom(t_fdf *fdf);
 
 #endif

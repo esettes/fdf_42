@@ -6,12 +6,13 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 19:37:06 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:38:43 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLORS_H
 # define COLORS_H
+
 
 
 # define YELLOW	0xFFFF00FF
@@ -48,5 +49,8 @@
 # define NEODPURP 0x462D67FF	/* neon dark purple */
 # define NEOLPURP 0x737BAEFF	/* neon light purple */
 # define NEOWITHE 0xC8E5EEEE	/* cneon white */
+
+int 	menu_rgb(int value);
+int		rgba(double value);
 
 #endif
