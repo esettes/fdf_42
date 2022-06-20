@@ -30,7 +30,7 @@
 // 	}
 // }
 
-void	draw_outer_segments(t_fdf *fdf)
+void	view_on_top(t_fdf *fdf)
 {
 	t_vec2	start;
 	t_vec2	end;
@@ -61,7 +61,7 @@ void	draw_outer_segments(t_fdf *fdf)
 	}
 }
 
-void	test_draw_iso(t_fdf *fdf)
+void	test_view_iso(t_fdf *fdf)
 {
 	t_vec2	start;
 	t_vec2	end;

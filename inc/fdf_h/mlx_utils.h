@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:23:21 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 13:25:17 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:28:25 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	loop_fdf(t_fdf *fdf);
 void	create_image(t_fdf *fdf);
 void	draw_image(t_fdf *fdf);
 /**
- * Call create_image() and draw_image().
+ * Calls create_image() and draw_image().
  */
 void	modify_mesh(t_fdf *fdf);
 

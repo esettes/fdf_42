@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   view.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 13:33:00 by iostancu         ###   ########.fr       */
+/*   Created: 2022/06/20 13:29:37 by iostancu          #+#    #+#             */
+/*   Updated: 2022/06/20 13:31:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef VIEWS_H
+# define VIEWS_H
 
-# include <stdio.h>
-//# include <unistd.h>
-//# include <stdlib.h>
-# include <fcntl.h>
-# include <memory.h>
-
-# include "gnl.h"
-# include "libft.h"
-
-# include "colors.h"
-# include "controls.h"
-# include "macros.h"
 # include "structs.h"
-# include "mlx_utils.h"
-# include "draw.h"
-# include "views.h"
-# include "read_file.h"
-# include "matrix_properties.h"
 
-t_vec2	set_mesh_iso(t_fdf *fdf);
+void	view_on_top(t_fdf *fdf);
+void	test_view_iso(t_fdf *fdf);
 
 #endif
