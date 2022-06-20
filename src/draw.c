@@ -45,7 +45,7 @@ void	view_on_top(t_fdf *fdf)
 
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
-		draw_segment_horiz(start, end, fdf, 0);
+		draw_segment_to_right(start, end, fdf, 0);
 		start.y += fdf->mtrx.zoom;
 		end.y += fdf->mtrx.zoom;
 		seg_iter.y++;
@@ -54,7 +54,7 @@ void	view_on_top(t_fdf *fdf)
 	end.y = start.y + fdf->mtrx.px_size.y;
 	while (seg_iter.x < fdf->mtrx.segments.x)
 	{
-		draw_segment_vert(start, end, fdf, 0);
+		draw_segment_to_left(start, end, fdf, 0);
 		start.x += fdf->mtrx.zoom;
 		end.x += fdf->mtrx.zoom;
 		seg_iter.x++;
@@ -84,13 +84,13 @@ void	test_view_iso(t_fdf *fdf)
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
 		if (seg_iter.y < 2)
-			draw_segment_horiz(start, end, fdf, 0.4);
+			draw_segment_to_right(start, end, fdf, 0.4);
 		if (seg_iter.y >= 2)
-			draw_segment_horiz(start, end, fdf, 0);
-		start.x -= fdf->mtrx.zoom * cos (45) * 1.9;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
-		start.y += fdf->mtrx.zoom * sin(45) * 0.6;
-		end.x -= fdf->mtrx.zoom * cos (45) * 1.9;
-		end.y += fdf->mtrx.zoom * sin (45) * 0.6;
+			draw_segment_to_right(start, end, fdf, 0);
+		start.x -= fdf->mtrx.zoom * cos (45) * 2;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
+		start.y += fdf->mtrx.zoom * sin(45) * 0.5;
+		end.x -= fdf->mtrx.zoom * cos (45) * 2;
+		end.y += fdf->mtrx.zoom * sin (45) * 0.5;
 		
 		seg_iter.y++;
 	}
@@ -106,19 +106,18 @@ void	test_view_iso(t_fdf *fdf)
 	while (seg_iter.x < fdf->mtrx.segments.x)
 	{
 		if (seg_iter.x < 2)
-			draw_segment_vert(start, end, fdf, 0.4);
+			draw_segment_to_left(start, end, fdf, 0.4);
 		if (seg_iter.x >= 2)
-			draw_segment_vert(start, end, fdf, 0.6);
+			draw_segment_to_left(start, end, fdf, 0.6);
 		start.x += fdf->mtrx.zoom * cos (45) * 1.9;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
 		start.y += fdf->mtrx.zoom * sin(45) * 0.6;
 		end.x += fdf->mtrx.zoom * cos (45) * 1.9;
 		end.y -= fdf->mtrx.zoom * sin (45) * 0.6;
 		seg_iter.x++;
-	}
-
+	} 
 }
 
-void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf, double color)
+void	draw_segment_to_right(t_vec2 start, t_vec2 end, t_fdf *fdf, double color)
 {
 	int p, x, y;
 	t_vec2	d;
@@ -147,7 +146,7 @@ void	draw_segment_horiz(t_vec2 start, t_vec2 end, t_fdf *fdf, double color)
 	}
 }
 
-void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf, double color)
+void	draw_segment_to_left(t_vec2 start, t_vec2 end, t_fdf *fdf, double color)
 {
 	int p, x, y;
 	t_vec2	d;
@@ -156,7 +155,7 @@ void	draw_segment_vert(t_vec2 start, t_vec2 end, t_fdf *fdf, double color)
 	d.y = end.y - start.y;
 	x = start.x;
 	y = start.y;
-	p = 2 * d.x - d.y;
+	p = 2 * d.y - d.x;
 	while(x < end.x)
 	{
 		if(p >= 0)

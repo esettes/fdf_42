@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/06/13 16:49:58 by iostancu         ###   ########.fr        #
+#    Updated: 2022/06/20 21:01:07 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,60 +33,69 @@ COMPS	= $(GNL) $(LIBFT) $(LIBX42)
 
 
 
-#UNAME_S := $(shell uname -s)
-#ifeq ($(UNAME_S), Linux)
-#		include Makefile_Unix.mk
-#else ifeq ($(UNAME_S), Darwin)
 ifeq ($(OS), Darwin)
 	LIBX42_FLAGS	=	-I include -lglfw -L "/Users/${USER}/.brew/opt/glfw/lib/"
 else
 	LIBX42_FLAGS	=	-I include -ldl -lglfw -lm 	
-#-lcs50 #-L #/usr/local/lib64/ 
 endif
 
-
-
-ALLINC	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/fdf_h/ -I ./inc/MLX42/include/MLX42/
+HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= gcc
-CFLAGS	= -Wall -Wextra -Werror #-glldb
+CFLAGS	= -g -Wall -Wextra -Werror #-glldb
 WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
-DEB	= -g3
 
 all: $(OBJDIR) $(LIBFT) $(GNL) $(LIBX42) $(NAME)
 	
 $(OBJDIR)%.o:$(SRCDIR)%.c
-	@$(CC) $(DEB) $(CFLAGS) $(ALLINC) -o $@ -c $<
-	@echo "${LWHITE}Compiling $@ ${LGREEN}✓\033[0m"
+#	@echo "${LWHITE}Compiling $(notdir $<) ${LGREEN}✓$(RESET)"
+	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
 
 #Change libx42_flags position at the end of the coommand
 $(NAME):	$(OBJS)
-	@$(CC) $(DEB) $(CFLAGS)  -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(LIBX42) $(LIBX42_FLAGS) 
-	@echo "${BWHITE}Compiling all\t${GREEN}[OK]\033[0m" 
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(LIBX42) -g $(LIBX42_FLAGS) 
+	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)"
+	@echo "${BWHITE}Compilation ${GREEN}[OK]$(RESET)" 
 
 $(LIBFT):
-	@echo "${CYAN} "
-	@make -C $(dir $(LIBFT))
+	@$(MAKE) -C $(dir $(LIBFT))
 
 $(GNL):
-	@make -C $(dir $(GNL))
+	@$(MAKE) -C $(dir $(GNL))
 
 $(LIBX42):
-	@make -C $(dir $(LIBX42))
+	@$(MAKE) -C $(dir $(LIBX42))
 
 LD_DEBUG=all
 
-clean:
-	@rm -rf *.dSYM ${OBJDIR}*.o
-	@echo "${CYAN} "
-	@make -C $(dir $(LIBFT)) fclean
-	@make -C $(dir $(GNL)) fclean
-	@make -C $(dir $(LIBX42)) clean
+dbgfiles:
+	@rm -rf *.dSYM 
+	@echo "${LWHITE}Clean debug files... ${LGREEN}✓$(RESET)"
 
-fclean: clean
+clean:	dbgfiles
+	@echo "${LWHITE}Clean fdf... ${LGREEN}✓$(RESET)"
+	@rm -rf ${OBJDIR}*.o
+	@echo "${LWHITE}Clean Libft... ${LGREEN}✓$(RESET)"
+	@$(MAKE) -C $(dir $(LIBFT)) clean
+	@echo "${LWHITE}Clean GNL... ${LGREEN}✓$(RESET)"
+	@$(MAKE) -C $(dir $(GNL)) clean
+	@echo "${LWHITE}Clean MLX2... ${LGREEN}✓$(RESET)"
+	@$(MAKE) -C $(dir $(LIBX42)) clean
+	@echo "${BWHITE}Clean objs ${GREEN}[OK]$(RESET)"
+
+fclean: dbgfiles
 	@rm -rf $(NAME)
-	@echo "${BWHITE}Cleaning all\t${GREEN}[OK]\033[0m"
+	@echo "${LWHITE}Clean fdf... ${LGREEN}✓$(RESET)"
+	@rm -rf ${OBJDIR}*.o
+	@echo "${LWHITE}Clean Libft... ${LGREEN}✓$(RESET)"
+	@$(MAKE) -C $(dir $(LIBFT)) fclean
+	@echo "${LWHITE}Clean GNL... ${LGREEN}✓$(RESET)"
+	@$(MAKE) -C $(dir $(GNL)) fclean
+#	@echo "${LWHITE}Clean MLX42... ${LGREEN}✓$(RESET)"
+	@$(MAKE) -C $(dir $(LIBX42)) clean
+	@echo "${BWHITE}Clean all ${GREEN}[OK]"
+	@echo "\n"
 
 re: fclean all
 

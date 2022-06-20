@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 13:11:35 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:58:27 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ typedef struct s_vec2
 	double	y;
 }				t_vec2;
 
+typedef struct s_iter
+{
+	int	i;
+	int	j;
+}				t_iter;
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 

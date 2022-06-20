@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 13:34:14 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:49:18 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	draw_image(t_fdf *fdf)
 	set_new_zoom(fdf);
 	//view_on_top(fdf);
 	test_view_iso(fdf);
-	draw_menu(fdf);
+	//draw_menu(fdf);
 }
 
 void	modify_mesh(t_fdf *fdf)
