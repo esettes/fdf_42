@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 23:27:02 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/17 22:02:44 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/22 00:07:41 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,20 @@ int menu_rgb(int value)
 		return (MENUMLGREY);
 }
 
-int	rgba(double value)
+int	rgba(int value)
 {
-	if (value < 0.1)
+	if (value == 0)
 		return (BLU_CB);
-	if (value < 0.3)
+	if (value == 1)
+		return (BLUE);
+	if (value == 2)
 		return (BLU_CB);
-	if (value < 0.5)
+	if (value == 3)
+		return (BLU_AD);
+	if (value == 4)
 		return (CYBRED);
+	if (value == 5)
+		return (NEOGREEN);
 	else
 		return (NEOWITHE);
 }

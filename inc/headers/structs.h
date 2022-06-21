@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 19:58:27 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/22 00:14:29 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,12 @@ typedef struct s_mtrx
 {
 	int		**mtrx;
 	int		z;
-	int		zoom;
+	double	zoom;
 	t_vec2	segments;
 	t_vec2	px_size;
 	t_vec2	start_draw;
 	t_vec2	end_draw;
 }				t_mtrx;
-
 /**
  * Main struct of the program, used to store structs initializations
  * required by MLX and program variables. Simplifies the use of the mesh data.

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:27:12 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/16 20:30:32 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/22 00:09:58 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,32 @@ double	get_iso_pos_y(t_mtrx mtrx)
 	pos_y = IMG_CENTER_Y + pos_y - mtrx.px_size.y;
 	return (pos_y);
 }
+
+void	new_draw_iso(t_fdf *fdf)
+{
+	t_vec2	coord;
+
+	coord.y = 0;
+	while (coord.y < fdf->mtrx.px_size.y)
+	{
+		coord.x = 0;
+		while (coord.x < fdf->mtrx.px_size.x)
+		{
+			if (coord.x < fdf->mtrx.px_size.x - 1)
+			{
+				
+			}
+			if (coord.y < fdf->mtrx.px_size.y - 1)
+			{
+				
+			}
+			coord.x++;
+		}
+		coord.y++;
+	}
+}
+
+// void	f_bresen(t_fdf *fdf)
+// {
+	
+// }

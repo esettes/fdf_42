@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:26:48 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 13:27:59 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/21 22:47:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include "structs.h"
 
 /**
- * Sets the pixels of the mesh to calculate where start to print,
- * and the number of segments.
+ * Saves the mesh size (in pixels) and the number of segments.
  * 
  * @param[in] x Number of vertical segments.
  * @param[in] y Number of horizontal segments.
@@ -31,12 +30,10 @@ void	free_props(t_fdf *fdf);
 /**
  * Sets the position of the first pixel to start drawing.
  * 
- * @param x Mtrx size x.
- * @param y Mtrx size y.
- * 
- * @return t_vec2 with the dummy origin position.
+ * @param mtrx The struct mtrx.
  */
 void	set_limits(t_mtrx *mtrx);
 void	set_new_limits(t_fdf *fdf);
+void	set_start_to_print_iso(t_fdf *fdf, t_vec2 *start, t_vec2 *end);
 
 #endif
