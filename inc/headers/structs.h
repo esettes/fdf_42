@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/22 00:14:29 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/22 04:05:31 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ typedef struct s_iter
 	int	i;
 	int	j;
 }				t_iter;
+
+typedef struct s_iso_distorsion
+{
+	float	x;
+	float	y;
+}				t_iso_distorsion;
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 
