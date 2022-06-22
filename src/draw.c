@@ -54,7 +54,7 @@ void	draw_outer_segments(t_fdf *fdf)
 	end.y = start.y + fdf->mtrx.px_size.y;
 	while (seg_iter.x < fdf->mtrx.segments.x)
 	{
-		draw_segment_vert(start, end, fdf, 0);
+		draw_segment_negative(start, end, fdf, 0);
 		start.x += fdf->mtrx.zoom;
 		end.x += fdf->mtrx.zoom;
 		seg_iter.x++;
@@ -67,6 +67,7 @@ void	test_draw_iso(t_fdf *fdf)
 	t_vec2	end;
 	t_vec2	seg_iter;
 	t_vec2 	aux;
+	// t_vec2	save;
 //	t_vec2	aux_vert;
 
 	seg_iter.x = 0;
@@ -78,6 +79,8 @@ void	test_draw_iso(t_fdf *fdf)
 	start.x = (int)fdf->mtrx.start_draw.x + aux.x;
 	start.y = (int)fdf->mtrx.start_draw.y;
 
+	// save.x = start.x;
+	// save.y = start.y;
 	end.x = (int)fdf->mtrx.end_draw.x + aux.x;
 	end.y = (int)fdf->mtrx.start_draw.y + aux.y;
 
@@ -87,10 +90,10 @@ void	test_draw_iso(t_fdf *fdf)
 			draw_segment_horiz(start, end, fdf, 0.4);
 		if (seg_iter.y >= 2)
 			draw_segment_horiz(start, end, fdf, 0);
-		start.x -= fdf->mtrx.zoom * cos (45) * 1.9;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
+		start.x -= fdf->mtrx.zoom * cos(45) * 1.9;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
 		start.y += fdf->mtrx.zoom * sin(45) * 0.6;
-		end.x -= fdf->mtrx.zoom * cos (45) * 1.9;
-		end.y += fdf->mtrx.zoom * sin (45) * 0.6;
+		end.x -= fdf->mtrx.zoom * cos(45) * 1.9;
+		end.y += fdf->mtrx.zoom * sin(45) * 0.6;
 		
 		seg_iter.y++;
 	}
@@ -102,7 +105,7 @@ void	test_draw_iso(t_fdf *fdf)
 	// end.x = (int)fdf->mtrx.end_draw.x - aux_vert.x;
 	// end.y = (int)fdf->mtrx.start_draw.y + aux_vert.y;
 	end.x = (int)fdf->mtrx.start_draw.x + aux.x;
-	end.y = (int)fdf->mtrx.start_draw.y;
+	end.y = (int)fdf->mtrx.start_draw.y - aux.y;
 	while (seg_iter.x < fdf->mtrx.segments.x)
 	{
 		if (seg_iter.x < 2)
