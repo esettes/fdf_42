@@ -44,8 +44,32 @@ double	get_iso_pos_y(t_mtrx mtrx)
 	pos_y = IMG_CENTER_Y + pos_y - mtrx.px_size.y;
 	return (pos_y);
 }
-/*
-void	new_draw_iso(t_fdf *fdf)
+
+void	zoom(t_fdf *fdf)
+{
+	fdf->mtrx.start.x *= fdf->mtrx.control.zoom;
+	fdf->mtrx.start.y *= fdf->mtrx.control.zoom;
+	fdf->mtrx.end.x *= fdf->mtrx.control.zoom;
+	fdf->mtrx.end.y *= fdf->mtrx.control.zoom;
+}
+
+float	f_max(float a, float b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
+float	f_mod(float a)
+{
+	if (a < 0)
+		return (a * -1);
+	else
+		return (a);
+}
+
+void	new_view_iso_testing(t_fdf *fdf)
 {
 	t_vec2	coord;
 
@@ -58,15 +82,26 @@ void	new_draw_iso(t_fdf *fdf)
 			if (coord.x < fdf->mtrx.px_size.x - 1)
 			{
 				line_horiz(coord, fdf);
+				f_bresen(fdf);
 			}
 			if (coord.y < fdf->mtrx.px_size.y - 1)
 			{
 				line_vert(coord, fdf);
+				f_bresen(fdf);
 			}
 			coord.x++;
 		}
 		coord.y++;
 	}
+}
+
+void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth dep)
+{
+	start->x = ((start->x - start->y) * cos(0.8));
+	start->y = ((start->x + start->y) * sin(0.8) - dep.z);
+	end->x = ((end->x - end->y) * cos(0.8));
+	end->y = ((end->x + end->y) * sin(0.8) - dep.z1);
+	(void)fdf;
 }
 
 void	line_horiz(t_vec2 coord, t_fdf *fdf)
@@ -89,8 +124,36 @@ void	f_bresen(t_fdf *fdf)
 {
 	t_vec2	step;
 	int		max;
+	t_depth	depth;
 
-	
+	depth = set_depth(fdf);
+	isometric(fdf, &fdf->mtrx.start, &fdf->mtrx.end, depth);
+	step.x = fdf->mtrx.end.x - fdf->mtrx.start.x;
+	step.y = fdf->mtrx.end.y - fdf->mtrx.start.y;
+	max = f_max(f_mod(step.x), f_mod(step.y));
+	step.x /= max;
+	step.y /= max;
+	while ((int)(fdf->mtrx.start.x - fdf->mtrx.end.x) 
+		|| (int)(fdf->mtrx.start.y - fdf->mtrx.end.y))
+		bresen_put_pixel(fdf, step);
 }
 
-void	*/
+
+t_depth	set_depth(t_fdf *fdf)
+{
+	t_depth	dep;
+
+	dep.z = fdf->mtrx.depth[(int)fdf->mtrx.start.y][(int)fdf->mtrx.start.x] 
+		* fdf->mtrx.control.height;
+	dep.z1 = fdf->mtrx.depth[(int)fdf->mtrx.end.y][(int)fdf->mtrx.end.x] 
+		* fdf->mtrx.control.height;
+	return (dep);
+}
+
+void	bresen_put_pixel(t_fdf *fdf, t_vec2 step)
+{
+	mlx_put_pixel(fdf->img, fdf->mtrx.start.x,
+		fdf->mtrx.start.y, rgba(0));
+	fdf->mtrx.start.x += step.x;
+	fdf->mtrx.start.y += step.y;
+}

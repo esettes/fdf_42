@@ -29,6 +29,8 @@ void	set_new_zoom(t_fdf *fdf)
 
 	segm.x = fdf->mtrx.segments.x;
 	segm.y = fdf->mtrx.segments.y;
+	fdf->mtrx.control.height = 1;
+	fdf->mtrx.control.zoom = 1;
 	fdf->mtrx.px_size.x = ((segm.y - 1) * fdf->mtrx.zoom);
 	fdf->mtrx.px_size.y = ((segm.x - 1) * fdf->mtrx.zoom);
 	set_new_limits(fdf);

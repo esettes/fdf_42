@@ -18,9 +18,15 @@
 
 typedef struct s_vec2
 {
-	double	x;
-	double	y;
+	float	x;
+	float	y;
 }				t_vec2;
+
+typedef struct s_depth
+{
+	int	z;
+	int	z1;
+}				t_depth;
 
 typedef struct s_iter
 {
@@ -28,11 +34,11 @@ typedef struct s_iter
 	int	j;
 }				t_iter;
 
-typedef struct s_iso_distorsion
+typedef	struct s_controls
 {
-	float	x;
-	float	y;
-}				t_iso_distorsion;
+	float	height;
+	float	zoom;
+}				t_controls;
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 
@@ -43,13 +49,15 @@ typedef struct s_iso_distorsion
  */
 typedef struct s_mtrx
 {
-	int		**mtrx;
-	int		z;
-	double	zoom;
-	t_vec2	segments;
-	t_vec2	px_size;
-	t_vec2	start;
-	t_vec2	end;
+	int			**mtrx;
+	int			z;
+	float		zoom;
+	t_controls	control;
+	t_vec2		segments;
+	t_vec2		px_size;
+	t_vec2		start;
+	t_vec2		end;
+	int			**depth;
 }				t_mtrx;
 /**
  * Main struct of the program, used to store structs initializations

@@ -18,9 +18,9 @@ void	loop_fdf(t_fdf *fdf)
 	
 	
 	//view_on_top(fdf);
-	test_view_iso(fdf);
+	//test_view_iso(fdf);
 	//draw_menu(fdf);
-	//new_view_iso(fdf);
+	new_view_iso_testing(fdf);
 	mlx_loop(fdf->mlx);
 	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
 	// mlx_terminate(fdf->mlx);
@@ -42,8 +42,8 @@ void	draw_image(t_fdf *fdf)
 {
 	set_new_zoom(fdf);
 	//view_on_top(fdf);
-	///new_view_iso(fdf);
-	test_view_iso(fdf);
+	new_view_iso_testing(fdf);
+	//test_view_iso(fdf);
 	//draw_menu(fdf);
 }
 
