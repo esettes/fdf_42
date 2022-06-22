@@ -44,7 +44,7 @@ double	get_iso_pos_y(t_mtrx mtrx)
 	pos_y = IMG_CENTER_Y + pos_y - mtrx.px_size.y;
 	return (pos_y);
 }
-
+/*
 void	new_draw_iso(t_fdf *fdf)
 {
 	t_vec2	coord;
@@ -57,11 +57,11 @@ void	new_draw_iso(t_fdf *fdf)
 		{
 			if (coord.x < fdf->mtrx.px_size.x - 1)
 			{
-				
+				line_horiz(coord, fdf);
 			}
 			if (coord.y < fdf->mtrx.px_size.y - 1)
 			{
-				
+				line_vert(coord, fdf);
 			}
 			coord.x++;
 		}
@@ -73,11 +73,24 @@ void	line_horiz(t_vec2 coord, t_fdf *fdf)
 {
 	fdf->mtrx.start.x = coord.x;
 	fdf->mtrx.start.y = coord.y;
-	fdf->mtrx.end.x = coord.x;
-	fdf->mtrx.end.y = coord.y ;
+	fdf->mtrx.end.x = coord.x + 1;
+	fdf->mtrx.end.y = coord.y;
 }
 
-// void	f_bresen(t_fdf *fdf)
-// {
+void	line_vert(t_vec2 coord, t_fdf *fdf)
+{
+	fdf->mtrx.start.x = coord.x;
+	fdf->mtrx.start.y = coord.y;
+	fdf->mtrx.end.x = coord.x;
+	fdf->mtrx.end.y = coord.y + 1;
+}
+
+void	f_bresen(t_fdf *fdf)
+{
+	t_vec2	step;
+	int		max;
+
 	
-// }
+}
+
+void	*/

@@ -21,7 +21,7 @@ void	set_zoom(double x_delta, double y_delta, void *fdf_void)
 	{
 		if (fdf->mtrx.zoom <= 40)
 		{
-			fdf->mtrx.zoom += 0.45;
+			fdf->mtrx.zoom += 0.5;
 			modify_mesh(fdf);
 		}
 	}
@@ -29,7 +29,7 @@ void	set_zoom(double x_delta, double y_delta, void *fdf_void)
 	{
 		if (fdf->mtrx.zoom >= -40)
 		{
-			fdf->mtrx.zoom -= 0.45;
+			fdf->mtrx.zoom -= 0.5;
 			modify_mesh(fdf);
 		}
 	}

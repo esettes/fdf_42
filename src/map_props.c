@@ -16,10 +16,10 @@ t_vec2	set_mtrx_size(int x, int y, t_mtrx *mtrx)
 {
 	t_vec2 segments;
 	
-	mtrx->px_size.x = x;
-	mtrx->px_size.y = y;
 	segments.x = x;
 	segments.y = y;
+	mtrx->px_size.x = mtrx->zoom * y;
+	mtrx->px_size.y = mtrx->zoom * x;
 	return (segments);
 }
 
@@ -29,25 +29,25 @@ void	set_new_zoom(t_fdf *fdf)
 
 	segm.x = fdf->mtrx.segments.x;
 	segm.y = fdf->mtrx.segments.y;
-	fdf->mtrx.px_size.x = ((segm.x - 2) * fdf->mtrx.zoom);
-	fdf->mtrx.px_size.y = ((segm.y - 2) * fdf->mtrx.zoom);
+	fdf->mtrx.px_size.x = ((segm.y - 1) * fdf->mtrx.zoom);
+	fdf->mtrx.px_size.y = ((segm.x - 1) * fdf->mtrx.zoom);
 	set_new_limits(fdf);
 }
 
 void	set_limits(t_mtrx *mtrx)
 {
-	mtrx->start.x = (IMG_CENTER_X - (mtrx->px_size.x / 2));
-	mtrx->start.y = (IMG_CENTER_Y - (mtrx->px_size.y / 2));
-	mtrx->end.x = mtrx->start.x + mtrx->px_size.y;
-	mtrx->end.y = mtrx->start.y + mtrx->px_size.x;
+	mtrx->start.x = (IMG_CENTER_X - (mtrx->px_size.y / 2));
+	mtrx->start.y = (IMG_CENTER_Y - (mtrx->px_size.x / 2));
+	mtrx->end.x = mtrx->start.x + mtrx->px_size.x;
+	mtrx->end.y = mtrx->start.y + mtrx->px_size.y;
 }
 
 void	set_new_limits(t_fdf *fdf)
 {
-	fdf->mtrx.start.x = (IMG_CENTER_X - (fdf->mtrx.px_size.x / 2));
-	fdf->mtrx.start.y = (IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2));
-	fdf->mtrx.end.x = fdf->mtrx.start.x + fdf->mtrx.px_size.y;
-	fdf->mtrx.end.y = fdf->mtrx.start.y + fdf->mtrx.px_size.x;
+	fdf->mtrx.start.x = (IMG_CENTER_X - (fdf->mtrx.px_size.y / 2));
+	fdf->mtrx.start.y = (IMG_CENTER_Y - (fdf->mtrx.px_size.x / 2));
+	fdf->mtrx.end.x = fdf->mtrx.start.x + fdf->mtrx.px_size.x;
+	fdf->mtrx.end.y = fdf->mtrx.start.y + fdf->mtrx.px_size.y;
 }
 
 
