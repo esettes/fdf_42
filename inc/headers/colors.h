@@ -6,13 +6,12 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/14 19:37:06 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/22 00:08:46 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLORS_H
 # define COLORS_H
-
 
 # define YELLOW	0xFFFF00FF
 # define WHITE	0xFFFFFFFF
@@ -24,13 +23,10 @@
 # define BLU_C0 0x4C50C077
 # define BLU_AD 0x2C4BAEED
 
-/* menu dark palete */
 # define MENUDGREY 0x16161EED	/* MENU DARK BLUE-GREY */
 # define MENUMGREY 0x1A1B25EE	/* menu medium dark grey */
 # define MENUMLGREY 0x21232FEE	/* menu medium light dark grey */
 
-
-/*	cyberpunk palette */
 # define CYBDBLU 0x0E1C24FF	/* cyber dark blue */
 # define CYBMBLU 0x183646FF	/* cyber medium blue */
 # define CYBLU 0x1F4079FF	/* cyber blue */
@@ -40,7 +36,6 @@
 # define CYBRED 0xB12954FF	/* cyber red */
 # define CYBLRED 0xCE6794FF	/* cyber light red */
 
-/* NEON palette */
 # define NEOBLACK 0x181C1EED	/* neon black */
 # define NEOGREEN 0x295C3AFF	/* neon green */
 # define NEOLGREEN 0x66C7A6EE	/* neon light green */
@@ -48,5 +43,12 @@
 # define NEODPURP 0x462D67FF	/* neon dark purple */
 # define NEOLPURP 0x737BAEFF	/* neon light purple */
 # define NEOWITHE 0xC8E5EEEE	/* cneon white */
+
+int 	menu_rgb(int value);
+/**
+ * Returns an hex color from red (value < 0.1) , through green,
+ *  to blue (value > 0.8) 
+ */
+int		rgba(int value);
 
 #endif

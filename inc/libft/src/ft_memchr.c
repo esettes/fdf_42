@@ -6,11 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:12:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/04/29 21:49:16 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:18:09 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

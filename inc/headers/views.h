@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macros_fdf.h                                       :+:      :+:    :+:   */
+/*   views.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:35:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/16 19:29:50 by iostancu         ###   ########.fr       */
+/*   Created: 2022/06/20 13:29:37 by iostancu          #+#    #+#             */
+/*   Updated: 2022/06/21 22:47:48 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACROS_FDF_H
-# define MACROS_FDF_H
+#ifndef VIEWS_H
+# define VIEWS_H
 
-# define WIDTH		1600
-# define HEIGHT		900
-# define IMG_AUMENT		4
-# define X_ORIGIN_OFF	( WIDTH / 2 )
-# define Y_ORIGIN_OFF	( HEIGHT / 2 )
-# define IMG_CENTER_X	((WIDTH * IMG_AUMENT) / 2)
-# define IMG_CENTER_Y	((HEIGHT * IMG_AUMENT) / 2)
+# include "structs.h"
+
+void	view_on_top(t_fdf *fdf);
+void	test_view_iso(t_fdf *fdf);
+void	new_view_iso(t_fdf *fdf);
 
 #endif

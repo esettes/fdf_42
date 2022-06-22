@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   msgs.h                                             :+:      :+:    :+:   */
+/*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 19:28:00 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/19 19:28:30 by iostancu         ###   ########.fr       */
+/*   Created: 2022/06/20 12:25:48 by iostancu          #+#    #+#             */
+/*   Updated: 2022/06/21 23:13:26 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MSGS_H
-# define MSGS_H
+#ifndef DRAW_H
+# define DRAW_H
+
+# include "structs.h"
+
+void	draw_segment_to_right(t_vec2 start, t_vec2 end, t_fdf *fdf, float color);
+void	draw_segment_to_left(t_vec2 start, t_vec2 end, t_fdf *fdf, float color);
+void	draw_segment_negative(t_vec2 start, t_vec2 end, t_fdf *fdf, float color);
+void	draw_menu(t_fdf *fdf);
+void	print_box_menu(t_fdf fdf, int color, int max_x, int max_y);
+
 
 #endif

@@ -20,22 +20,20 @@ CC	= gcc
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@$(CC) $(FLAGS) -I$(LIBINC) -o $@ -c $<
-	@echo "${LWHITE}Compiling $@ ${LGREEN}✓\033[0m"
+#	@echo "${LWHITE}Compiling $(notdir $<) ${LGREEN}✓$(RESET)"
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-#	@echo "${LBLUE}> Libft\t\t${LRED}...\033[0m"
+	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)"
 
 all: $(NAME) ${OBJDIR}
 
 clean:
 	@rm -rf $(OBJDIR)*.o
-#	@echo "${LBLUE}Libft\t\t${LWHITE}\033[0m"
 
 fclean: clean
 	@rm -fr $(NAME)
-#	@echo "${BBLUE}> Libft\t\t${LYELLOW}Cleaning lib\t${GREEN}[OK]\033[0m"
 
 re: fclean all
 

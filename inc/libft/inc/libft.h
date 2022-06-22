@@ -6,13 +6,15 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:36:29 by iostancu          #+#    #+#             */
-/*   Updated: 2022/05/26 21:23:46 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:17:31 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_list
 {

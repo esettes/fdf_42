@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/15 21:05:10 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/22 00:49:49 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	set_zoom(double x_delta, double y_delta, void *fdf_void)
 	{
 		if (fdf->mtrx.zoom <= 40)
 		{
-			fdf->mtrx.zoom += 1;
+			fdf->mtrx.zoom += 0.45;
 			modify_mesh(fdf);
 		}
 	}
 	else if (y_delta < 0)
 	{
-		if (fdf->mtrx.zoom >= 0)
+		if (fdf->mtrx.zoom >= -40)
 		{
-			fdf->mtrx.zoom -= 1;
+			fdf->mtrx.zoom -= 0.45;
 			modify_mesh(fdf);
 		}
 	}

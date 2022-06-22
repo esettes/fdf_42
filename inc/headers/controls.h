@@ -1,14 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zoom.c                                             :+:      :+:    :+:   */
+/*   controls.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 17:24:38 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/10 17:24:48 by iostancu         ###   ########.fr       */
+/*   Created: 2022/06/20 12:33:23 by iostancu          #+#    #+#             */
+/*   Updated: 2022/06/22 00:14:20 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef CONTROLS_H
+# define CONTROLS_H
 
+# include "structs.h"
+
+/* Include that functions which are called directly from inputs */
+
+double	get_iso_pos_x(t_mtrx mtrx);
+double	get_iso_pos_y(t_mtrx mtrx);
+void	set_zoom(double x_delta, double y_delta, void *fdf_void);
+void	set_new_zoom(t_fdf *fdf);
+
+#endif

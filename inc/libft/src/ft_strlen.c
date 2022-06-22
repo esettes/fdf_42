@@ -6,11 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:57:07 by iostancu          #+#    #+#             */
-/*   Updated: 2022/04/29 21:50:22 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:16:43 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

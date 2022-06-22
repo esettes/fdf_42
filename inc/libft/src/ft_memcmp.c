@@ -6,11 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:23:13 by iostancu          #+#    #+#             */
-/*   Updated: 2022/04/29 21:49:24 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:18:06 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
