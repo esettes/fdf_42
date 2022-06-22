@@ -38,10 +38,10 @@ void	view_on_top(t_fdf *fdf)
 
 	seg_iter.x = 0;
 	seg_iter.y = 0;
-	start.x = (int)fdf->mtrx.start_draw.x;
-	start.y = (int)fdf->mtrx.start_draw.y;
-	end.x = (int)fdf->mtrx.end_draw.x;
-	end.y = (int)fdf->mtrx.start_draw.y;
+	start.x = (int)fdf->mtrx.start.x;
+	start.y = (int)fdf->mtrx.start.y;
+	end.x = (int)fdf->mtrx.end.x;
+	end.y = (int)fdf->mtrx.start.y;
 
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
@@ -50,7 +50,7 @@ void	view_on_top(t_fdf *fdf)
 		end.y += fdf->mtrx.zoom;
 		seg_iter.y++;
 	}
-	start.y = round(fdf->mtrx.start_draw.y);
+	start.y = round(fdf->mtrx.start.y);
 	end.y = start.y + fdf->mtrx.px_size.y;
 	while (seg_iter.x < fdf->mtrx.segments.x)
 	{
@@ -73,16 +73,16 @@ void	test_view_iso(t_fdf *fdf)
 	seg_iter.x = 0;
 	seg_iter.y = 0;
 	
-	aux.x = (IMG_CENTER_X - fdf->mtrx.start_draw.x) * 1;
-	aux.y = (IMG_CENTER_Y - fdf->mtrx.start_draw.y) * 1;
-	start.x = fdf->mtrx.start_draw.x + aux.x;
-	start.y = fdf->mtrx.start_draw.y;
-	end.x = fdf->mtrx.end_draw.x + aux.x;
-	end.y = fdf->mtrx.start_draw.y + aux.y;
+	aux.x = (IMG_CENTER_X - fdf->mtrx.start.x) * 1;
+	aux.y = (IMG_CENTER_Y - fdf->mtrx.start.y) * 1;
+	start.x = fdf->mtrx.start.x + aux.x;
+	start.y = fdf->mtrx.start.y;
+	end.x = fdf->mtrx.end.x + aux.x;
+	end.y = fdf->mtrx.start.y + aux.y;
 	zoom_iter.x = fdf->mtrx.px_size.x / fdf->mtrx.segments.y;
 	zoom_iter.y = fdf->mtrx.px_size.y / fdf->mtrx.segments.x;
-	iso_dist.x = 1.899999999999;
-	iso_dist.y = 0.599999999999;
+	iso_dist.x = 1.899999999999999999999;
+	iso_dist.y = 0.599999999999999999999;
 	while(seg_iter.y < fdf->mtrx.segments.y)
 //	while (seg_iter.y <= fdf->mtrx.px_size.y)
 	{
@@ -98,10 +98,10 @@ void	test_view_iso(t_fdf *fdf)
 		seg_iter.y++;
 	}
 	
-	start.x = fdf->mtrx.start_draw.x + aux.x;
-	start.y = fdf->mtrx.start_draw.y;
-	end.x = fdf->mtrx.end_draw.x + aux.x;
-	end.y = fdf->mtrx.start_draw.y + aux.y;
+	start.x = fdf->mtrx.start.x + aux.x;
+	start.y = fdf->mtrx.start.y;
+	end.x = fdf->mtrx.end.x + aux.x;
+	end.y = fdf->mtrx.start.y + aux.y;
 	
 	while (seg_iter.x < fdf->mtrx.segments.x)
 //	while(seg_iter.x <= fdf->mtrx.px_size.x)
@@ -325,14 +325,14 @@ void	new_view_iso(t_fdf *fdf)
 	seg_iter.x = 0;
 	seg_iter.y = 0;
 	
-	aux.x = (IMG_CENTER_X - (int)fdf->mtrx.start_draw.x) * 1;
-	aux.y = (IMG_CENTER_Y - (int)fdf->mtrx.start_draw.y) * 1;
+	aux.x = (IMG_CENTER_X - (int)fdf->mtrx.start.x) * 1;
+	aux.y = (IMG_CENTER_Y - (int)fdf->mtrx.start.y) * 1;
 
-	start.x = (int)fdf->mtrx.start_draw.x + aux.x;
-	start.y = (int)fdf->mtrx.start_draw.y;
+	start.x = (int)fdf->mtrx.start.x + aux.x;
+	start.y = (int)fdf->mtrx.start.y;
 
-	end.x = (int)fdf->mtrx.end_draw.x + aux.x;
-	end.y = (int)fdf->mtrx.start_draw.y + aux.y;
+	end.x = (int)fdf->mtrx.end.x + aux.x;
+	end.y = (int)fdf->mtrx.start.y + aux.y;
 	while (seg_iter.y < fdf->mtrx.segments.y)
 	{
 		seg_iter.x = 0;
@@ -371,10 +371,10 @@ void	set_start_to_print_iso(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 {
 	t_vec2	offset;
 
-	offset.x = (IMG_CENTER_X - (int)fdf->mtrx.start_draw.x) * 0.99;
-	offset.y = (IMG_CENTER_Y - (int)fdf->mtrx.start_draw.y) * 0.99;
-	start->x = (int)fdf->mtrx.start_draw.x + offset.x;
-	start->y = (int)fdf->mtrx.start_draw.y;
-	end->x = (int)fdf->mtrx.end_draw.x + offset.x;
-	end->y = (int)fdf->mtrx.start_draw.y + offset.y;
+	offset.x = (IMG_CENTER_X - (int)fdf->mtrx.start.x) * 0.99;
+	offset.y = (IMG_CENTER_Y - (int)fdf->mtrx.start.y) * 0.99;
+	start->x = (int)fdf->mtrx.start.x + offset.x;
+	start->y = (int)fdf->mtrx.start.y;
+	end->x = (int)fdf->mtrx.end.x + offset.x;
+	end->y = (int)fdf->mtrx.start.y + offset.y;
 }

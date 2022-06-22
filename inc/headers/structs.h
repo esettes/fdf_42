@@ -48,8 +48,8 @@ typedef struct s_mtrx
 	double	zoom;
 	t_vec2	segments;
 	t_vec2	px_size;
-	t_vec2	start_draw;
-	t_vec2	end_draw;
+	t_vec2	start;
+	t_vec2	end;
 }				t_mtrx;
 /**
  * Main struct of the program, used to store structs initializations

@@ -69,6 +69,14 @@ void	new_draw_iso(t_fdf *fdf)
 	}
 }
 
+void	line_horiz(t_vec2 coord, t_fdf *fdf)
+{
+	fdf->mtrx.start.x = coord.x;
+	fdf->mtrx.start.y = coord.y;
+	fdf->mtrx.end.x = coord.x;
+	fdf->mtrx.end.y = coord.y ;
+}
+
 // void	f_bresen(t_fdf *fdf)
 // {
 	

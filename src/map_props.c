@@ -36,36 +36,36 @@ void	set_new_zoom(t_fdf *fdf)
 
 void	set_limits(t_mtrx *mtrx)
 {
-	mtrx->start_draw.x = (IMG_CENTER_X - (mtrx->px_size.x / 2));
-	mtrx->start_draw.y = (IMG_CENTER_Y - (mtrx->px_size.y / 2));
-	mtrx->end_draw.x = mtrx->start_draw.x + mtrx->px_size.y;
-	mtrx->end_draw.y = mtrx->start_draw.y + mtrx->px_size.x;
+	mtrx->start.x = (IMG_CENTER_X - (mtrx->px_size.x / 2));
+	mtrx->start.y = (IMG_CENTER_Y - (mtrx->px_size.y / 2));
+	mtrx->end.x = mtrx->start.x + mtrx->px_size.y;
+	mtrx->end.y = mtrx->start.y + mtrx->px_size.x;
 }
 
 void	set_new_limits(t_fdf *fdf)
 {
-	fdf->mtrx.start_draw.x = (IMG_CENTER_X - (fdf->mtrx.px_size.x / 2));
-	fdf->mtrx.start_draw.y = (IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2));
-	fdf->mtrx.end_draw.x = fdf->mtrx.start_draw.x + fdf->mtrx.px_size.y;
-	fdf->mtrx.end_draw.y = fdf->mtrx.start_draw.y + fdf->mtrx.px_size.x;
+	fdf->mtrx.start.x = (IMG_CENTER_X - (fdf->mtrx.px_size.x / 2));
+	fdf->mtrx.start.y = (IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2));
+	fdf->mtrx.end.x = fdf->mtrx.start.x + fdf->mtrx.px_size.y;
+	fdf->mtrx.end.y = fdf->mtrx.start.y + fdf->mtrx.px_size.x;
 }
 
 
 /* limits functons when I try to draw segments at the ssame time */
 // void	set_limits(t_mtrx *mtrx)
 // {
-// 	mtrx->start_draw.x = (IMG_CENTER_X - (mtrx->px_size.x / 2));
-// 	mtrx->start_draw.y = (IMG_CENTER_Y - (mtrx->px_size.y / 2));
-// 	mtrx->end_draw.x = mtrx->start_draw.x + (mtrx->px_size.x / mtrx->segments.x);
-// 	mtrx->end_draw.y = mtrx->start_draw.y + (mtrx->px_size.y / mtrx->segments.y);
+// 	mtrx->start.x = (IMG_CENTER_X - (mtrx->px_size.x / 2));
+// 	mtrx->start.y = (IMG_CENTER_Y - (mtrx->px_size.y / 2));
+// 	mtrx->end.x = mtrx->start.x + (mtrx->px_size.x / mtrx->segments.x);
+// 	mtrx->end.y = mtrx->start.y + (mtrx->px_size.y / mtrx->segments.y);
 // }
 
 // void	set_new_limits(t_fdf *fdf)
 // {
-// 	fdf->mtrx.start_draw.x = (IMG_CENTER_X - (fdf->mtrx.px_size.x / 2));
-// 	fdf->mtrx.start_draw.y = (IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2));
-// 	fdf->mtrx.end_draw.x = fdf->mtrx.start_draw.x + (fdf->mtrx.px_size.x / fdf->mtrx.segments.x);
-// 	fdf->mtrx.end_draw.y = fdf->mtrx.start_draw.y + (fdf->mtrx.px_size.y / fdf->mtrx.segments.y);
+// 	fdf->mtrx.start.x = (IMG_CENTER_X - (fdf->mtrx.px_size.x / 2));
+// 	fdf->mtrx.start.y = (IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2));
+// 	fdf->mtrx.end.x = fdf->mtrx.start.x + (fdf->mtrx.px_size.x / fdf->mtrx.segments.x);
+// 	fdf->mtrx.end.y = fdf->mtrx.start.y + (fdf->mtrx.px_size.y / fdf->mtrx.segments.y);
 // }
 
 // void	set_limits_isometric(t_fdf *fdf)
