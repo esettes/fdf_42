@@ -25,7 +25,7 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)\033[2;33m"
 
 all: $(NAME) ${OBJDIR}
 

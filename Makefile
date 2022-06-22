@@ -55,8 +55,8 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 #Change libx42_flags position at the end of the coommand
 $(NAME):	$(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(LIBX42) -g $(LIBX42_FLAGS) 
-	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)"
-	@echo "${BWHITE}Compilation ${GREEN}[OK]$(RESET)" 
+	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${BWHITE}Compilation ${GREEN}[OK]$(RESET)\033[2;33m" 
 
 $(LIBFT):
 	@$(MAKE) -C $(dir $(LIBFT))
@@ -71,30 +71,30 @@ LD_DEBUG=all
 
 dbgfiles:
 	@rm -rf *.dSYM 
-	@echo "${LWHITE}Clean debug files... ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}Clean debug files... ${LGREEN}✓$(RESET)\033[2;33m"
 
 clean:	dbgfiles
-	@echo "${LWHITE}Clean fdf... ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}Clean fdf... ${LGREEN}✓$(RESET)\033[2;33m"
 	@rm -rf ${OBJDIR}*.o
-	@echo "${LWHITE}Clean Libft... ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}Clean Libft... ${LGREEN}✓$(RESET)\033[2;33m"
 	@$(MAKE) -C $(dir $(LIBFT)) clean
-	@echo "${LWHITE}Clean GNL... ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}Clean GNL... ${LGREEN}✓$(RESET)\033[2;33m"
 	@$(MAKE) -C $(dir $(GNL)) clean
-	@echo "${LWHITE}Clean MLX2... ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}Clean MLX2... ${LGREEN}✓$(RESET)\033[2;33m"
 	@$(MAKE) -C $(dir $(LIBX42)) clean
-	@echo "${BWHITE}Clean objs ${GREEN}[OK]$(RESET)"
+	@echo "${BWHITE}Clean objs ${GREEN}[OK]$(RESET)\033[2;33m"
 
 fclean: dbgfiles
 	@rm -rf $(NAME)
-	@echo "${LWHITE}Clean fdf... ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}Clean fdf... ${LGREEN}✓$(RESET)\033[2;33m"
 	@rm -rf ${OBJDIR}*.o
-	@echo "${LWHITE}Clean Libft... ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}Clean Libft... ${LGREEN}✓$(RESET)\033[2;33m"
 	@$(MAKE) -C $(dir $(LIBFT)) fclean
-	@echo "${LWHITE}Clean GNL... ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}Clean GNL... ${LGREEN}✓$(RESET)\033[2;33m"
 	@$(MAKE) -C $(dir $(GNL)) fclean
 #	@echo "${LWHITE}Clean MLX42... ${LGREEN}✓$(RESET)"
 	@$(MAKE) -C $(dir $(LIBX42)) clean
-	@echo "${BWHITE}Clean all ${GREEN}[OK]"
+	@echo "${BWHITE}Clean all ${GREEN}[OK]\033[2;33m"
 	@echo "\n"
 
 re: fclean all

@@ -79,10 +79,10 @@ void	test_view_iso(t_fdf *fdf)
 	start.y = fdf->mtrx.start_draw.y;
 	end.x = fdf->mtrx.end_draw.x + aux.x;
 	end.y = fdf->mtrx.start_draw.y + aux.y;
-	zoom_iter.x = fdf->mtrx.px_size.x / fdf->mtrx.segments.x;
-	zoom_iter.y = fdf->mtrx.px_size.y / fdf->mtrx.segments.y;
-	iso_dist.x = 1.8;
-	iso_dist.y = 0.5;
+	zoom_iter.x = fdf->mtrx.px_size.x / fdf->mtrx.segments.y;
+	zoom_iter.y = fdf->mtrx.px_size.y / fdf->mtrx.segments.x;
+	iso_dist.x = 1.899999999999;
+	iso_dist.y = 0.599999999999;
 	while(seg_iter.y < fdf->mtrx.segments.y)
 //	while (seg_iter.y <= fdf->mtrx.px_size.y)
 	{
@@ -90,10 +90,10 @@ void	test_view_iso(t_fdf *fdf)
 			draw_segment_to_right(start, end, fdf, 4);
 		if (seg_iter.y >= 2)
 			draw_segment_to_right(start, end, fdf, 0);
-		start.x -= zoom_iter.y * cos (45) * iso_dist.x;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
-		start.y += zoom_iter.x * sin(45) * iso_dist.y;
-		end.x -= zoom_iter.y * cos (45) * iso_dist.x;
-		end.y += zoom_iter.x * sin (45) * iso_dist.y;
+		start.x -= zoom_iter.x * cos (45) * iso_dist.x;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
+		start.y += zoom_iter.y * sin(45) * iso_dist.y;
+		end.x -= zoom_iter.x * cos (45) * iso_dist.x;
+		end.y += zoom_iter.y * sin (45) * iso_dist.y;
 		
 		seg_iter.y++;
 	}
@@ -110,10 +110,10 @@ void	test_view_iso(t_fdf *fdf)
 			draw_segment_to_left(start, end, fdf, 4);
 		if (seg_iter.x >= 2)
 			draw_segment_to_left(start, end, fdf, 1);
-		start.x += zoom_iter.y * cos (45) * iso_dist.x;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
-		start.y += zoom_iter.x * sin(45) * iso_dist.y;
-		end.x += zoom_iter.y * cos (45) * iso_dist.x;
-		end.y += zoom_iter.x * sin (45) * iso_dist.y;
+		start.x += zoom_iter.x * cos (45) * iso_dist.x;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
+		start.y += zoom_iter.y * sin(45) * iso_dist.y;
+		end.x += zoom_iter.x * cos (45) * iso_dist.x;
+		end.y += zoom_iter.y * sin (45) * iso_dist.y;
 		seg_iter.x++;
 	}
 }

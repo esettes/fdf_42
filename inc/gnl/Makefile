@@ -29,7 +29,7 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(LWHITE)"
+	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(LWHITE)\033[2;33m"
 
 all: $(NAME) ${OBJS}
 
