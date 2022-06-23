@@ -22,10 +22,11 @@ void	new_view_iso(t_fdf *fdf);
 void	new_view_iso_testing(t_fdf *fdf);
 void	line_horiz(t_vec2 coord, t_fdf *fdf);
 void	line_vert(t_vec2 coord, t_fdf *fdf);
-void	f_bresen(t_fdf *fdf);
+void	f_bresen(t_fdf *fdf, t_vec2 coord);
 void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth dep);
-t_depth	set_depth(t_fdf *fdf);
+t_depth	set_depth(t_fdf *fdf);//, t_vec2 coord);
 void	zoom(t_fdf *fdf);
+
 float	f_max(float a, float b);
 float	f_mod(float a);
 void	bresen_put_pixel(t_fdf *fdf, t_vec2 step);

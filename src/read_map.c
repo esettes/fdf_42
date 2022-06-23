@@ -36,13 +36,13 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 			aux = iter.j;
 			trigger = FALSE;
 		}
-		if (split_fd[iter.i] == NULL || ft_strncmp(split_fd[iter.i], "\n", 1) == 0 || 
+		if (split_fd[iter.i] == NULL || 
+			ft_strncmp(split_fd[iter.i], "\n", 1) == 0 || 
 			ft_strncmp(split_fd[iter.i], " ", 1) == 0)
 			break ;
 		iter.i++;
 	}
 	m->segments = set_mtrx_size(aux, iter.i, m);
-	//set_limits(m);
 	mtrx = malloc(sizeof(int *) * iter.j);
 	printf("\nm->size->y: %f \n", m->segments.y);
 	printf("m->size->x: %f \n\n", m->segments.x);
@@ -60,9 +60,6 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 		iter.i++;
 	}
 	m->mtrx = mtrx;
-	iter.i = 0;
-	//free (mtrx);
-	//return (mtrx);
 }
 
 int	ft_count(char const *s, char c)

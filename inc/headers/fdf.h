@@ -32,6 +32,4 @@
 # include "read_file.h"
 # include "matrix_properties.h"
 
-t_vec2	set_mesh_iso(t_fdf *fdf);
-
 #endif
