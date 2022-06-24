@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/21 22:57:06 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/24 23:52:49 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	loop_fdf(t_fdf *fdf)
 {
+	
 	mlx_scroll_hook(fdf->mlx, &set_zoom, fdf);
 	
 	
 	//view_on_top(fdf);
-	test_view_iso(fdf);
+	//test_view_iso(fdf);
 	//draw_menu(fdf);
-	//new_view_iso_testing(fdf);
+	new_view_iso_testing(fdf);
 	mlx_loop(fdf->mlx);
 	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
 	// mlx_terminate(fdf->mlx);
@@ -35,15 +36,16 @@ void	create_image(t_fdf *fdf)
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH * IMG_AUMENT, HEIGHT * IMG_AUMENT);    // Creates a new image.
 	offset.x  = ((WIDTH * IMG_AUMENT) / 2) - (WIDTH /2);
 	offset.y  = ((HEIGHT * IMG_AUMENT) / 2) - (HEIGHT /2);
+	printf("in create image, offsets img x: %f, y: %f\n", offset.x, offset.y);
 	mlx_image_to_window(fdf->mlx, fdf->img, -offset.x, -offset.y);   // Adds an image to the render queue.
 }
 
 void	draw_image(t_fdf *fdf)
 {
-	set_new_zoom(fdf);
+	//set_new_zoom(fdf);
 	//view_on_top(fdf);
-	//new_view_iso_testing(fdf);
-	test_view_iso(fdf);
+	new_view_iso_testing(fdf);
+	//test_view_iso(fdf);
 	//draw_menu(fdf);
 }
 

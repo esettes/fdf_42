@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:21:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/22 03:38:00 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/24 23:59:13 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	set_new_zoom(t_fdf *fdf)
 
 	segm.x = fdf->mtrx.segments.x;
 	segm.y = fdf->mtrx.segments.y;
-	fdf->mtrx.control.height = 1;
-	fdf->mtrx.control.zoom = 1;
+	fdf->control.height = 1;
+	fdf->control.zoom = 0;
 	fdf->mtrx.px_size.x = ((segm.y - 1) * fdf->mtrx.zoom);
 	fdf->mtrx.px_size.y = ((segm.x - 1) * fdf->mtrx.zoom);
 	set_new_limits(fdf);

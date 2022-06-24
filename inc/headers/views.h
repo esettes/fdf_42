@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:29:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/21 22:47:48 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/24 22:53:44 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	new_view_iso(t_fdf *fdf);
 void	new_view_iso_testing(t_fdf *fdf);
 void	line_horiz(t_vec2 coord, t_fdf *fdf);
 void	line_vert(t_vec2 coord, t_fdf *fdf);
-void	f_bresen(t_fdf *fdf, t_vec2 coord);
+void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end);
 void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth dep);
 t_depth	set_depth(t_fdf *fdf);//, t_vec2 coord);
 void	zoom(t_fdf *fdf);

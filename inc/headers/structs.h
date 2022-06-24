@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/22 04:05:31 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/24 23:57:14 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct s_mtrx
 	int			z;
 	float		zoom;
 	t_lines		line;
-	t_controls	control;
 	t_vec2		segments;
 	t_vec2		px_size;
 	t_vec2		start;
@@ -95,6 +94,7 @@ typedef struct s_fdf
 {
 	mlx_t		*mlx;
 	t_mtrx		mtrx;
+	t_controls	control;
 	mlx_image_t	*img;		// Has position
 	int			fd;
 }				t_fdf;

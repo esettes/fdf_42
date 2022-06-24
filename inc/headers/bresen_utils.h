@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   bresen_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/24 23:57:31 by iostancu         ###   ########.fr       */
+/*   Created: 2022/06/25 00:01:03 by iostancu          #+#    #+#             */
+/*   Updated: 2022/06/25 00:01:30 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef BRESEN_UTILS_H
+# define BRESEN_UTILS_H
 
-void	init_mlx(t_fdf *fdf)
-{
-	fdf->mtrx.zoom = 1;
-	fdf->mtrx.current.x = 0;
-	fdf->mtrx.current.y = 0;
-	fdf->mtrx.next.x = 0;
-	fdf->mtrx.next.y = 0;
-	obtain_split_fd(fdf->fd, &fdf->mtrx);
-	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
-	create_image(fdf);
-	draw_image(fdf);
-	loop_fdf(fdf);
-}
+# include "structs.h"
+
+void	bresen_zoom(t_fdf *fdf);
+
+#endif
