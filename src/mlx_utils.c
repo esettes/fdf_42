@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 04:28:22 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 04:31:37 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	loop_fdf(t_fdf *fdf)
 	new_view_iso_testing(fdf);
 	mlx_loop(fdf->mlx);
 	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
-	//mlx_terminate(fdf->mlx);
+	// mlx_terminate(fdf->mlx);
 }
 
 void	create_image(t_fdf *fdf)

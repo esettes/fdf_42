@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 04:26:09 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 04:34:13 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 	if (depth.z > 11)
 		color = 0x718DAEFF;
 	else if (depth.z > 9)
-		color = 0x4D98AEFF;
+		color = BLU_CB;
 	else if (depth.z > 7)
 		color = 0x1F4079FF;
 	else if (depth.z > 5)
@@ -86,7 +86,6 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 	
 	offset.x = IMG_CENTER_X - (fdf->mtrx.px_size.x / 2);
 	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2);
-	
 	
 	//isometric(fdf, &start, &end, depth);
 	iso(fdf, &start, depth.z);
