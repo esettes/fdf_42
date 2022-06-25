@@ -48,13 +48,10 @@ void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth)//, t_vec2 
 
 void	iso(t_fdf *fdf, t_vec2 *coord, int z)
 {
-	t_vec2	zoom_iter;
-	
-	zoom_iter.x = fdf->mtrx.px_size.y / fdf->mtrx.vertices.x;
-	zoom_iter.y = fdf->mtrx.px_size.x / fdf->mtrx.vertices.y;
 	
 	coord->x = ((coord->x ) - (coord->y )) * cos(45) * 1;
 	coord->y = ((coord->x) + (coord->y )) * (sin(45) * 0.5)  - (z  * 0.5);
+	(void)fdf;
 }
 
 void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
@@ -84,8 +81,8 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 	else
 		color = 0x00000012;
 	
-	offset.x = IMG_CENTER_X - (fdf->mtrx.px_size.x / 2);
-	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2);
+	offset.x = IMG_CENTER_X - (fdf->mtrx.px_size.x / 6);
+	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 4);
 	
 	//isometric(fdf, &start, &end, depth);
 	iso(fdf, &start, depth.z);
@@ -93,11 +90,18 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 	step.x = end.x - start.x;
 	step.y = end.y - start.y;
 	max = f_max(f_mod(step.x), f_mod(step.y));
+//	start.x += IMG_CENTER_X / 2;
+//	start.y += IMG_CENTER_Y / 2;
+//	end.x += IMG_CENTER_X / 2;
+//	end.y += IMG_CENTER_Y / 2;
 	step.x /= max;
 	step.y /= max;
 	while ((int)(start.x - end.x) || (int)(start.y - end.y))
 	{
-		mlx_put_pixel(fdf->img, start.x + offset.x , start.y + offset.y, color);
+		
+		mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
+		//printf("offset x: %f, y: %f\n", offset.x, offset.y);
+		//printf("start x: %f, y: %f\n", start.x, start.y);
 		start.x += step.x;
 		start.y += step.y;
 	}

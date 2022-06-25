@@ -70,7 +70,7 @@ void	test_view_iso(t_fdf *fdf)
 	t_vec2	zoom_iter;
 	t_vec2	iso_dist;
 	t_mtrx	m;
-	int		newline;
+	//int		newline;
 	//int		i;
 	//t_vec2	aux_start;
 	t_vec2	start;
@@ -83,7 +83,7 @@ void	test_view_iso(t_fdf *fdf)
 	zoom_iter.y = m.px_size.x / m.vertices.y;
 	iso_dist.x = 2;
 	iso_dist.y = 0.5;
-	newline = TRUE;
+//	newline = TRUE;
 	seg_iter.y = 0;
 	
  	aux.x = (IMG_CENTER_X - (int)fdf->mtrx.start.x) * 1;

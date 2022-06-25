@@ -13,9 +13,9 @@
 #ifndef MACROS_FDF_H
 # define MACROS_FDF_H
 
-# define WIDTH		1600
-# define HEIGHT		900
-# define IMG_AUMENT		4
+# define WIDTH		1200//1600
+# define HEIGHT		600//900
+# define IMG_AUMENT		8
 # define X_ORIGIN_OFF	( WIDTH / 2 )
 # define Y_ORIGIN_OFF	( HEIGHT / 2 )
 # define IMG_CENTER_X	((WIDTH * IMG_AUMENT) / 2)
