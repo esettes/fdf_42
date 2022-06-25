@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 04:22:03 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 04:26:09 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,6 @@ float	f_mod(float a)
 		return (a);
 }
 
-void	line_horiz(t_vec2 coord, t_fdf *fdf)
-{
-	fdf->mtrx.start.x += coord.x;
-	fdf->mtrx.start.y += coord.y;
-	fdf->mtrx.end.x += coord.x + 1;
-	fdf->mtrx.end.y += coord.y;
-    fdf->mtrx.current.x += coord.x;
-	fdf->mtrx.current.y += coord.y;
-	fdf->mtrx.next.x += coord.x + 1;
-	fdf->mtrx.next.y += coord.y;
-}
-
-void	line_vert(t_vec2 coord, t_fdf *fdf)
-{
-	fdf->mtrx.start.x += coord.x;
-	fdf->mtrx.start.y += coord.y;
-    fdf->mtrx.end.x += coord.x;
-	fdf->mtrx.end.y += coord.y + 1;
-    fdf->mtrx.current.x += coord.x;
-	fdf->mtrx.current.y += coord.y;
-	fdf->mtrx.next.x += coord.x;
-	fdf->mtrx.next.y += coord.y + 1;
-}
 
 void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth)//, t_vec2 *end, t_depth dep)
 {

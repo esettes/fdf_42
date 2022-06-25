@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:21:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 03:25:12 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 04:27:08 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,6 @@ void	set_limits(t_mtrx *mtrx)
 	mtrx->end.y = mtrx->start.y + mtrx->px_size.y;
 }
 
-void	set_new_limits(t_fdf *fdf)
-{
-	fdf->mtrx.start.x = (IMG_CENTER_X - (fdf->mtrx.px_size.x / 2));
-	fdf->mtrx.start.y = (IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2));
-	fdf->mtrx.end.x = fdf->mtrx.start.x + fdf->mtrx.px_size.x;
-	fdf->mtrx.end.y = fdf->mtrx.start.y + fdf->mtrx.px_size.y;
-}
-
 
 /* limits functons when I try to draw vertices at the ssame time */
 // void	set_limits(t_mtrx *mtrx)
@@ -71,25 +63,3 @@ void	set_new_limits(t_fdf *fdf)
 // 	mtrx->end.y = mtrx->start.y + (mtrx->px_size.y / mtrx->vertices.y);
 // }
 
-// void	set_new_limits(t_fdf *fdf)
-// {
-// 	fdf->mtrx.start.x = (IMG_CENTER_X - (fdf->mtrx.px_size.x / 2));
-// 	fdf->mtrx.start.y = (IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2));
-// 	fdf->mtrx.end.x = fdf->mtrx.start.x + (fdf->mtrx.px_size.x / fdf->mtrx.vertices.x);
-// 	fdf->mtrx.end.y = fdf->mtrx.start.y + (fdf->mtrx.px_size.y / fdf->mtrx.vertices.y);
-// }
-
-// void	set_limits_isometric(t_fdf *fdf)
-// {
-	
-// }
-// t_img_props	get_middle_img()
-// {
-	// t_vec2	save_aux;
-	// t_vec2	img_offset;
-	
-	// save_aux.x  = ((WIDTH * IMG_AUMENT) / 2) - (WIDTH /2);
-	// img_offset.x = ((WIDTH * IMG_AUMENT) / 2) - save_aux.x;
-	// save_aux.y  = ((HEIGHT * IMG_AUMENT) / 2) - (HEIGHT /2);
-	// img_offset.y = ((HEIGHT * IMG_AUMENT) / 2) - save_aux.y;
-// }

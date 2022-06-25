@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 04:09:59 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 04:28:22 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 void	loop_fdf(t_fdf *fdf)
 {
-	
 	mlx_scroll_hook(fdf->mlx, &set_zoom, fdf);
-	
-	
 
-	//test_view_iso(fdf);
 	//draw_menu(fdf);
 	new_view_iso_testing(fdf);
 	mlx_loop(fdf->mlx);
 	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
-	// mlx_terminate(fdf->mlx);
+	//mlx_terminate(fdf->mlx);
 }
 
 void	create_image(t_fdf *fdf)
@@ -44,7 +40,6 @@ void	draw_image(t_fdf *fdf)
 	set_new_zoom(fdf);
 
 	new_view_iso_testing(fdf);
-	//test_view_iso(fdf);
 	//draw_menu(fdf);
 }
 
@@ -53,20 +48,3 @@ void	modify_mesh(t_fdf *fdf)
 	create_image(fdf);
 	draw_image(fdf);
 }
-
-
-/*
-void	transform_iso(t_mtrx *mtrx)
-{
-	double	x1;
-	double	y1;
-
-	// obtener centro del mapa
-
-	// colocar el centro del mapa en 0, 0 y ajustar coords
-
-	// aplicar giro
-
-	// aplicar nnuevas coordenadas a la imagen existente
-}
- */

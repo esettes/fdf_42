@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:29:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 03:10:27 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 04:27:17 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	new_view_iso_testing(t_fdf *fdf);
 void	line_horiz(t_vec2 coord, t_fdf *fdf);
 void	line_vert(t_vec2 coord, t_fdf *fdf);
 
-t_depth	set_depth(t_fdf *fdf);//, t_vec2 coord);
 void	zoom(t_fdf *fdf);
 
 float	f_max(float a, float b);

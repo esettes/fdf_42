@@ -369,15 +369,3 @@ void	new_view_iso(t_fdf *fdf)
 		seg_iter.y++;
 	}
 }
-
-void	set_start_to_print_iso(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
-{
-	t_vec2	offset;
-
-	offset.x = (IMG_CENTER_X - (int)fdf->mtrx.start.x) * 0.99;
-	offset.y = (IMG_CENTER_Y - (int)fdf->mtrx.start.y) * 0.99;
-	start->x = (int)fdf->mtrx.start.x + offset.x;
-	start->y = (int)fdf->mtrx.start.y;
-	end->x = (int)fdf->mtrx.end.x + offset.x;
-	end->y = (int)fdf->mtrx.start.y + offset.y;
-}
