@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:27:12 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 02:52:13 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 03:07:09 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,7 @@ void	new_view_iso_testing(t_fdf *fdf)
 	}
 }
 
-void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth dep)
-{
-	printf("\nin isometric, before calculations, start.x and start.y: %f, %f\n", start->x, start->y);
-	printf("\nin isometric, before calculations, end.x and end.y: %f, %f\n", end->x, end->y);
-	printf("\nin isometric, before calculations, dep.z %d\n", dep.z);
-	start->x = (((start->x - IMG_CENTER_X) - (start->y - IMG_CENTER_Y)) * cos(0.8));
-	start->y = (((start->x - IMG_CENTER_X) + (start->y - IMG_CENTER_Y)) * sin(0.8) - dep.z);
-	end->x = (((end->x - IMG_CENTER_X) - (end->y - IMG_CENTER_Y)) * cos(0.8));
-	end->y = (((end->x - IMG_CENTER_Y) + (end->y - IMG_CENTER_Y)) * sin(0.8) - dep.z1);
-	printf("\nin isometric, after calculations, start.x and start.y: %f, %f\n", start->x, start->y);
-	printf("\nin isometric, after calculations, end.x and end.y: %f, %f\n", end->x, end->y);
-	printf("\nin isometric, before calculations, dep.z %d\n", dep.z1);
-	(void)fdf;
-}
+
 
 
 

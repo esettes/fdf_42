@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:01:03 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 00:01:30 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 03:51:23 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include "structs.h"
 
-void	bresen_zoom(t_fdf *fdf);
+/**
+ * Applies zoom of each start and end points.
+ */
+void	bresen_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end);
+void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end);
+void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth);
+void	iso(t_fdf *fdf, t_vec2 *coord, int z);
 
 #endif

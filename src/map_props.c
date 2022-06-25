@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:21:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 01:18:53 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 03:25:12 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	set_new_zoom(t_fdf *fdf)
 {
 	fdf->mtrx.px_size.x = fdf->control.zoom * (fdf->mtrx.vertices.x - 1);
 	fdf->mtrx.px_size.y = fdf->control.zoom * (fdf->mtrx.vertices.y - 1);
-	set_new_limits(fdf);
+	set_limits(&fdf->mtrx);
 }
 
 // void	set_new_zoom(t_fdf *fdf)

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:35:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 00:57:58 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 04:08:23 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIDTH		1600
 # define HEIGHT		900
-# define IMG_AUMENT		1
+# define IMG_AUMENT		4
 # define X_ORIGIN_OFF	( WIDTH / 2 )
 # define Y_ORIGIN_OFF	( HEIGHT / 2 )
 # define IMG_CENTER_X	((WIDTH * IMG_AUMENT) / 2)
