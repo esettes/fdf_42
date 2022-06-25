@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:07:08 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 13:08:19 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 03:17:04 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ char	**obtain_lines(int fd);
  */
 void	obtain_split_fd(int fd, t_mtrx *m);
 /**
- * Returns the number words of *s separated by 'c'
+ * Count words of *s separated by 'c'
+ * 
+ * @return Number of words
  */
 int		ft_count(char const *s, char c);
 /**

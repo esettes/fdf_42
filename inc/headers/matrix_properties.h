@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:26:48 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/21 22:47:28 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 00:47:38 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,19 @@
 # include "structs.h"
 
 /**
- * Saves the mesh size (in pixels) and the number of segments.
+ * Saves vertices of readed file.
  * 
- * @param[in] x Number of vertical segments.
- * @param[in] y Number of horizontal segments.
- * @param[in] mtrx struct matrix.
+ * @param[in] x Number of vertical vertices.
+ * @param[in] y Number of horizontal vertices.
  * 
- * @return t_vec2 with the number of segments.
+ * @return t_vec2 with the number of vertices.
  */
-t_vec2	set_mtrx_size(int x, int y, t_mtrx *mtrx);
+t_vec2	set_mtrx_size(int x, int y);
+/**
+ * Obtains the size in pixels of the mesh. Useful to set the mesh in center of
+ * image.
+ */
+void	set_pixel_size(t_fdf *fdf);
 void	init_map_props(t_fdf *fdf);
 void	free_props(t_fdf *fdf);
 /**

@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   bresen_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 02:52:04 by iostancu         ###   ########.fr       */
+/*   Created: 2022/06/25 00:01:03 by iostancu          #+#    #+#             */
+/*   Updated: 2022/06/25 03:51:23 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef BRESEN_UTILS_H
+# define BRESEN_UTILS_H
 
-void	init_mlx(t_fdf *fdf)
-{
-	fdf->control.zoom = 1;
-	fdf->mtrx.current.x = 0;
-	fdf->mtrx.current.y = 0;
-	fdf->mtrx.next.x = 0;
-	fdf->mtrx.next.y = 0;
-	obtain_split_fd(fdf->fd, &fdf->mtrx);
-	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
-	create_image(fdf);
-	draw_image(fdf);
-	loop_fdf(fdf);
-}
+# include "structs.h"
+
+/**
+ * Applies zoom of each start and end points.
+ */
+void	bresen_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end);
+void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end);
+void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth);
+void	iso(t_fdf *fdf, t_vec2 *coord, int z);
+
+#endif
