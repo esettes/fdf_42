@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/24 23:57:14 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 00:23:49 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ typedef	struct s_lines
  * @param[in] z Mesh's depth.
  * @param[in] zoom Value that sets the distance between adjoining vertices.
  * @param[in] line Struct which have coords to draw segments.
- * @param[in] segments 'x' represents columns, 'y' represents rows
- * @param[in] px_size Pixel size of a segment.
+ * @param[in] vertices number of vertices in width(x) and height(y)
+ * @param[in] px_size Pixel size of width(x) and height(y).
  * @param[in] start Coord where to start to draw in the img.
  * @param[in] end Coord where to finish to draw in the img.
  * @param[in] current Current position in the array mesh.
@@ -74,7 +74,7 @@ typedef struct s_mtrx
 	int			z;
 	float		zoom;
 	t_lines		line;
-	t_vec2		segments;
+	t_vec2		vertices;
 	t_vec2		px_size;
 	t_vec2		start;
 	t_vec2		end;

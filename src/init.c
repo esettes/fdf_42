@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/24 23:57:31 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 02:52:04 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_mlx(t_fdf *fdf)
 {
-	fdf->mtrx.zoom = 1;
+	fdf->control.zoom = 1;
 	fdf->mtrx.current.x = 0;
 	fdf->mtrx.current.y = 0;
 	fdf->mtrx.next.x = 0;

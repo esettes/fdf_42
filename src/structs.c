@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:10:35 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 12:27:50 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 00:22:50 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 // 	int		**mtrx;
 // 	int		z;
 // 	int		zoom;
-// 	t_vec2	segments;
+// 	t_vec2	vertex;
 // 	t_vec2	px_size;
 // 	t_vec2	start_draw;
 // 	t_vec2	end_draw;

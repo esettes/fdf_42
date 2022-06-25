@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 18:42:47 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 00:47:58 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 			break ;
 		iter.i++;
 	}
-	m->segments = set_mtrx_size(aux, iter.i, m);
+	m->vertices = set_mtrx_size(aux, iter.i);
 	mtrx = malloc(sizeof(int *) * iter.j);
-	printf("\nm->size->y: %f \n", m->segments.y);
-	printf("m->size->x: %f \n\n", m->segments.x);
+	printf("\nm->size->y: %f \n", m->vertices.y);
+	printf("m->size->x: %f \n\n", m->vertices.x);
 	iter.i = 0;
 	while (split_fd[iter.i])
 	{
 		mtrx[iter.i] = str_to_int(split_fd[iter.i]);
 		j = 0;
-		while (j < iter.j/m->segments.y)
+		while (j < iter.j/m->vertices.y)
 		{
 			printf("%i ", mtrx[iter.i][j]);
 			j++;

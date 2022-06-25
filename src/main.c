@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/24 19:20:25 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 02:36:24 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int argc, char	*argv[])
 		printf("HEIGHT: %d\n\n", HEIGHT);
 		
 		fdf = (t_fdf *)malloc(sizeof(t_fdf));
-//		fdf->fd = open("maps/100-6.fdf", O_RDONLY);
-		fdf->fd = open(argv[1], O_RDONLY);
+		fdf->fd = open("maps/42.fdf", O_RDONLY);
+//		fdf->fd = open(argv[1], O_RDONLY);
 		if (fdf->fd <= 0)
 		{
 			exit(EXIT_FAILURE);

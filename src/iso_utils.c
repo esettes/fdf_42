@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 00:05:04 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 02:52:26 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,33 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 {
 	t_vec2	step;
 	int		max;
+	t_vec2	offset;
+	t_depth	depth;
+	int		**z_mesh;
+	int		color;
 
+	z_mesh = fdf->mtrx.mtrx;
+	
+	depth.z = z_mesh[(int)start.y][(int)start.x];
+	printf("mtrx[%d][%d] value: %d\n", (int)start.y, (int)start.x, fdf->mtrx.mtrx[(int)start.y][(int)start.x]);
 	bresen_zoom(fdf, &start, &end);
+	//depth.z1 = fdf->mtrx.mtrx[(int)end.y][(int)end.x];
+	//color = 0x00000000;
+	if (depth.z > 0)
+		color = BLU_CB;
+	else
+		color = 0x00000000;
 	step.x = end.x - start.x;
 	step.y = end.y - start.y;
+	offset.x = IMG_CENTER_X - (fdf->mtrx.px_size.x / 2);
+	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2);
+	
 	max = f_max(f_mod(step.x), f_mod(step.y));
 	step.x /= max;
 	step.y /= max;
 	while ((int)(start.x - end.x) || (int)(start.y - end.y))
 	{
-		/* Add img offset to draw mesh in the middle of window */
-		mlx_put_pixel(fdf->img, start.x + IMG_CENTER_X, start.y + IMG_CENTER_Y, BLU_CB);
-		printf("steps in f_bresen x: %f, y: %f\n", step.x, step.y);
+		mlx_put_pixel(fdf->img, start.x + offset.x , start.y + offset.y, color);
 		start.x += step.x;
 		start.y += step.y;
 	}

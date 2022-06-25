@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:27:12 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/24 23:58:00 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/25 02:52:13 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,23 @@ void	new_view_iso_testing(t_fdf *fdf)
 
 	coord.y = 0;
 	//mesh = &fdf->mtrx;
-	while (coord.y < fdf->mtrx.segments.y)
+	while (coord.y < fdf->mtrx.vertices.y)
 	{
 		coord.x = 0;
-		while (coord.x < fdf->mtrx.segments.x)
+		while (coord.x < fdf->mtrx.vertices.x)
 		{
-			if (coord.x < fdf->mtrx.segments.x - 1)
+			if (coord.x < fdf->mtrx.vertices.x - 1)
 			{
 				//line_horiz(coord, fdf);
-				v_end.x = coord.x;
-				v_end.y = coord.y + 1;
+				v_end.x = coord.x + 1;
+				v_end.y = coord.y;
 				f_bresen(fdf, coord, v_end);
 			}
-			if (coord.y < fdf->mtrx.segments.y - 1)
+			if (coord.y < fdf->mtrx.vertices.y - 1)
 			{
 				//line_vert(coord, fdf);
-				h_end.x = coord.x + 1;
-				h_end.y = coord.y;
+				h_end.x = coord.x;
+				h_end.y = coord.y + 1;
 				f_bresen(fdf, coord, h_end);
 			}
 			coord.x++;

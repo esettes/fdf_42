@@ -12,7 +12,7 @@
 // 	start.y = (int)fdf->mtrx.start_draw.y;
 // 	end.x = (int)fdf->mtrx.end_draw.x;
 // 	end.y = (int)fdf->mtrx.start_draw.y;
-// 	while (seg_iter.y < fdf->mtrx.segments.y)
+// 	while (seg_iter.y < fdf->mtrx.vertices.y)
 // 	{
 // 		draw_segment_horiz(start, end, fdf);
 // 		start.y += fdf->mtrx.zoom;
@@ -21,7 +21,7 @@
 // 	}
 // 	start.y = round(fdf->mtrx.start_draw.y);
 // 	end.y = start.y + fdf->mtrx.px_size.y;
-// 	while (seg_iter.x < fdf->mtrx.segments.x)
+// 	while (seg_iter.x < fdf->mtrx.vertices.x)
 // 	{
 // 		draw_segment_vert(start, end, fdf);
 // 		start.x += fdf->mtrx.zoom;
@@ -43,7 +43,7 @@ void	view_on_top(t_fdf *fdf)
 	end.x = (int)fdf->mtrx.end.x;
 	end.y = (int)fdf->mtrx.start.y;
 
-	while (seg_iter.y < fdf->mtrx.segments.y)
+	while (seg_iter.y < fdf->mtrx.vertices.y)
 	{
 		draw_segment_to_right(start, end, fdf, 0);
 		start.y += fdf->mtrx.zoom;
@@ -52,7 +52,7 @@ void	view_on_top(t_fdf *fdf)
 	}
 	start.y = round(fdf->mtrx.start.y);
 	end.y = start.y + fdf->mtrx.px_size.y;
-	while (seg_iter.x < fdf->mtrx.segments.x)
+	while (seg_iter.x < fdf->mtrx.vertices.x)
 	{
 		draw_segment_to_left(start, end, fdf, 0);
 		start.x += fdf->mtrx.zoom;
@@ -71,20 +71,31 @@ void	test_view_iso(t_fdf *fdf)
 	t_vec2	iso_dist;
 	t_mtrx	m;
 	int		newline;
-	int		i;
-	t_vec2	aux_start;
+	//int		i;
+	//t_vec2	aux_start;
+	t_vec2	start;
+	t_vec2	end;
 
 	m = fdf->mtrx;
 	seg_iter.x = 0;
 	seg_iter.y = 0;
-	zoom_iter.x = m.px_size.y / m.segments.x;
-	zoom_iter.y = m.px_size.x / m.segments.y;
+	zoom_iter.x = m.px_size.y / m.vertices.x;
+	zoom_iter.y = m.px_size.x / m.vertices.y;
 	iso_dist.x = 2;
 	iso_dist.y = 0.5;
 	newline = TRUE;
+	seg_iter.y = 0;
 	
+ 	aux.x = (IMG_CENTER_X - (int)fdf->mtrx.start.x) * 1;
+ 	aux.y = (IMG_CENTER_Y - (int)fdf->mtrx.start.y) * 1;
+
+ 	start.x = (int)fdf->mtrx.start.x + aux.x;
+ 	start.y = (int)fdf->mtrx.start.y;
+
+ 	end.x = (int)fdf->mtrx.end.x + aux.x;
+ 	end.y = (int)fdf->mtrx.start.y + aux.y;
 	
-	aux.x = (IMG_CENTER_X - m.start.x) * 1;
+/*	aux.x = (IMG_CENTER_X - m.start.x) * 1;
 	aux.y = (IMG_CENTER_Y - m.start.y) * 1;
 
 	//m.start.x += aux.x;
@@ -97,16 +108,16 @@ void	test_view_iso(t_fdf *fdf)
 	m.line.h_end.x = m.start.x;// + aux.x;// + m.zoom + aux.x;
 	m.line.h_end.y = m.start.y;// + aux.y;
 
-	/* Hay que determinar un end para cada línea, ya no sirve el antiguo end */
+	// Hay que determinar un end para cada línea, ya no sirve el antiguo end 
 	while (i  < 3)
 	{
 		seg_iter.y = 0;
-		while(seg_iter.y < m.segments.y)
+		while(seg_iter.y < m.vertices.y)
 		{
 			seg_iter.x = 0;
-			while (seg_iter.x < m.segments.x)
+			while (seg_iter.x < m.vertices.x)
 			{
-				if (seg_iter.x < m.segments.x - 1) // segments.x = vertical lines
+				if (seg_iter.x < m.vertices.x - 1) // vertices.x = vertical lines
 				{
 					draw_segment_to_left(m.start, m.line.v_end, fdf, 0);
 					if (newline == TRUE)
@@ -118,7 +129,7 @@ void	test_view_iso(t_fdf *fdf)
 					m.line.v_end.x += zoom_iter.x * cos (45) * iso_dist.x;
 					m.line.v_end.y += zoom_iter.y * sin (45) * iso_dist.y;
 				}
-				if (seg_iter.y < m.segments.y - 1)
+				if (seg_iter.y < m.vertices.y - 1)
 				{
 					draw_segment_to_right(m.start, m.line.h_end, fdf, 4);
 					m.line.h_end.x += zoom_iter.x * cos (45) * iso_dist.x;
@@ -136,30 +147,32 @@ void	test_view_iso(t_fdf *fdf)
 			seg_iter.y += 1;
 		}
 		i++;
-	}
-
-/*	
-	while(seg_iter.y < fdf->mtrx.segments.y)
+	}*/
+	zoom_iter.x = fdf->mtrx.px_size.y / fdf->mtrx.vertices.x;
+	zoom_iter.y = fdf->mtrx.px_size.x / fdf->mtrx.vertices.y;
+	iso_dist.x = 2;
+	iso_dist.y = 0.5;
+	while(seg_iter.y < fdf->mtrx.vertices.y)
 //	while (seg_iter.y <= fdf->mtrx.px_size.y)
 	{
 		if (seg_iter.y < 2)
 			draw_segment_to_right(start, end, fdf, 4);
 		if (seg_iter.y >= 2)
 			draw_segment_to_right(start, end, fdf, 0);
-		start.x -= zoom_iter.y * cos (45) * iso_dist.x;// + fdf->mtrx.px_size.x; // * (fdf->mtrx.px_size.x * cos(30));
+		start.x -= zoom_iter.y * cos (45) * iso_dist.x;// + fdf->mtrx.px_size.x; //* (fdf->mtrx.px_size.x * cos(30));
 		start.y += zoom_iter.x * sin(45) * iso_dist.y;
-		end.x -= zoom_iter.y * cos (45) * iso_dist.x;
+		end.x -= zoom_iter.x * cos (45) * iso_dist.x;
 		end.y += zoom_iter.x * sin (45) * iso_dist.y;
-		
+
 		seg_iter.y++;
 	}
-	printf("\nin test_view_iso,last start.x and start.y: %f, %f\n", start.x, start.y);
+
 	start.x = fdf->mtrx.start.x + aux.x;
 	start.y = fdf->mtrx.start.y;
-	end.x = fdf->mtrx.end.x + aux.x;// - (zoom_iter.y * sin (45) * iso_dist.y);
-	end.y = fdf->mtrx.start.y + aux.y;//  - (zoom_iter.x * cos (45) * iso_dist.x);
+	end.x = fdf->mtrx.end.x + aux.x - (zoom_iter.y * sin (45) * iso_dist.y);
+	end.y = fdf->mtrx.start.y + aux.y  - (zoom_iter.x * cos (45) * iso_dist.x);
 	printf("\nin test_view_iso, first end.x and end.y: %f, %f\n", end.x, end.y);
-	while (seg_iter.x < fdf->mtrx.segments.x)
+	while (seg_iter.x < fdf->mtrx.vertices.x)
 //	while(seg_iter.x <= fdf->mtrx.px_size.x)
 	{
 		if (seg_iter.x < 2)
@@ -171,7 +184,7 @@ void	test_view_iso(t_fdf *fdf)
 		end.x += zoom_iter.x * cos (45) * iso_dist.x;
 		end.y += zoom_iter.y * sin (45) * iso_dist.y;
 		seg_iter.x++;
-	}*/
+	}
 }
 
 // void	test_view_iso(t_fdf *fdf)
@@ -193,12 +206,12 @@ void	test_view_iso(t_fdf *fdf)
 // 	end.x = (int)fdf->mtrx.end_draw.x + aux.x;
 // 	end.y = (int)fdf->mtrx.start_draw.y + aux.y;
 
-// 	while (seg_iter.y <= fdf->mtrx.segments.y)
+// 	while (seg_iter.y <= fdf->mtrx.vertices.y)
 // 	{
 // 		seg_iter.x = 0;
-// 		while (seg_iter.x <= fdf->mtrx.segments.x)
+// 		while (seg_iter.x <= fdf->mtrx.vertices.x)
 // 		{
-// 			if (seg_iter.x < fdf->mtrx.segments.x - 1)
+// 			if (seg_iter.x < fdf->mtrx.vertices.x - 1)
 // 			{
 // 				if (seg_iter.y < 2)
 // 					draw_segment_to_right(start, end, fdf, 0.4);
@@ -212,7 +225,7 @@ void	test_view_iso(t_fdf *fdf)
 		
 // 			end.x = (int)fdf->mtrx.start_draw.x + aux.x;
 // 			end.y = (int)fdf->mtrx.start_draw.y * sin(45);
-// 			while (seg_iter.x <= fdf->mtrx.segments.x)
+// 			while (seg_iter.x <= fdf->mtrx.vertices.x)
 // 			{
 // 				if (seg_iter.x < 2)
 // 					draw_segment_to_left(start, end, fdf, 0.4);
@@ -323,13 +336,13 @@ void	new_view_iso(t_fdf *fdf)
 
 	end.x = (int)fdf->mtrx.end.x + aux.x;
 	end.y = (int)fdf->mtrx.start.y + aux.y;
-	while (seg_iter.y < fdf->mtrx.segments.y)
+	while (seg_iter.y < fdf->mtrx.vertices.y)
 	{
 		seg_iter.x = 0;
-		while (seg_iter.x < fdf->mtrx.segments.x)
+		while (seg_iter.x < fdf->mtrx.vertices.x)
 		{
 			/* Draw bresen line with the size of zoom*/
-			if (seg_iter.x < fdf->mtrx.segments.x - 1)
+			if (seg_iter.x < fdf->mtrx.vertices.x - 1)
 			{
 				if (seg_iter.x < 2)
 					draw_segment_to_left(start, end, fdf, 4);
@@ -340,7 +353,7 @@ void	new_view_iso(t_fdf *fdf)
 				end.x += fdf->mtrx.zoom * cos (45) * 2;
 				end.y += fdf->mtrx.zoom * sin (45) * 0.5;
 			}
-			if (seg_iter.y < fdf->mtrx.segments.y - 1)
+			if (seg_iter.y < fdf->mtrx.vertices.y - 1)
 			{
 				if (seg_iter.y < 2)
 					draw_segment_to_right(start, end, fdf, 4);
