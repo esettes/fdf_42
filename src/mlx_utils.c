@@ -40,7 +40,7 @@ void	create_image(t_fdf *fdf)
 
 void	draw_image(t_fdf *fdf)
 {
-	set_new_zoom(fdf);
+	segitt_new_zoom(fdf);
 	//view_on_top(fdf);
 	//new_view_iso_testing(fdf);
 	test_view_iso(fdf);

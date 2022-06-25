@@ -54,7 +54,7 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 
 #Change libx42_flags position at the end of the coommand
 $(NAME):	$(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(LIBX42) -g $(LIBX42_FLAGS) 
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(LIBX42) $(LIBX42_FLAGS) 
 	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)\033[2;33m"
 	@echo "${BWHITE}Compilation ${GREEN}[OK]$(RESET)\033[2;33m" 
 

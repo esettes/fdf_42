@@ -66,7 +66,8 @@ void	view_on_top(t_fdf *fdf)
 void	test_view_iso(t_fdf *fdf)
 {
 	t_vec2	seg_iter;
-	t_vec2 	aux;
+	t_vec2	start;
+//	t_vec2 	aux;
 	t_vec2	zoom_iter;
 	t_vec2	iso_dist;
 	t_mtrx	m;
@@ -83,56 +84,74 @@ void	test_view_iso(t_fdf *fdf)
 	newline = TRUE;
 	
 	
-	aux.x = (IMG_CENTER_X - m.start.x) * 1;
-	aux.y = (IMG_CENTER_Y - m.start.y) * 1;
+	//aux.x = (IMG_CENTER_X - m.start.x) * 1;
+	//aux.y = (IMG_CENTER_Y - m.start.y) * 1;
+/*
+//	m.start.x += aux.x;
+	start.x = m.start.x;
+	start.y = m.start.y;
+	m.line.v_end.x = start.x + m.zoom;// + aux.x;
+	m.line.v_end.y = start.y;// + aux.y;
+	m.line.h_end.x = start.x + m.zoom;// + aux.x;
+	m.line.h_end.y = start.y;// + aux.y;
 
-	m.start.x += aux.x;
-
-
-	m.line.v_end.x = m.start.x + m.zoom + aux.x;
-	m.line.v_end.y = m.start.y + aux.y;
-
-	m.line.h_end.x = m.start.x + m.zoom + aux.x;
-	m.line.h_end.y = m.start.y + aux.y;
+	printf("\nm->segmnets->y: %f \n", m.segments.y);
+	printf("m->segments->x: %f \n\n", m.segments.x);*/
 
 	/* Hay que determinar un end para cada línea, ya no sirve el antiguo end */
-	while(seg_iter.y < m.segments.y)
+/*	while(seg_iter.y < m.segments.y)
 	{
 		seg_iter.x = 0;
+		
  		while (seg_iter.x < m.segments.x)
 		{
+			printf("mash val: %i\n", m.mtrx[(int)seg_iter.y][(int)seg_iter.x]);
 			if (seg_iter.x < m.segments.x - 1) // segments.x = vertical lines
  			{
-				draw_segment_to_left(m.start, m.line.v_end, fdf, 0);
+				
+				if (seg_iter.x < 2)
+					draw_segment_to_left(start, m.line.v_end, fdf, 4);
+				if (seg_iter.x >= 2)
+					draw_segment_to_left(start, m.line.v_end, fdf, 0);
 				if (newline == TRUE)
 				{
 					newline = FALSE;
 					aux_start.x = m.line.v_end.x;
 					aux_start.y = m.line.v_end.y;
 				}
-				m.line.v_end.x += zoom_iter.y * cos (45) * iso_dist.x;
-				m.line.v_end.y += zoom_iter.x * sin (45) * iso_dist.y;
+				m.line.v_end.x += zoom_iter.x * cos (45) * iso_dist.x;
+				m.line.v_end.y += zoom_iter.y * sin (45) * iso_dist.y;
+				
 			}
 			if (seg_iter.y < m.segments.y - 1)
  			{
-				draw_segment_to_right(m.start, m.line.h_end, fdf, 4);
-				m.line.h_end.x += zoom_iter.y * cos (45) * iso_dist.x;
-				m.line.h_end.y += zoom_iter.x * sin (45) * iso_dist.y;
+				
+				if (seg_iter.y < 2)
+					draw_segment_to_right(start, m.line.h_end, fdf, 1);
+				if (seg_iter.y >= 2)
+					draw_segment_to_right(start, m.line.h_end, fdf, 2);
+				
+				m.line.h_end.x += zoom_iter.x * cos (45) * iso_dist.x;
+				m.line.h_end.y += zoom_iter.y * sin (45) * iso_dist.y;
 			}
 			// el último end es el nuevo start
-			m.start.x = m.line.h_end.x;
-			m.start.y = m.line.h_end.y;
+			start.x = m.line.h_end.x;
+			start.y = m.line.h_end.y;
 			seg_iter.x += 1;
 		}
 		newline = TRUE;
 		// en nueva línea, start es = auxiliar
-		m.start.x = aux_start.x;
-		m.start.y = aux_start.y;
+		start.x -= aux_start.x - m.line.v_end.x;
+		start.y += aux_start.y - m.line.v_end.y;
+		//m.line.v_end.x = start.x;// + m.zoom + aux.x;
+		//m.line.v_end.y = start.y;// + aux.y;
+		//m.line.h_end.x = start.x;// + m.zoom + aux.x;
+		//m.line.h_end.y = start.y;
 		seg_iter.y += 1;
 	}
+*/
 
 
-/*	
 	while(seg_iter.y < fdf->mtrx.segments.y)
 //	while (seg_iter.y <= fdf->mtrx.px_size.y)
 	{
@@ -165,7 +184,7 @@ void	test_view_iso(t_fdf *fdf)
 		end.x += zoom_iter.x * cos (45) * iso_dist.x;
 		end.y += zoom_iter.y * sin (45) * iso_dist.y;
 		seg_iter.x++;
-	}*/
+	}
 }
 
 // void	test_view_iso(t_fdf *fdf)
@@ -299,26 +318,28 @@ void	draw_segment_to_right(t_vec2 start, t_vec2 end, t_fdf *fdf, float color)
 	d.y = end.y - start.y;
 	coord.x = start.x;
 	coord.y = start.y;
-	p = 2 * d.y - d.x;
+	p = 2 * d.x - d.y;
 	count = 0;
 	while(coord.x < end.x)
 	{
 		if(p > 0)
 		{
 			count++;
-			// if (count < 20)
-				mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(color));
-			// else
-			// 	mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(0));
+//			 if (count < 8)
+//				mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(8));
+			if (count < 2)
+				mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(4));
+			else
+			 	mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(color));
 			coord.y = coord.y + 1;
 			p = p + 2 * d.y - 2 * d.x;
 		}
 		else
 		{
-			// if (count < 50)
+			if (count < 2)
+				mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(4));
+			else
 				mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(color));
-			// else
-			// 	mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(0));
 			p = p + 2 * d.y;
 		}
 		coord.x = coord.x + 1;
@@ -338,7 +359,7 @@ void	draw_segment_to_left(t_vec2 start, t_vec2 end, t_fdf *fdf, float color)
 	coord.y = start.y;
 	p = 2 * d.x - d.y;
 	count = 0;
-	while(coord.y < end.y)
+	while(coord.x > end.x)
 	{
 		count++;
 		if(p > 0)
@@ -352,10 +373,7 @@ void	draw_segment_to_left(t_vec2 start, t_vec2 end, t_fdf *fdf, float color)
 		}
 		else
 		{
-			//if (count < 20)
-				mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(color));
-			// else
-			// 	mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(1));
+			mlx_put_pixel(fdf->img, coord.x, coord.y, rgba(color));
 			p = p + 2 * d.y;
 		}
 		coord.x = coord.x - 1;
