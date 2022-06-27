@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 04:09:28 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:00:31 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 	while (split_fd[iter.i])
 	{
 		obtain_z_and_color(m, split_fd[iter.i], iter.i, iter.j);
+		//m->mtrx[iter.i] = str_to_int(split_fd[iter.i]);
 		iter.i++;
 	}
 }
@@ -89,7 +90,7 @@ int	*str_to_int(char *str)
 
 	iter.j = 0;
 	ch_aux = ft_split(str, ' ');
-	analize_splitted();
+	//analize_splitted();
 	while (ch_aux[iter.j])
 		iter.j++;
 	int_mtrx = malloc(sizeof(int) * iter.j);

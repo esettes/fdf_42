@@ -6,15 +6,15 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:35:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 04:08:23 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:34:26 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACROS_FDF_H
 # define MACROS_FDF_H
 
-# define WIDTH		1200//1600
-# define HEIGHT		600//900
+# define WIDTH		1600
+# define HEIGHT		900
 # define IMG_AUMENT		8
 # define X_ORIGIN_OFF	( WIDTH / 2 )
 # define Y_ORIGIN_OFF	( HEIGHT / 2 )
