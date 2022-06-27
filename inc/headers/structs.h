@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 00:23:49 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:21:58 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,11 @@ typedef	struct s_lines
  * @param[in] px_size Pixel size of width(x) and height(y).
  * @param[in] start Coord where to start to draw in the img.
  * @param[in] end Coord where to finish to draw in the img.
- * @param[in] current Current position in the array mesh.
- * @param[in] next Next position in the array mesh.
  */
 typedef struct s_mtrx
 {
 	int			**mtrx;
-	char		**colors;
+	long int	**colors;
 	int			z;
 	float		zoom;
 	t_lines		line;

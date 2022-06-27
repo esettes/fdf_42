@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/27 16:00:31 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:23:48 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,22 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 	}
 	m->vertices = set_mtrx_size(aux, iter.i);
 	m->mtrx = malloc(sizeof(int *) * iter.j);
-	m->colors = malloc(sizeof(char *) * iter.j + 1);
+	m->colors = malloc(sizeof(long int *) * iter.j);
 	printf("\nm->size->y: %f \n", m->vertices.y);
 	printf("m->size->x: %f \n\n", m->vertices.x);
 	iter.i = 0;
-	
+
 	while (split_fd[iter.i])
 	{
-		obtain_z_and_color(m, split_fd[iter.i], iter.i, iter.j);
-		//m->mtrx[iter.i] = str_to_int(split_fd[iter.i]);
+		iter.j = 0;
+		obtain_z_and_color(m, split_fd[iter.i], iter.i);
+		while ( m->mtrx[iter.i][iter.j])
+		{
+			printf("m->colors[iter.j]: %li\n", m->colors[iter.i][iter.j]);
+			printf("m->mtrx[iter.j]: %i\n", m->mtrx[iter.i][iter.j]);
+			//m->mtrx[iter.i] = str_to_int(split_fd[iter.i]);
+			iter.j++;
+		}
 		iter.i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 04:34:13 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:22:21 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,37 @@ void	iso(t_fdf *fdf, t_vec2 *coord, int z)
 	coord->x = ((coord->x ) - (coord->y )) * cos(45) * 1;
 	coord->y = ((coord->x) + (coord->y )) * (sin(45) * 0.5)  - (z  * 0.5);
 	(void)fdf;
+}
+uint32_t hex2int(char *hex) {
+    uint32_t val = 0;
+    while (*hex) {
+        // get current character then increment
+        uint8_t byte = *hex++; 
+        // transform hex character to the 4bit equivalent number, using the ascii table indexes
+        if (byte >= '0' && byte <= '9') byte = byte - '0';
+        else if (byte >= 'a' && byte <='f') byte = byte - 'a' + 10;
+        else if (byte >= 'A' && byte <='F') byte = byte - 'A' + 10;    
+        // shift 4 to make space for new digit, and add the 4 bits of the new digit 
+        val = (val << 4) | (byte & 0xF);
+    }
+    return val;
+}
+int hextodc(char *hex)
+{
+   int y = 0;
+   int dec = 0;
+   int x, i;
+   for(i = strlen(hex) - 1 ; i >= 0 ; --i)
+   {
+      if(hex[i]>='0'&&hex[i]<='9'){
+         x = hex[i] - '0';
+      }
+      else{
+         x = hex[i] - 'A' + 10;
+      }
+      dec = dec + x * pow(16 , y);// converting hexadecimal to integer value ++y;
+   }
+   return dec;
 }
 
 void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
@@ -99,7 +130,9 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 	while ((int)(start.x - end.x) || (int)(start.y - end.y))
 	{
 		
-		mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
+		mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, 
+			fdf->mtrx.colors[(int)start.x][(int)start.y]);
+		printf ("fdf->mtrx.colors[(int)start.x][(int)start.y]: %li\n",fdf->mtrx.colors[(int)start.x][(int)start.y]);
 		//printf("offset x: %f, y: %f\n", offset.x, offset.y);
 		//printf("start x: %f, y: %f\n", start.x, start.y);
 		start.x += step.x;

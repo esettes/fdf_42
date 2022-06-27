@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/22 00:08:46 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:03:02 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,9 @@ int 	menu_rgb(int value);
  *  to blue (value > 0.8) 
  */
 int		rgba(int value);
+int		get_trgb(int str);
+int		get_r(int trgb);
+int		get_g(int trgb);
+int		get_b(int trgb);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:07:08 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 03:17:04 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:53:20 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ char    *str_to_color(char *str);
  * Call str_to_int() to get array with z values and str_to_color() to get
  * array with colors.
  */
-void	obtain_z_and_color(t_mtrx *m, char *str, int pos, int size);
+void	obtain_z_and_color(t_mtrx *m, char *str, int pos);
 
 #endif
