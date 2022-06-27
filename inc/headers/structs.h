@@ -71,6 +71,7 @@ typedef	struct s_lines
 typedef struct s_mtrx
 {
 	int			**mtrx;
+	char		**colors;
 	int			z;
 	float		zoom;
 	t_lines		line;
@@ -78,9 +79,6 @@ typedef struct s_mtrx
 	t_vec2		px_size;
 	t_vec2		start;
 	t_vec2		end;
-	t_vec2		current;
-	t_vec2		next;
-	int			**depth;
 }				t_mtrx;
 /**
  * Main struct of the program, used to store structs initializations

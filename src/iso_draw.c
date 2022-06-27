@@ -46,7 +46,7 @@ void	new_view_iso_testing(t_fdf *fdf)
 
 void	bresen_put_pixel(t_fdf *fdf, t_vec2 step)
 {
-	printf("\nin bresen put_pixel, current.x and current.y: %f, %f\n", fdf->mtrx.current.x, fdf->mtrx.current.y);
+	//printf("\nin bresen put_pixel, current.x and current.y: %f, %f\n", fdf->mtrx.current.x, fdf->mtrx.current.y);
 	mlx_put_pixel(fdf->img, fdf->mtrx.start.x,
 	fdf->mtrx.start.y, rgba(0));
 	fdf->mtrx.start.x += step.x;

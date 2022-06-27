@@ -12,13 +12,13 @@
 
 #include "fdf.h"
 
+int	check_fd_end(char *s);
+
 void	obtain_split_fd(int fd, t_mtrx *m)
 {
 	char	**split_fd;
-	int		**mtrx;
 	t_iter	iter;
 	int		aux;
-	int j	 = 0;
 	int		trigger = TRUE;
 
 	split_fd = malloc(sizeof(char *) * BUFFER_SIZE + 1);
@@ -27,7 +27,7 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 	while (true)
 	{
 		split_fd[iter.i] = get_next_line(fd);	// i = y 
-
+		
 		/* put here a function that saves in an array colors of each value*/
 		
 		iter.j += ft_count(split_fd[iter.i], ' ');
@@ -36,30 +36,22 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 			aux = iter.j;
 			trigger = FALSE;
 		}
-		if (split_fd[iter.i] == NULL || 
-			ft_strncmp(split_fd[iter.i], "\n", 1) == 0 || 
-			ft_strncmp(split_fd[iter.i], " ", 1) == 0)
+		if (check_fd_end(split_fd[iter.i]))
 			break ;
 		iter.i++;
 	}
 	m->vertices = set_mtrx_size(aux, iter.i);
-	mtrx = malloc(sizeof(int *) * iter.j);
+	m->mtrx = malloc(sizeof(int *) * iter.j);
+	m->colors = malloc(sizeof(char *) * iter.j + 1);
 	printf("\nm->size->y: %f \n", m->vertices.y);
 	printf("m->size->x: %f \n\n", m->vertices.x);
 	iter.i = 0;
+	
 	while (split_fd[iter.i])
 	{
-		mtrx[iter.i] = str_to_int(split_fd[iter.i]);
-		j = 0;
-		while (j < iter.j/m->vertices.y)
-		{
-			printf("%i ", mtrx[iter.i][j]);
-			j++;
-		}
-		printf("\n");
+		obtain_z_and_color(m, split_fd[iter.i], iter.i, iter.j);
 		iter.i++;
 	}
-	m->mtrx = mtrx;
 }
 
 int	ft_count(char const *s, char c)
@@ -92,23 +84,33 @@ int	ft_count(char const *s, char c)
 int	*str_to_int(char *str)
 {
 	char	**ch_aux;
-	int		tmp;
+	t_iter	iter;
 	int		*int_mtrx;
-	int		j;
 
-	j = 0;
+	iter.j = 0;
 	ch_aux = ft_split(str, ' ');
-	while (ch_aux[j])
-		j++;
-	int_mtrx = malloc(sizeof(int) * j);
-	j = 0;
-	while (ch_aux[j])
+	analize_splitted();
+	while (ch_aux[iter.j])
+		iter.j++;
+	int_mtrx = malloc(sizeof(int) * iter.j);
+	iter.j = 0;
+	while (ch_aux[iter.j])
 	{
-		tmp = ft_atoi(ch_aux[j]);
-		*(int_mtrx + j)= tmp;
-		j++;
+		iter.i = ft_atoi(ch_aux[iter.j]);
+		*(int_mtrx + iter.j) = iter.i;
+		iter.j++;
 	}
 	free (str);
 	free(ch_aux);
 	return (int_mtrx);
 }
+
+int	check_fd_end(char *s)
+{
+	if (s == NULL || ft_strncmp(s, "\n", 1) == 0 || 
+		ft_strncmp(s, " ", 1) == 0)
+		return (TRUE);
+	else
+		return (FALSE);
+}
+
