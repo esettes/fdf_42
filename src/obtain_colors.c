@@ -37,44 +37,49 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
 {
     char	**ch_aux;
     char    *extract;
+    int     i_color;
     char    *color;
-   // char    **colors;
-    long int     *int_color;
     int		*int_mtrx;
     t_iter  iter;
+    int     *int_color;
+    int     i;
+    char    *def;
 
     iter.i = 0;
     iter.j = 0;
+    i = 0;
+    def = "0xFFFFFF";
     ch_aux = ft_split(str, ' ');
     while (ch_aux[iter.j])
 		iter.j++;
     int_mtrx = malloc(sizeof(int) * iter.j);
-    int_color = malloc(sizeof(long int) * iter.j);
-    //colors =malloc(sizeof(char *) * (iter.j * 220) + 1);
+    int_color = malloc(sizeof(int) * iter.j);
     iter.j = 0;
 	while (ch_aux[iter.j])
     {
-        color = malloc(sizeof(char) * 11);
-        extract = ft_strnstr_after(ch_aux[iter.j], "x", 4);
+        
+        extract = ft_strnstr_after(ch_aux[iter.j], ",", 3);
+        
         if (extract)
         {
-            color = ft_memcpy(color, extract, 10);
-            iter.i = strtol(extract, &color, 0);
-            *(int_color + iter.j) = iter.i;
-            //printf("color: %s\n", color);
-           // m->colors[pos][iter.j] = strtol(extract, &color, 0);
-            printf ("m->colors[0][iter.j]: %li\n", m->colors[0][iter.j]);
-           // colors[iter.j] = color;
-            //printf("m->colors[iter.j]: %s\n", m->colors[iter.j]);
+            color = malloc(sizeof(char *)* 12);
+            color = ft_memcpy(color, extract, 11);
+            i_color = str_to_color(color);
+            *(int_color + iter.j) = i_color;
+            free (color);
         }
-        
+        else if (!extract)
+        {
+            i_color = str_to_color("0x222235");
+            *(int_color + iter.j) = i_color;
+        }
         iter.i = ft_atoi(ch_aux[iter.j]);
 		*(int_mtrx + iter.j) = iter.i;
         
 		iter.j++;
-        free (color);
+        
     }
-  //  printf("coolors %s\n", **colors);
+   
     m->colors[pos] = int_color;
     m->mtrx[pos] = int_mtrx;
     free (ch_aux);

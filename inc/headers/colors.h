@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/27 21:03:02 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/28 19:36:14 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # define YELLOW	0xFFFF00FF
 # define WHITE	0xFFFFFFFF
-# define FUCSIA	0xFF00FFFF
 # define BLUE	0x2060FFFF
 # define PURPLE	0x8040EEFF
 
@@ -37,9 +36,7 @@
 # define CYBLRED 0xCE6794FF	/* cyber light red */
 
 # define NEOBLACK 0x181C1EED	/* neon black */
-# define NEOGREEN 0x295C3AFF	/* neon green */
 # define NEOLGREEN 0x66C7A6EE	/* neon light green */
-# define NEOFUCSIA 0xCC3EF7EE	/* neon fucsia */
 # define NEODPURP 0x462D67FF	/* neon dark purple */
 # define NEOLPURP 0x737BAEFF	/* neon light purple */
 # define NEOWITHE 0xC8E5EEEE	/* cneon white */
@@ -54,5 +51,6 @@ int		get_trgb(int str);
 int		get_r(int trgb);
 int		get_g(int trgb);
 int		get_b(int trgb);
+int		str_to_color(char *color);
 
 #endif

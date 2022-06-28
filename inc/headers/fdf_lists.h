@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   fdf_lists.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/28 17:56:48 by iostancu         ###   ########.fr       */
+/*   Created: 2022/06/28 19:50:47 by iostancu          #+#    #+#             */
+/*   Updated: 2022/06/28 19:52:29 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef FDF_LISTS_H
+# define FDF_LISTS_H
 
-void	init_mlx(t_fdf *fdf)
-{
-	fdf->control.zoom = 1;
-	//fdf->mtrx.lst_color = ft_lstnew("");
-	obtain_split_fd(fdf->fd, &fdf->mtrx);
-	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
-	create_image(fdf);
-	draw_image(fdf);
-	loop_fdf(fdf);
-}
+#include "structs.h"
+
+t_point	*fdf_lstnew(void *color);
+void	fdf_lstadd_back(t_point **lst, t_point *new);
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/27 21:21:58 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/28 20:07:31 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,14 @@ typedef	struct s_lines
 	t_vec2	h_end;
 	t_vec2	v_end;
 }				t_lines;
+typedef	struct s_point
+{
+	int				x;
+	int				y;
+	int				z;
+	int				color;
+	struct s_point	*next;
+}				t_point;
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 
@@ -69,7 +77,8 @@ typedef	struct s_lines
 typedef struct s_mtrx
 {
 	int			**mtrx;
-	long int	**colors;
+	int			**colors;
+	t_point		*point;
 	int			z;
 	float		zoom;
 	t_lines		line;

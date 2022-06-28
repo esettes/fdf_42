@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:07:08 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/27 16:53:20 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/28 19:44:22 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		*str_to_int(char *str);
 /**
  * Returns the conversion of *str to an color array
  */
-char    *str_to_color(char *str);
+//char    *str_to_color(char *str);
 /**
  * Call str_to_int() to get array with z values and str_to_color() to get
  * array with colors.

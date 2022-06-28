@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/27 21:22:21 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/28 20:40:24 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,12 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 	int		max;
 	t_vec2	offset;
 	t_depth	depth;
+	t_vec2	aux;
 	int		**z_mesh;
 	int		color;
 
 	z_mesh = fdf->mtrx.mtrx;
-	
+	aux = start;
 	depth.z = z_mesh[(int)start.y][(int)start.x];
 	depth.z1 = z_mesh[(int)end.y][(int)end.x];
 	bresen_zoom(fdf, &start, &end);
@@ -131,8 +132,8 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 	{
 		
 		mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, 
-			fdf->mtrx.colors[(int)start.x][(int)start.y]);
-		printf ("fdf->mtrx.colors[(int)start.x][(int)start.y]: %li\n",fdf->mtrx.colors[(int)start.x][(int)start.y]);
+			fdf->mtrx.colors[(int)aux.x][(int)aux.y]);
+		//printf ("fdf->mtrx.colors[(int)start.x][(int)start.y]: %i\n",fdf->mtrx.colors[(int)start.x][(int)start.y]);
 		//printf("offset x: %f, y: %f\n", offset.x, offset.y);
 		//printf("start x: %f, y: %f\n", start.x, start.y);
 		start.x += step.x;

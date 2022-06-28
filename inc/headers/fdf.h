@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 03:20:17 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/28 19:51:47 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@
 # include "read_file.h"
 # include "matrix_properties.h"
 # include "bresen_utils.h"
+# include "fdf_lists.h"
 
 #endif

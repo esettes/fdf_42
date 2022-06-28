@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 23:27:02 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/22 03:11:26 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/28 19:44:45 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	rgba(int value)
 	if (value == 4)
 		return (CYBRED);
 	if (value == 5)
-		return (NEOGREEN);
+		return (NEOLGREEN);
 	else
 		return (NEOWITHE);
 }
