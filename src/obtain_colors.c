@@ -15,8 +15,8 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
     ch_aux = ft_split(str, ' ');
     while (ch_aux[iter.j])
 		iter.j++;
-    int_mtrx = malloc(sizeof(int) * iter.j);
-    int_color = malloc(sizeof(int) * iter.j);
+    int_mtrx = malloc(sizeof(int) * iter.j + 1);
+    int_color = malloc(sizeof(int) * iter.j + 1);
     iter.j = 0;
 	while (ch_aux[iter.j])
     {
@@ -46,7 +46,7 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
    
     m->colors[pos] = int_color;
     m->mtrx[pos] = int_mtrx;
-    //free (ch_aux);
+    free (ch_aux);
     free (str);
 }
 

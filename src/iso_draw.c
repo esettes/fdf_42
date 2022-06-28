@@ -15,6 +15,7 @@
 void	new_view_iso_testing(t_fdf *fdf)
 {
 	t_vec2	coord;
+	//t_vec2	color_coord;
 	t_vec2	h_end;
 	t_vec2	v_end;
 

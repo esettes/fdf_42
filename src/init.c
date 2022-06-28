@@ -14,7 +14,7 @@
 
 void	init_mlx(t_fdf *fdf)
 {
-	fdf->control.zoom = 2;
+	fdf->control.zoom = 1;
 	obtain_split_fd(fdf->fd, &fdf->mtrx);
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
 	create_image(fdf);

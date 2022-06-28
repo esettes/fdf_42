@@ -85,7 +85,7 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 
 		//	mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, 
 		//	fdf->mtrx.colors[(int)aux.x][(int)aux.y]);
-		printf ("fdf->mtrx.colors[%i][%i]: %i\n",(int)aux.y , (int)aux.x, fdf->mtrx.colors[(int)aux.x][(int)aux.y]);
+		//printf ("fdf->mtrx.colors[%i][%i]: %i\n",(int)aux.y , (int)aux.x, fdf->mtrx.colors[(int)aux.x][(int)aux.y]);
 		if (!aux.x)
 		{
 			aux.x--;
