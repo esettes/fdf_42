@@ -26,8 +26,8 @@ int	main(int argc, char	*argv[])
 		printf("HEIGHT: %d\n\n", HEIGHT);
 		
 		fdf = (t_fdf *)malloc(sizeof(t_fdf));
-//		fdf->fd = open("maps/test_maps/pyramide.fdf", O_RDONLY);
-		fdf->fd = open(argv[1], O_RDONLY);
+		fdf->fd = open("maps/test_maps/42.fdf", O_RDONLY);
+//		fdf->fd = open(argv[1], O_RDONLY);
 		if (fdf->fd <= 0)
 		{
 			exit(EXIT_FAILURE);

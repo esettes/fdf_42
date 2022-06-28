@@ -54,14 +54,7 @@ typedef	struct s_lines
 	t_vec2	h_end;
 	t_vec2	v_end;
 }				t_lines;
-typedef	struct s_point
-{
-	int				x;
-	int				y;
-	int				z;
-	int				color;
-	struct s_point	*next;
-}				t_point;
+
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 
@@ -78,7 +71,6 @@ typedef struct s_mtrx
 {
 	int			**mtrx;
 	int			**colors;
-	t_point		*point;
 	int			z;
 	float		zoom;
 	t_lines		line;

@@ -52,13 +52,13 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 		iter.j = 0;
 		printf("hello!\n");
 		obtain_z_and_color(m, split_fd[iter.i], iter.i);
-		while ( m->mtrx[iter.i][iter.j])
+		/*while ( m->mtrx[iter.i][iter.j])
 		{
-			printf("m->colors[iter.j]: %i\n", m->colors[iter.i][iter.j]);
+			printf("m->colors[%i][%i]: %i\n", iter.i, iter.j, m->colors[iter.i][iter.j]);
 			printf("m->mtrx[iter.j]: %i\n", m->mtrx[iter.i][iter.j]);
 			//m->mtrx[iter.i] = str_to_int(split_fd[iter.i]);
 			iter.j++;
-		}
+		}*/
 		iter.i++;
 	}
 }

@@ -14,11 +14,10 @@
 
 void	init_mlx(t_fdf *fdf)
 {
-	fdf->control.zoom = 1;
-	//fdf->mtrx.lst_color = ft_lstnew("");
+	fdf->control.zoom = 2;
 	obtain_split_fd(fdf->fd, &fdf->mtrx);
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
 	create_image(fdf);
-	draw_image(fdf);
+	//draw_image(fdf);
 	loop_fdf(fdf);
 }

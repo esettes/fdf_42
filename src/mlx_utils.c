@@ -17,7 +17,8 @@ void	loop_fdf(t_fdf *fdf)
 	mlx_scroll_hook(fdf->mlx, &set_zoom, fdf);
 
 	//draw_menu(fdf);
-	new_view_iso_testing(fdf);
+	//new_view_iso_testing(fdf);
+	draw_image(fdf);
 	mlx_loop(fdf->mlx);
 	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
 	// mlx_terminate(fdf->mlx);
