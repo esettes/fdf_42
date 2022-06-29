@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:51:50 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/29 16:38:21 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/29 19:17:34 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	letter_value(char letter)
 	int		val;
 
 	val = 0;
-	base = malloc(sizeof(char) * 17);
+	//base = malloc(sizeof(char) * 17);
 	base = "0123456789ABCDEF";
 	while (base[val] != '\0')
 	{
@@ -79,7 +79,7 @@ int	letter_value(char letter)
 		val++;
 	}
 	//if (base)
-	//	free(base);
+	//free(base);
 	return (0);
 }
 

@@ -6,12 +6,12 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:45:23 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/27 21:03:53 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/29 20:43:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/*
+
 double	ft_percent(int start, int end, int current)
 {
 	double	dist_2;
@@ -25,17 +25,17 @@ double	ft_percent(int start, int end, int current)
 		return (dist_2 / distance);
 }
 
-static int	get_r(int trgb)
+int	get_r(int trgb)
 {
 	return ((trgb >> 16) & 0xFF);
 }
 
-static int	get_g(int trgb)
+int	get_g(int trgb)
 {
 	return ((trgb >> 8) & 0xFF);
 }
 
-static int	get_b(int trgb)
+int	get_b(int trgb)
 {
 	return (trgb & 0xFF);
 }
@@ -49,4 +49,4 @@ int	ft_gradient(int start, int end, double percent)
 	new[2] = (int)round((1 - percent) * get_b(start) + percent * get_b(end));
 	new[3] = end & (0xFF << 24);
 	return (new[3] << 24 | new[0] << 16 | new[1] << 8 | new[2]);
-}*/
+}
