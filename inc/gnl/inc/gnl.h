@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 20:19:28 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 13:09:51 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/29 18:27:10 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2048
+#  define BUFFER_SIZE 4096
 # endif
 # define TRUE 1
 # define FALSE 0
 # ifndef OPEN_MAX
-#  define OPEN_MAX 10
+# define OPEN_MAX 10
 # endif
 
 char	*get_next_line(int fd);

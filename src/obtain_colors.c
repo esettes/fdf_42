@@ -5,7 +5,6 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
     char	**ch_aux;
     char    *extract;
     int     i_color;
-    char    *color;
     int		*int_mtrx;
     t_iter  iter;
     int     *int_color;
@@ -25,35 +24,28 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
         
         if (extract)
         {
-            color = malloc(sizeof(char *)* 12);
-            color = ft_memcpy(color, extract, 11);
-            i_color = str_to_color(color);
+            i_color = str_to_color(extract);
             *(int_color + iter.j) = i_color;
-            free (color);
+            //if (color)
+             //   free (color);
+            //color = "";
         }
-        else// if (!extract)
+        else
         {
-            i_color = str_to_color("0x222235");
-            *(int_color + iter.j) = i_color;
+            //i_color = str_to_color("0x222235");
+            *(int_color + iter.j) = 0xff;
         }
+        extract = "";
         iter.i = ft_atoi(ch_aux[iter.j]);
 		*(int_mtrx + iter.j) = iter.i;
         
-        free (ch_aux[iter.j]);
+        //free (ch_aux[iter.j]);
 		iter.j++;
-        
     }
    
     m->colors[pos] = int_color;
     m->mtrx[pos] = int_mtrx;
-    free (ch_aux);
+    if (ch_aux)
+        free (ch_aux);
     free (str);
-}
-
-
-void    analize_splitted()
-{
-    // si strnstr(ch_aux) devuelve no nulo es que este mapa tiene color
-    
-
 }

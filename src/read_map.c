@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/28 20:45:28 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/29 19:03:04 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 			aux = iter.j;
 			trigger = FALSE;
 		}
+		/* at the first line it detects the file ends*/
 		if (check_fd_end(split_fd[iter.i]))
 			break ;
 		iter.i++;
@@ -49,16 +50,11 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 
 	while (split_fd[iter.i])
 	{
-		iter.j = 0;
-		printf("hello!\n");
+		if (iter.i % 20 == 0)
+			printf("\e[2;35mloading...\e[0m\n");
+		//fflush(stdout);
+  		//sleep(5);
 		obtain_z_and_color(m, split_fd[iter.i], iter.i);
-		/*while ( m->mtrx[iter.i][iter.j])
-		{
-			printf("m->colors[%i][%i]: %i\n", iter.i, iter.j, m->colors[iter.i][iter.j]);
-			printf("m->mtrx[iter.j]: %i\n", m->mtrx[iter.i][iter.j]);
-			//m->mtrx[iter.i] = str_to_int(split_fd[iter.i]);
-			iter.j++;
-		}*/
 		iter.i++;
 	}
 }
@@ -98,7 +94,6 @@ int	*str_to_int(char *str)
 
 	iter.j = 0;
 	ch_aux = ft_split(str, ' ');
-	//analize_splitted();
 	while (ch_aux[iter.j])
 		iter.j++;
 	int_mtrx = malloc(sizeof(int) * iter.j);
@@ -116,8 +111,8 @@ int	*str_to_int(char *str)
 
 int	check_fd_end(char *s)
 {
-	if (s == NULL || ft_strncmp(s, "\n", 1) == 0 || 
-		ft_strncmp(s, " ", 1) == 0)
+	if (s == NULL || ft_strncmp(s, "\n", 1) == 0)// || 
+		//ft_strncmp(s, " ", 1) == 0)
 		return (TRUE);
 	else
 		return (FALSE);

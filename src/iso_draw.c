@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:27:12 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/25 04:28:43 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:56:49 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,18 @@ void	new_view_iso_testing(t_fdf *fdf)
 	t_vec2	v_end;
 
 	coord.y = 0;
+	
 	while (coord.y < fdf->mtrx.vertices.y)
 	{
+		//printf("\n\e[1;34m**************    in new_view_iso, 	coord.y++ **************\n\e[0m");
 		coord.x = 0;
 		while (coord.x < fdf->mtrx.vertices.x)
 		{
+			
+			// if (fdf->mtrx.colors[(int)coord.x][(int)coord.y] < 0)
+			// 	printf("\n\e[1;34miso_ fdf->mtrx.colors[%i][%i]: \e[1;31m %i\n\e[0m", (int)coord.x, (int)coord.y, fdf->mtrx.colors[(int)coord.x][(int)coord.y]);
+			// else
+			// 	printf("\n\e[1;34miso_ fdf->mtrx.colors[%i][%i]: %i\n\e[0m", (int)coord.x, (int)coord.y, fdf->mtrx.colors[(int)coord.x][(int)coord.y]);
 			if (coord.x < fdf->mtrx.vertices.x - 1)
 			{
 				//line_horiz(coord, fdf);
