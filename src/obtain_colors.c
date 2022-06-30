@@ -19,27 +19,18 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
     iter.j = 0;
 	while (ch_aux[iter.j])
     {
-        
         extract = ft_strnstr_after(ch_aux[iter.j], ",", 3);
         
         if (extract)
         {
             i_color = str_to_color(extract);
             *(int_color + iter.j) = i_color;
-            //if (color)
-             //   free (color);
-            //color = "";
         }
         else
-        {
-            //i_color = str_to_color("0x222235");
             *(int_color + iter.j) = 0xff;
-        }
         extract = "";
         iter.i = ft_atoi(ch_aux[iter.j]);
 		*(int_mtrx + iter.j) = iter.i;
-        
-        //free (ch_aux[iter.j]);
 		iter.j++;
     }
    
