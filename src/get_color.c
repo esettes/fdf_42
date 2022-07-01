@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:51:50 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/30 20:23:03 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/01 21:31:51 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,75 +42,8 @@ int	get_b(int trgb)
 	return (trgb & 0xFF);
 }*/
 
-char	*color_format(char *color)
-{
-	int		color_str_len;
-	int		j;
-	int		i;
-	char	*color_hex;
-
-	j = 2;
-	i = 0;
-	color_str_len = ft_strlen(color);
-	color_hex = malloc(sizeof (char) * 7);
-	while (j < color_str_len)
-	{
-		color_hex[i] = color[j];
-		i++;
-		j++;
-	}
-	color_hex[6] = '\0';
-	return (color_hex);
-}
-
-
-int	letter_value(char letter)
-{
-	char	*base;
-	int		val;
-
-	val = 0;
-	//base = malloc(sizeof(char) * 17);
-	base = "0123456789ABCDEF";
-	while (base[val] != '\0')
-	{
-		if (base[val] == letter)
-			return (val);
-		val++;
-	}
-	//if (base)
-	//free(base);
-	return (0);
-}
-
-int	str_to_color_(char *color)
-{
-	int		color_len;
-	int		exp;
-	int		color_val;
-	int		letter_val;
-	int		nb_exp;
-
-	color = color_format(color);
-	color_val = 0;
-	color_len = ft_strlen(color);
-	exp = 0;
-	while (color_len > 0)
-	{
-		color_len--;
-		letter_val = letter_value(color[color_len]);
-		nb_exp = pow(16, exp);
-		color_val += (letter_val * nb_exp);
-		exp++;
-	}
-	free(color);
-	return (color_val);
-}
-
 /*
 "0123456789abcdef"
-
-
 
 1 2 4 8 16 32 64 128 256 512 1024 2048 4096 
 
@@ -137,22 +70,39 @@ f = 11111 = 15
 
 */
 
-int		char_to_int(char c, int pos)
+int		char_to_int(char c)
 {
-	char	*aux;
-	size_t	val;
+	size_t	trigger;
+	char	*hex;
+	char	*hex2;
+	t_iter	iter;
 	
-	printf("aux: %c\n", c);
-	aux = ft_strnstr(HEX_L, &c, pos + 1);
-	if (!aux)
+	//printf("pos: %i\n", pos);
+	//printf("char: %c\n", c);
+	iter.i = 0;
+	trigger = FALSE;
+	hex = "0123456789abcdef";
+	hex2 = "0123456789ABCDEF";
+	while (hex[iter.i])
 	{
-		aux = ft_strnstr(HEX_U, &c, pos + 1);
-		if (!aux)
-			return (FALSE);
+		if (c == hex[iter.i])
+		{
+			trigger = TRUE;
+			return (iter.i);
+		}
+		iter.i++;
 	}
-	val = 16 - ft_strlen(aux);
-	printf("val: %zu\n", val);
-	return (val);
+	iter.i = 0;
+	if (trigger == FALSE)
+	{
+		while (hex2[iter.i])
+		{
+			if (c == hex2[iter.i])
+				return (iter.i);
+			iter.i++;
+		}
+	}
+	return (iter.i);
 }
 
 int		str_to_color(char *color)
@@ -160,22 +110,40 @@ int		str_to_color(char *color)
 	int		int_color;
 	char	*aux;
 	t_iter	iter;
+	size_t	i;
 
-	aux = color;
+	//iter.i = ft_strlen(color) - 1;
+	aux = ft_strnstr_after(color, "x", 2);
 	iter.i = 0;
+	iter.j = 0;
+	i = ft_strlen(aux) - 1;
 	int_color = 0;
-	while (aux[iter.i])
+	//printf("\e[1;35m----------color: %s\n\e[0;37m", aux);
+	
+	/* se coge el primer char despues de '0x' y se multiplica por la ultima pos de un hex(7)*/
+	while (ft_isalnum(aux[iter.i]))
 	{
-		if (aux[iter.i] != '0' && aux[iter.i] != 'x')
-		{
-			iter.j = char_to_int(aux[iter.i], iter.i);
-			printf("iter.j: %i\n", iter.j);
-			iter.j = iter.j << (iter.i * sizeof(int));
-			int_color = int_color | iter.j;
-			printf("int_color: %i\n", int_color);
-		}
+		//printf("\e[2;33m -inwhile- color[%i]: %c\n\e[0;37m", iter.i, aux[iter.i]);
+		if (aux[iter.i] == '\0' || aux[iter.i] == 'x')
+			break ;
+		iter.j = char_to_int(aux[iter.i]);
+		//printf("hex value: %i\n", iter.j);
+		iter.j = iter.j << (i * sizeof(int));
+		int_color = int_color | iter.j;
+		i--;
 		iter.i++;
+		
 	}
+	// rellenar con 0 el resto de posiciones que quedan
+	/*while (i >= 2)
+	{
+		char z = '0';
+		iter.j = char_to_int(z, i);
+		iter.j = iter.j << (i * sizeof(int));
+		int_color = int_color | iter.j;
+		i--;
+	}*/
+	//printf("\e[1;32mint_color: %i\n\e[0;37m", int_color);
 	return (int_color);
 }
 

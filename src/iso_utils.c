@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/30 20:23:46 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/01 21:39:50 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 	bresen_zoom(fdf, &start, &end);
 	
 	offset.x = IMG_CENTER_X - (fdf->mtrx.px_size.x / 8);
-	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 4);
+	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 5);
 	
 	isometric(fdf, &start, &end, depth);
 	//iso(fdf, &start, depth.z);

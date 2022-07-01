@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:36:29 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/30 19:33:46 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/01 19:26:54 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	ft_bzero(void *s, size_t n);
 /**
  * Copies n bytes from memory area src to memory area dest.
  * 
- * @param[in] dest Where the copy will be saved.
- * @param[in] src Source to be copied.
- * @param[in] n Number of bytes.
+ * @param dest Where the copy will be saved.
+ * @param src Source to be copied.
+ * @param n Number of bytes.
  *
  * @return Pointer to dest.
  */
