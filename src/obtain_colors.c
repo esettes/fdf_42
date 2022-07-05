@@ -24,7 +24,7 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
         extract = ft_strchr(ch_aux[iter.j], 'x');
         
 
-        if (extract && extract != "")
+        if (extract)// && extract != "")
         {
             extract++;
             //printf("\e[2;33mextract++:\t%s\n\e[0;37m",extract);
@@ -34,7 +34,7 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
             // printf("Hola\n");
         }
         else
-           *(int_color + iter.j) = str_to_color("0x22222222");
+           *(int_color + iter.j) = str_to_color("89ED2A");
         extract = ""; 
         iter.i = ft_atoi(ch_aux[iter.j]);
 		*(int_mtrx + iter.j) = iter.i;
