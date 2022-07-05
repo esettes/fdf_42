@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/01 21:39:50 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:48:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,15 @@ void	iso(t_fdf *fdf, t_vec2 *coord, int z)
 	(void)fdf;
 }
 
+
+int setColor(int int_color) 
+{
+	// if(int_color!=255)
+	// printf("%d\t%x\t->",(int)int_color, (int)int_color);
+	// if(int_color!=255)
+	// printf("%lu\t%lx\n",int_color, int_color);
+	return int_color;
+}
 
 void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 {
@@ -102,7 +111,7 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 		p = 2 * step2 - step1;
 		while (coord.x < end.x)// && (int)coord.x - end.x)
 		{
-			color = fdf->mtrx.colors[curr.j][curr.i];
+			color = setColor(fdf->mtrx.colors[curr.j][curr.i]);
 			if (p > 0)
 			{
 				mlx_put_pixel(fdf->img, coord.x + offset.x, coord.y + offset.y, color);
@@ -122,7 +131,7 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 		p = 2 * step1 - step2;
 		while (coord.x > end.x)// && coord.y - end.y)
 		{
-			color = fdf->mtrx.colors[curr.j][curr.i];
+			color = setColor(fdf->mtrx.colors[curr.j][curr.i]);
 			if (p > 0)
 			{
 				mlx_put_pixel(fdf->img, coord.x + offset.x, coord.y + offset.y, color);
@@ -139,65 +148,3 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 	}
 }
 
-void	f_bresen_left(t_fdf *fdf, t_vec2 start, t_vec2 end)// t_vec2 before)
-{
-	t_vec2	step;
-	int		max;
-	int		color;
-	t_vec2	offset;
-	t_depth	depth;
-	t_iter	curr;
-	//double	percent;
-	int		p;
-
-	curr.i = (int)start.x;
-	curr.j = (int)start.y;
-	depth.z = fdf->mtrx.mtrx[(int)start.y][(int)start.x];
-	depth.z1 = fdf->mtrx.mtrx[(int)end.y][(int)end.x];
-	bresen_zoom(fdf, &start, &end);
-	
-	offset.x = IMG_CENTER_X - (fdf->mtrx.px_size.x / 8);
-	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 4);
-	
-	isometric(fdf, &start, &end, depth);
-	//iso(fdf, &start, depth.z);
-	//iso(fdf, &end, depth.z1);
-	step.x = end.x - start.x;
-	step.y = end.y - start.y;
-
-	p = 2 * step.x - step.y;
-	
-	max = f_max(f_mod(step.x), f_mod(step.y));
-	step.x /= max;
-	step.y /= max;
-	//printf("\n********	in f_bresen (outer while)	********\n");
-	while ((int)(start.y - end.y))
-	{
-		//if (fdf->mtrx.colors[aux.i][aux.j] < 0)
-		//	color = 0xff;
-		//else
-		
-		/*if (fabs(step.x)  + -fabs(step.y) > 0)
-			percent = ft_percent(curr.j, end.y, start.y);
-		else
-			percent = ft_percent(curr.i, end.x, start.x);
-		
-		color = ft_gradient(fdf->mtrx.colors[curr.j][curr.i], 
-			fdf->mtrx.colors[(int)end.y][(int)end.x], percent);*/
-		color = fdf->mtrx.colors[curr.j][curr.i];
-		//printf("\ncolor: %i ********\n", color);
-		if (p > 0)
-		{
-			mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
-			start.y += 1;
-			p = p + 2 * step.y - 2 * step.x;
-		}
-		else
-		{
-			mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
-			p = p + 2 * step.y;
-		}
-		//start.x += step.x;
-		start.y += 1;
-	}
-}

@@ -6,11 +6,17 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/01 16:56:23 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:27:17 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+// void	lk(void)
+// {
+// 	system("leaks fdf");
+// }
+
 
 int	main(int argc, char	*argv[])
 {
@@ -18,6 +24,7 @@ int	main(int argc, char	*argv[])
 	
 	if (argv[0])
 		printf("ok");
+	// atexit(lk);
 	if (argc < 3)
 	{
 		printf("\norigin offset X: %d\n", X_ORIGIN_OFF);

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:51:50 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/01 21:31:51 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/05 19:56:20 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ f0f5 = f0f50000
 f = 11111 = 15
 
 */
+void	init_rgba(t_rgba *rgba)
+{
+	rgba->r = 0;
+	rgba->g = 0;
+	rgba->b = 0;
+	rgba->a = 255;
+}
 
 int		char_to_int(char c)
 {
@@ -83,6 +90,8 @@ int		char_to_int(char c)
 	trigger = FALSE;
 	hex = "0123456789abcdef";
 	hex2 = "0123456789ABCDEF";
+	if (!c)
+	 	return (iter.i);
 	while (hex[iter.i])
 	{
 		if (c == hex[iter.i])
@@ -107,45 +116,84 @@ int		char_to_int(char c)
 
 int		str_to_color(char *color)
 {
-	int		int_color;
+	unsigned long		int_color;
 	char	*aux;
+	t_rgba	rgba;
 	t_iter	iter;
+	t_uiter	uiter;
+	t_iter	save;
 	size_t	i;
 
-	//iter.i = ft_strlen(color) - 1;
-	aux = ft_strnstr_after(color, "x", 2);
+	aux = color;
+	init_rgba(&rgba);
 	iter.i = 0;
-	iter.j = 0;
-	i = ft_strlen(aux) - 1;
+	iter.j = 1;
+	uiter.a = 0;
+	uiter.b = 1;
+	i = ft_strlen(color) - 1;
 	int_color = 0;
-	//printf("\e[1;35m----------color: %s\n\e[0;37m", aux);
-	
-	/* se coge el primer char despues de '0x' y se multiplica por la ultima pos de un hex(7)*/
-	while (ft_isalnum(aux[iter.i]))
+	while (i >= 0)
 	{
 		//printf("\e[2;33m -inwhile- color[%i]: %c\n\e[0;37m", iter.i, aux[iter.i]);
-		if (aux[iter.i] == '\0' || aux[iter.i] == 'x')
+		if ( aux[iter.i] == 'x' || aux[iter.i] == '\0')
 			break ;
-		iter.j = char_to_int(aux[iter.i]);
-		//printf("hex value: %i\n", iter.j);
-		iter.j = iter.j << (i * sizeof(int));
-		int_color = int_color | iter.j;
+		uiter.b = char_to_int(aux[iter.i]);
+		//printf("\e[2;37mi:\t%i\n\e[0;37m", i);
+		if (i % 2 == 0)
+		{
+			save.j = uiter.b; // solo para prueba, eliminar luego
+			uiter.b = save.i * uiter.b;
+			if (i == 4) // hay r,g y b y hay que guardar el red
+			{
+				//printf("\e[2;31msave: %i, uiter.b: %i\e\n[0;37m", save.i, save.j);
+				rgba.r = uiter.b;
+				//printf("\e[0;31mr:\t%i, \e[0;37m", rgba.r);
+			}
+			if (i == 2) // hay g y b y hay que guardar el green
+			{
+				rgba.g = uiter.b;
+				//printf("\e[0;32mg:\t%i, \e[0;37m", rgba.g);
+			}
+			if (i == 0) // hay b y hay que guardar el blue
+			{
+				rgba.b = uiter.b;
+				//printf("\e[0;34mb:\t%i\n\e[0;37m", rgba.b);
+			}
+		}
+		save.i = uiter.b;
+		//iter.j = iter.j << (i * 4);
+		//int_color = int_color | iter.j;
 		i--;
 		iter.i++;
-		
 	}
-	// rellenar con 0 el resto de posiciones que quedan
-	/*while (i >= 2)
-	{
-		char z = '0';
-		iter.j = char_to_int(z, i);
-		iter.j = iter.j << (i * sizeof(int));
-		int_color = int_color | iter.j;
-		i--;
-	}*/
-	//printf("\e[1;32mint_color: %i\n\e[0;37m", int_color);
+	//printf("\e[0;37ma:\t%i\n\e[0;37m", rgba.a);
+	int_color = separate_sections(rgba.r, rgba.g, rgba.b, rgba.a);
+	//printf("\e[2;33mint_color:\t%i\n\n\e[0;37m", int_color);
+	//printf("\e[2;33mint_color before separate_section:  %i\n\e[0;37m", int_color);
+	//int_color = separate_sections(int_color);
+	
 	return (int_color);
 }
+
+// char	*parse_color(char *original)
+// {
+// 	char	*transform;
+// 	t_iter	iter;
+// 	size_t	len;
+
+// 	iter.i = 0;
+// 	len = ft_strlen(original);
+// 	// si tiene 2, añadir r, g y alpha
+// 	// si tiene 4, añadir r y alpha
+// 	// si tiene 6, añadir alpha
+// 	if (len == 2)
+// 	{
+// 		while (ft_isalnum(original[iter.i]))
+// 		{
+// 			// hacer 2 veces str_to_int y despues (hexvalue & 0xFF) / 255
+// 		}
+// 	}
+// }
 
 /*
 pos = 7

@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/06/29 18:25:04 by iostancu         ###   ########.fr        #
+#    Updated: 2022/07/05 19:56:49 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,12 +42,15 @@ endif
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= gcc
-CFLAGS	= -g -fsanitize=address -Wall -Wextra -Werror #-glldb
+CFLAGS	= -Ofast # -Wall -Wextra -Werror # -Lmlx -lmlx -framework OpenGL -framework AppKit -glldb
 WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
 
-all: $(OBJDIR) $(LIBFT) $(GNL) $(LIBX42) $(NAME)
-	
+all: obj $(LIBFT) $(GNL) $(LIBX42) $(NAME) #$(OBJDIR)
+
+obj:
+	mkdir -p $(OBJDIR)
+
 $(OBJDIR)%.o:$(SRCDIR)%.c
 #	@echo "${LWHITE}Compiling $(notdir $<) ${LGREEN}✓$(RESET)"
 	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
@@ -70,7 +73,8 @@ $(LIBX42):
 LD_DEBUG=all
 
 dbgfiles:
-	@rm -rf *.dSYM 
+	@rm -rf *.dSYM
+	@rm -rf *.DS_Store
 	@echo "${LWHITE}Clean debug files... ${LGREEN}✓$(RESET)\033[2;33m"
 
 clean:	dbgfiles
