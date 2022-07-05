@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/28 20:07:31 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/05 19:49:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ typedef struct s_iter
 	int	i;
 	int	j;
 }				t_iter;
+
+typedef struct s_uiter
+{
+	int	a;
+	int	b;
+}				t_uiter;
+
+typedef struct s_rgba
+{
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+	unsigned int	a;
+}				t_rgba;
 
 typedef	struct s_controls
 {

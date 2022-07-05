@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/01 16:54:58 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/05 19:45:57 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int		str_to_color_(char *color);
 int		str_to_color(char *color);
 double	ft_percent(int start, int end, int current);
 int		ft_gradient(int start, int end, double percent);
+int		separate_sections(unsigned int r, unsigned int g, unsigned int b,  unsigned int a);
 
 #endif

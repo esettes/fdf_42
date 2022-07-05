@@ -11,6 +11,7 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
 
     iter.i = 0;
     iter.j = 0;
+    // printf("%s\n",str);
     ch_aux = ft_split(str, ' ');
     while (ch_aux[iter.j])
 		iter.j++;
@@ -19,16 +20,22 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
     iter.j = 0;
 	while (ch_aux[iter.j])
     {
-        extract = ft_strnstr_after(ch_aux[iter.j], ",", 3);
+        //extract = ft_strnstr_after(ch_aux[iter.j], "x", 5);
+        extract = ft_strchr(ch_aux[iter.j], 'x');
         
-        if (extract)
+
+        if (extract)// && extract != "")
         {
+            extract++;
+            //printf("\e[2;33mextract++:\t%s\n\e[0;37m",extract);
             i_color = str_to_color(extract);
+            ///i_color = ft_atoi_base(extract, 16);
             *(int_color + iter.j) = i_color;
+            // printf("Hola\n");
         }
         else
-            *(int_color + iter.j) = 0xff;
-        extract = "";
+           *(int_color + iter.j) = str_to_color("89ED2A");
+        extract = ""; 
         iter.i = ft_atoi(ch_aux[iter.j]);
 		*(int_mtrx + iter.j) = iter.i;
 		iter.j++;
