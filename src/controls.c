@@ -6,11 +6,64 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/29 16:55:12 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/07 21:47:39 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+mlx_image_t	*g_img;
+
+void	move_img(mlx_key_data_t keydata, void* param)
+{
+	t_fdf	*fdf;
+
+	fdf = param;
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_RELEASE && keydata.modifier == MLX_CONTROL)
+		puts("Gotta grab it all!");
+	if (keydata.key == MLX_KEY_ESCAPE)
+		mlx_close_window(fdf->mlx);
+	if (keydata.key == MLX_KEY_UP)
+	{
+		fdf->control.horiz -= 5;
+		modify_mesh(fdf);
+	}
+	if (keydata.key == MLX_KEY_DOWN)
+	{
+		fdf->control.horiz += 5;
+		modify_mesh(fdf);
+	}
+	if (keydata.key == MLX_KEY_LEFT)
+	{
+		fdf->control.vert -= 5;
+		modify_mesh(fdf);
+	}
+	if (keydata.key == MLX_KEY_RIGHT)
+	{
+		fdf->control.vert += 5;
+		modify_mesh(fdf);
+	}
+		
+}
+
+void	key_hook(void *param)
+{
+	//mlx_t	*mlx;
+	t_fdf	*fdf;
+
+	fdf = param;
+	//mlx = param;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(fdf->mlx);
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_UP))
+		fdf->img->instances[0].y -= 5;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_DOWN))
+		fdf->img->instances[0].y += 5;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_LEFT))
+		fdf->img->instances[0].x -= 5;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_RIGHT))
+		fdf->img->instances[0].x += 5;
+}
 
 void	set_zoom(double x_delta, double y_delta, void *fdf_void)
 {

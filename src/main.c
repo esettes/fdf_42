@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/05 20:05:42 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/07 20:22:02 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char	*argv[])
 		printf("width: %d\n", WIDTH);
 		printf("HEIGHT: %d\n\n", HEIGHT);
 		
-		fdf = (t_fdf *)malloc(sizeof(t_fdf));
+		fdf = (t_fdf *)calloc(1, sizeof(t_fdf));
 //		fdf->fd = open("maps/test_maps/pyramide.fdf", O_RDONLY);
 		fdf->fd = open(argv[1], O_RDONLY);
 		if (fdf->fd <= 0)

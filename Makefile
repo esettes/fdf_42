@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/07/05 19:56:49 by iostancu         ###   ########.fr        #
+#    Updated: 2022/07/07 19:29:00 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ endif
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= gcc
-CFLAGS	= -Ofast # -Wall -Wextra -Werror # -Lmlx -lmlx -framework OpenGL -framework AppKit -glldb
+CFLAGS	= -g3 -fsanitize=address -fno-omit-frame-pointer # -Wall -Wextra -Werror # -Lmlx -lmlx -framework OpenGL -framework AppKit -glldb
 WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
 

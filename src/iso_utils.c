@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/05 21:54:45 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/07 21:48:59 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,15 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 	bresen_zoom(fdf, &start, &end);
 	
 	offset.x = IMG_CENTER_X - (fdf->mtrx.px_size.x / 9);
-	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 5);
+	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 3.5);
 	
 	isometric(fdf, &start, &end, depth);
 	//iso(fdf, &start, depth.z);
 	//iso(fdf, &end, depth.z1);
 	coord.x = start.x;
 	coord.y = start.y;
+	start.x += fdf->control.vert;
+	start.y += fdf->control.horiz;
 	step.x = (float)(end.x - start.x);
 	step.y = (float)(end.y - start.y);
 	
@@ -111,13 +113,14 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 	step.y /= max;
 	//printf("step x: %d, step y: %d, \n", step.x, step.y);
 	//printf("\n********	in f_bresen (outer while)	********\n");
-/*	while ((int)(start.x - end.x) || (int)(start.y - end.y))
+	/*while ((int)(start.x - end.x) || (int)(start.y - end.y))
 	{
 		color = fdf->mtrx.colors[curr.j][curr.i];
 		mlx_put_pixel(fdf->img, start.x + offset.x , start.y + offset.y, color);
 		start.x += step.x;
 		start.y += step.y;
 	}*/
+	
 	if (direction == 0)
 	{
 		p = 2 * step2 - step1;
@@ -127,13 +130,15 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 			color = setColor(fdf->mtrx.colors[curr.j][curr.i]);
 			if (p > 0)
 			{
-				mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
+				if (start.x + offset.x < WIDTH * IMG_AUMENT && start.y + offset.y < HEIGHT * IMG_AUMENT)
+					mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
 				start.y = start.y + 1;
 				p = p + 2 * step2 - 2 * step1;
 			}
 			else
 			{
-				mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
+				if (start.x + offset.x < WIDTH * IMG_AUMENT && start.y + offset.y < HEIGHT * IMG_AUMENT)
+					mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
 				p = p + 2 * step2;
 			}
 			start.x = start.x + 1;
@@ -147,13 +152,15 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 			color = setColor(fdf->mtrx.colors[curr.j][curr.i]);
 			if (p > 0)
 			{
-				mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
+				if (start.x + offset.x < WIDTH * IMG_AUMENT && start.y + offset.y < HEIGHT * IMG_AUMENT)
+					mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
 				start.y = start.y + 1;
 				p = p + 2 * step2 - 2 * step1;
 			}
 			else
 			{
-				mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
+				if (start.x + offset.x < WIDTH * IMG_AUMENT && start.y + offset.y < HEIGHT * IMG_AUMENT)
+					mlx_put_pixel(fdf->img, start.x + offset.x, start.y + offset.y, color);
 				p = p + 2 * step2;
 			}
 			start.x = start.x - 1;
