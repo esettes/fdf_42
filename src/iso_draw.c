@@ -16,7 +16,7 @@ void	new_view_iso_testing(t_fdf *fdf)
 {
 	t_vec2	coord;
 	//t_vec2	color_coord;
-	t_vec2	before;
+	//t_vec2	before;
 	t_vec2	h_end;
 	t_vec2	v_end;
 
@@ -28,8 +28,8 @@ void	new_view_iso_testing(t_fdf *fdf)
 		coord.x = 0;
 		while (coord.x < fdf->mtrx.vertices.x)
 		{
-			before.x = coord.x;
-			before.y = coord.y;
+			//before.x = coord.x;
+			//before.y = coord.y;
 			if (coord.x < fdf->mtrx.vertices.x - 1)
 			{
 				//line_horiz(coord, fdf);

@@ -21,7 +21,7 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 	int		aux;
 	int		trigger = TRUE;
 
-	split_fd = malloc(sizeof(char *) * BUFFER_SIZE + 1);
+	split_fd = malloc(sizeof(char *) * BUFFER_SIZE * 2);
 	iter.i = 0;
 	iter.j = 0;
 	while (true)
