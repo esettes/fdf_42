@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/07 21:47:39 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/07 21:56:40 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,16 @@ void	move_img(mlx_key_data_t keydata, void* param)
 		fdf->control.vert += 5;
 		modify_mesh(fdf);
 	}
-		
+	if (keydata.key == MLX_KEY_T)
+	{
+		fdf->control.perspective = TOP_VIEW;
+		modify_mesh(fdf);
+	}
+	if (keydata.key == MLX_KEY_I)
+	{
+		fdf->control.perspective = ISOMETRIC;
+		modify_mesh(fdf);
+	}	
 }
 
 void	key_hook(void *param)

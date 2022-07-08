@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/07/07 19:29:00 by iostancu         ###   ########.fr        #
+#    Updated: 2022/07/08 19:08:00 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,7 @@ clean:	dbgfiles
 
 fclean: dbgfiles
 	@rm -rf $(NAME)
+	@rm -rf $(LIBX42)
 	@echo "${LWHITE}Clean fdf... ${LGREEN}✓$(RESET)\033[2;33m"
 	@rm -rf ${OBJDIR}*.o
 	@echo "${LWHITE}Clean Libft... ${LGREEN}✓$(RESET)\033[2;33m"
