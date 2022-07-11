@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/08 19:26:28 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:44:44 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,25 @@ void	print_box_menu(t_fdf *fdf, int color, int max_x, int max_y)
 	
 }
 
+// void	draw_menu(t_fdf *fdf)
+// {
+// 	t_vec2	save_aux;
+
+// 	save_aux.x  = (WIDTH * IMG_AUMENT) / 2 - (WIDTH / 5);
+// 	save_aux.y  = (HEIGHT * IMG_AUMENT) / 2 - (HEIGHT / 5);
+// 	printf("end draw x, y: %f, %f\n", save_aux.x, save_aux.y);
+// 	print_box_menu(fdf, 0, save_aux.x, save_aux.y);
+// }
+
 void	draw_menu(t_fdf *fdf)
 {
-	t_vec2	save_aux;
+	t_vec2	aux;
 
-	save_aux.x  = (WIDTH * IMG_AUMENT) / 2 - (WIDTH / 5);
-	save_aux.y  = (HEIGHT * IMG_AUMENT) / 2 - (HEIGHT / 5);
-	printf("end draw x, y: %f, %f\n", save_aux.x, save_aux.y);
-	print_box_menu(fdf, 0, save_aux.x, save_aux.y);
+	aux.x  = (WIDTH * IMG_AUMENT) / 2 - (WIDTH * 0.25);
+	aux.y = (HEIGHT * IMG_AUMENT) / 2 - (HEIGHT * 0.25);
+	mlx_put_string(fdf->mlx, "CONTROLS", aux.x + 10, aux.y += 22);
+	mlx_put_string(fdf->mlx, "", aux.x + 10, aux.y += 22);
+	mlx_put_string(fdf->mlx, "Scroll for zoom", aux.x + 10, aux.y += 22);
+	mlx_put_string(fdf->mlx, "[W] or Up arrow to move up", aux.x + 10, aux.y += 22);
+	mlx_put_string(fdf->mlx, "[S] or Down arrow to move down", aux.x + 10, aux.y += 22);
 }

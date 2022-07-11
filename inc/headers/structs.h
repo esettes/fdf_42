@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/07 21:53:19 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/11 10:06:05 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,12 @@ typedef	struct s_controls
 typedef	struct s_lines
 {
 	t_vec2	start;
+	t_vec2	end;
+	t_vec2	step;
 	t_vec2	h_end;
 	t_vec2	v_end;
+	t_vec2	delta;
+	int		color;
 }				t_lines;
 
 /**

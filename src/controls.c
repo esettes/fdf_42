@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/07 21:56:40 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:38:38 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,24 @@ void	move_img(mlx_key_data_t keydata, void* param)
 		puts("Gotta grab it all!");
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(fdf->mlx);
-	if (keydata.key == MLX_KEY_UP)
-	{
-		fdf->control.horiz -= 5;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_DOWN)
-	{
-		fdf->control.horiz += 5;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_LEFT)
+	if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 	{
 		fdf->control.vert -= 5;
 		modify_mesh(fdf);
 	}
-	if (keydata.key == MLX_KEY_RIGHT)
+	if (keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
 	{
 		fdf->control.vert += 5;
+		modify_mesh(fdf);
+	}
+	if (keydata.key == MLX_KEY_LEFT)
+	{
+		fdf->control.horiz -= 5;
+		modify_mesh(fdf);
+	}
+	if (keydata.key == MLX_KEY_RIGHT)
+	{
+		fdf->control.horiz += 5;
 		modify_mesh(fdf);
 	}
 	if (keydata.key == MLX_KEY_T)

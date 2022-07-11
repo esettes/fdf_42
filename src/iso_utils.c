@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/08 17:14:29 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:54:20 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,10 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 	
 	if (fdf->control.perspective == ISOMETRIC)
 		isometric(fdf, &start, &end, depth);
-	start.x += fdf->control.vert;
-	start.y += fdf->control.horiz;
+	start.x += fdf->control.horiz;
+	start.y += fdf->control.vert;
+	end.x += fdf->control.horiz;
+	end.y += fdf->control.vert;
 	step.x = (float)(end.x - start.x);
 	step.y = (float)(end.y - start.y);
 	
@@ -107,14 +109,14 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 	step.y /= max;
 	//printf("step x: %d, step y: %d, \n", step.x, step.y);
 	//printf("\n********	in f_bresen (outer while)	********\n");
-	/*while ((int)(start.x - end.x) || (int)(start.y - end.y))
+	while ((int)(start.x - end.x) || (int)(start.y - end.y))
 	{
 		color = fdf->mtrx.colors[curr.j][curr.i];
 		mlx_put_pixel(fdf->img, start.x + offset.x , start.y + offset.y, color);
 		start.x += step.x;
 		start.y += step.y;
-	}*/
-	
+	}
+	/*
 	if (direction == 0)
 	{
 		p = 2 * step2 - step1;
@@ -165,6 +167,6 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 			}
 			start.x = start.x - 1;
 		}
-	}
+	}*/
 }
 
